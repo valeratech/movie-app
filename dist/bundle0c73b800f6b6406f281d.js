@@ -3,7 +3,8 @@ var __webpack_exports__ = {};
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-alert('test');
+console.log('test');
+
 /******/ })()
 ;
-//# sourceMappingURL=bundlec03282617310846ace74.js.map
+//# sourceMappingURL=bundle0c73b800f6b6406f281d.js.map

@@ -4,11 +4,12 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 
-// Create a Router to navigate through html pages
+// Create an object to retrieve the current html page-name for routing
 const global = {
     currentPage: window.location.pathname
 }
 
+// Loop through all nav-link classes and apply the "active" class for highlighting
 function highlightActiveLink() {
     const links = document.querySelectorAll('.nav-link');
     console.log(global.currentPage);
@@ -21,6 +22,7 @@ function highlightActiveLink() {
 }
 
 
+// Create a Router and initialize through a condition to navigate through html pages
 function init() {
     switch (global.currentPage) {
         case '/':
@@ -40,6 +42,7 @@ function init() {
             console.log('Search')
             break;
     }
+    // Each time a html page is called render the page with the link that has the "active" classname
     highlightActiveLink();
 }
 

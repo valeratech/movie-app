@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
+import fetchAPIData from "./Modules/API";
 
 // Create an object to retrieve the current html page-name for routing
 const global = {
@@ -27,10 +28,10 @@ function init() {
     switch (global.currentPage) {
         case '/':
         case '/index.html':
-            console.log('Home')
+            console.log('movie')
             break;
         case '/shows.html':
-            console.log('Shows')
+            console.log('tv')
             break;
         case '/movie-details.html':
             console.log('Movie Details');

@@ -4,4 +4,5 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 
-console.log('test');
+// Create a Router to navigate through html pages
+

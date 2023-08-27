@@ -7071,10 +7071,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log('test');
+// Create a Router to navigate through html pages
+
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlee3e7adba79a0cc3561fc.js.map
+//# sourceMappingURL=bundle832530af5b291e68bcde.js.map

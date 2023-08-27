@@ -7076,6 +7076,18 @@ const global = {
     currentPage: window.location.pathname
 }
 
+function highlightActiveLink() {
+    const links = document.querySelectorAll('.nav-link');
+    console.log(global.currentPage);
+    console.log(links);
+    links.forEach(link => {
+        if (link.getAttribute('href') === global.currentPage) {
+            link.classList.add('active');
+        }
+    })
+}
+
+
 function init() {
     switch (global.currentPage) {
         case '/':
@@ -7095,12 +7107,14 @@ function init() {
             console.log('Search')
             break;
     }
+    highlightActiveLink();
 }
 
 document.addEventListener('DOMContentLoaded', init)
+highlightActiveLink();
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle823cbebbeaea3e537021.js.map
+//# sourceMappingURL=bundle1b5611845fa67cd63b2d.js.map

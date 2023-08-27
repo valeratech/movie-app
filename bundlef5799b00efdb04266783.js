@@ -6917,11 +6917,40 @@ async function fetchAPIData(endpoint) {
     const API_URL = 'https://api.themoviedb.org/3/';
     const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
     const data = await res.json();
-    console.log(data);
     return (data);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchAPIData);
+
+/***/ }),
+
+/***/ "./src/Modules/DisplayMedia.js":
+/*!*************************************!*\
+  !*** ./src/Modules/DisplayMedia.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   displayPopularMovies: () => (/* binding */ displayPopularMovies),
+/* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV)
+/* harmony export */ });
+/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
+
+
+
+ async function displayPopularMovies() {
+    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
+    console.log(results);
+}
+
+async function displayPopularTV() {
+    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
+    console.log(results);
+}
+
+
 
 /***/ }),
 
@@ -7090,7 +7119,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/brands */ "./node_modules/@fortawesome/fontawesome-free/js/brands.js");
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
-/* harmony import */ var _Modules_API__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modules/API */ "./src/Modules/API.js");
+/* harmony import */ var _Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modules/DisplayMedia */ "./src/Modules/DisplayMedia.js");
 
 
 
@@ -7121,7 +7150,8 @@ function init() {
     switch (global.currentPage) {
         case '/':
         case '/index.html':
-            console.log('movie')
+            console.log('movie');
+            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_5__.displayPopularMovies)();
             break;
         case '/shows.html':
             console.log('tv')
@@ -7147,4 +7177,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlecfe38d4c81298659097e.js.map
+//# sourceMappingURL=bundlef5799b00efdb04266783.js.map

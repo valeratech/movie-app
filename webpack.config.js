@@ -43,6 +43,26 @@ module.exports = {  // common JS syntax - config(object)
             filename: "index.html",
             template: "src/template.html" // Boiler-plate index for development in src
         }),
+        new HtmlWebpackPlugin({
+            title: 'Movie-Details', // <title><%= htmlWebpackPlugin.options.title %></title>
+            filename: "movie-details.html",
+            template: "src/links/movie-details.html" // Boiler-plate index for development in src
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Search', // <title><%= htmlWebpackPlugin.options.title %></title>
+            filename: "search.html",
+            template: "src/links/search.html" // Boiler-plate index for development in src
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Shows', // <title><%= htmlWebpackPlugin.options.title %></title>
+            filename: "shows.html",
+            template: "src/links/shows.html" // Boiler-plate index for development in src
+        }),
+        new HtmlWebpackPlugin({
+            title: 'TV-Details', // <title><%= htmlWebpackPlugin.options.title %></title>
+            filename: "tv-details.html",
+            template: "src/links/tv-details.html" // Boiler-plate index for development in src
+        }),
     ],
 }
 

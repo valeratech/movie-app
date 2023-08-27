@@ -33,7 +33,6 @@ module.exports = {  // common JS syntax - config(object)
             {
                 // https://stackoverflow.com/questions/52376720/how-to-make-font-awesome-5-work-with-webpack
                 test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|)$/i,
-                use: ["file-loader"],
                 type: 'asset/resource',
             }
         ],

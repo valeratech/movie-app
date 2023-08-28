@@ -6924,6 +6924,79 @@ async function fetchAPIData(endpoint) {
 
 /***/ }),
 
+/***/ "./src/Modules/CreateCard.js":
+/*!***********************************!*\
+  !*** ./src/Modules/CreateCard.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createCardContainer: () => (/* binding */ createCardContainer),
+/* harmony export */   createCardInformation: () => (/* binding */ createCardInformation),
+/* harmony export */   createImageLink: () => (/* binding */ createImageLink)
+/* harmony export */ });
+/* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
+
+
+function createCardContainer() {
+    // Create card containers for movie banner tiles
+    const cardContainer = document.createElement('div');
+    cardContainer.className = 'card';
+    cardContainer.append(createImageLink(), createCardInformation('my title','my text'));
+
+    return cardContainer;
+}
+
+function createImageLink() {
+    const image = document.createElement('img');
+    image.src =  _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__;
+
+    const anchor = document.createElement('a');
+    anchor.appendChild(image);
+
+    return anchor;
+}
+
+function createCardInformation(title, text) {
+    // Create card information to fill tiles
+    const cardBodyTitle = document.createElement('h5');
+    cardBodyTitle.className = 'card-title';
+    cardBodyTitle.appendChild(document.createTextNode(title));
+
+    const cardBodyText = document.createElement('small');
+    cardBodyText.className = 'text-muted';
+    cardBodyText.appendChild(document.createTextNode(text));
+
+    const cardBodyTextContainer = document.createElement('p');
+    cardBodyTextContainer.className = 'card-text';
+    cardBodyTextContainer.appendChild(cardBodyText);
+
+    // Create card body container and append the card informatio
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+    cardBody.append(cardBodyTitle, cardBodyTextContainer);
+
+    return cardBody;
+}
+
+// <div class="card">
+//     <a href="movie-details.html?id=1">
+//         <img src="./assets/no-image.jpg">
+//     </a>
+//     <div class="card-body">
+//         <h5 class="card-title">Movie Title</h5>
+//         <p class="card-text">
+//             <small class="text-muted">Release: XX/XX/XXXX</small>
+//         </p>
+//     </div>
+// </div>
+
+
+
+/***/ }),
+
 /***/ "./src/Modules/DisplayMedia.js":
 /*!*************************************!*\
   !*** ./src/Modules/DisplayMedia.js ***!
@@ -6937,12 +7010,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV)
 /* harmony export */ });
 /* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
+/* harmony import */ var _CreateCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateCard */ "./src/Modules/CreateCard.js");
 
 
 
  async function displayPopularMovies() {
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
     console.log(results);
+    document.getElementById('popular-movies')
+        .append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(), (0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(), (0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(), (0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)());
 }
 
 async function displayPopularTV() {
@@ -6951,6 +7027,17 @@ async function displayPopularTV() {
 }
 
 
+
+/***/ }),
+
+/***/ "./src/assets/no-image.jpg":
+/*!*********************************!*\
+  !*** ./src/assets/no-image.jpg ***!
+  \*********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "no-image.jpg";
 
 /***/ }),
 
@@ -7155,6 +7242,7 @@ function init() {
             break;
         case '/shows.html':
             console.log('tv')
+            ;(0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_5__.displayPopularTV)();
             break;
         case '/movie-details.html':
             console.log('Movie Details');
@@ -7177,4 +7265,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlef5799b00efdb04266783.js.map
+//# sourceMappingURL=bundlea90f3d6d319f793758ec.js.map

@@ -33,6 +33,7 @@ function init() {
             break;
         case '/shows.html':
             console.log('tv')
+            displayPopularTV();
             break;
         case '/movie-details.html':
             console.log('Movie Details');

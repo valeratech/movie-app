@@ -1,11 +1,13 @@
 import fetchAPIData from "./API";
-import createCardContainer from "./CreateCard";
+import {createCardContainer, createImageLink, createCardInformation} from "./CreateCard";
 
  async function displayPopularMovies() {
+    const moviesContainer = document.getElementById('popular-movies');
     const {results} = await fetchAPIData('movie/popular');
     console.log(results);
-    document.getElementById('popular-movies')
-        .append(createCardContainer());
+    results.forEach(movie => {
+        moviesContainer.append(createCardContainer(movie));
+    })
 }
 
 async function displayPopularTV() {

@@ -6940,34 +6940,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
 
 
-function createCardContainer() {
+function createCardContainer(media) {
     // Create card containers for movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
-    cardContainer.append(createImageLink(), createCardInformation('my title','my text'));
+    cardContainer.append(createImageLink(media.poster_path, media.id, media.original_title), createCardInformation(media.original_title, media.release_date));
 
     return cardContainer;
 }
 
-function createImageLink() {
+function createImageLink(poster, id, title) {
+    // Creates an anchor to link each API backdrop_path value
     const image = document.createElement('img');
-    image.src =  _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__;
+    image.src =  `https://image.tmdb.org/t/p/w500${poster ? poster : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__}`;
 
     const anchor = document.createElement('a');
+    anchor.href = `movie-details.html?id=${id}`;
+    anchor.alt = title;
     anchor.appendChild(image);
 
     return anchor;
 }
 
 function createCardInformation(title, text) {
-    // Create card information to fill tiles
+    // Create card information for original_tile and release_date API values to fill tiles
     const cardBodyTitle = document.createElement('h5');
     cardBodyTitle.className = 'card-title';
     cardBodyTitle.appendChild(document.createTextNode(title));
 
     const cardBodyText = document.createElement('small');
     cardBodyText.className = 'text-muted';
-    cardBodyText.appendChild(document.createTextNode(text));
+    cardBodyText.appendChild(document.createTextNode(`Release: ${text}`));
 
     const cardBodyTextContainer = document.createElement('p');
     cardBodyTextContainer.className = 'card-text';
@@ -6980,18 +6983,6 @@ function createCardInformation(title, text) {
 
     return cardBody;
 }
-
-// <div class="card">
-//     <a href="movie-details.html?id=1">
-//         <img src="./assets/no-image.jpg">
-//     </a>
-//     <div class="card-body">
-//         <h5 class="card-title">Movie Title</h5>
-//         <p class="card-text">
-//             <small class="text-muted">Release: XX/XX/XXXX</small>
-//         </p>
-//     </div>
-// </div>
 
 
 
@@ -7015,10 +7006,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
  async function displayPopularMovies() {
+    const moviesContainer = document.getElementById('popular-movies');
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
     console.log(results);
-    document.getElementById('popular-movies')
-        .append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(), (0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(), (0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(), (0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)());
+    results.forEach(movie => {
+        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(movie));
+    })
 }
 
 async function displayPopularTV() {
@@ -7265,4 +7258,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlea90f3d6d319f793758ec.js.map
+//# sourceMappingURL=bundle91895fb9f28cf042a482.js.map

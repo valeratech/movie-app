@@ -39,7 +39,7 @@ module.exports = {  // common JS syntax - config(object)
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Mochi+ | Watch Movies and TV Shows', // <title><%= htmlWebpackPlugin.options.title %></title>
+            title: 'Flixulu+ | Watch Movies and TV Shows', // <title><%= htmlWebpackPlugin.options.title %></title>
             filename: "index.html",
             template: "src/template.html" // Boiler-plate index for development in src
         }),

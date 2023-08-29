@@ -1,7 +1,7 @@
 import noImage from '../assets/no-image.jpg'
 
 function createCardContainer(media) {
-    // Create card containers for movie banner tiles
+    // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
     cardContainer.append(createImageLink(media.poster_path, media.id, media.original_title), createCardInformation(media.original_title, media.release_date));
@@ -14,6 +14,7 @@ function createImageLink(poster, id, title) {
     const image = document.createElement('img');
     image.src =  `https://image.tmdb.org/t/p/w500${poster ? poster : noImage}`;
 
+    // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
     anchor.href = `movie-details.html?id=${id}`;
     anchor.alt = title;
@@ -36,7 +37,7 @@ function createCardInformation(title, text) {
     cardBodyTextContainer.className = 'card-text';
     cardBodyTextContainer.appendChild(cardBodyText);
 
-    // Create card body container and append the card informatio
+    // Create card body container and append the card information
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body';
     cardBody.append(cardBodyTitle, cardBodyTextContainer);
@@ -44,4 +45,4 @@ function createCardInformation(title, text) {
     return cardBody;
 }
 
-export {createCardContainer, createImageLink, createCardInformation};
+export default createCardContainer;

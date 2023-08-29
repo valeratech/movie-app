@@ -8,7 +8,7 @@ import toggleSpinner from "./ToggleSpinner";
 
     const {results} = await fetchAPIData('movie/popular');
     results.forEach(movie => {
-        moviesContainer.append(createCardContainer(movie));
+        moviesContainer.append(createCardContainer(movie, 'movie'));
     })
 }
 
@@ -17,7 +17,7 @@ async function displayPopularTV() {
 
     const {results} = await fetchAPIData('tv/popular');
     results.forEach(show => {
-        moviesContainer.append(createCardContainer(show));
+        moviesContainer.append(createCardContainer(show, 'show'));
     })
 }
 

@@ -7152,23 +7152,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
 
 
-function createCardContainer(media) {
+function createCardContainer(mediaData, type) {
     // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
-    cardContainer.append(createImageLink(media.poster_path, media.id, media.original_title), createCardInformation(media.original_title, media.release_date));
+    if (type === 'movie') {
+        cardContainer.append(
+            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title),
+            createCardInformation(mediaData.original_title, mediaData.release_date)
+        );
+    } else if (type === 'show') {
+        cardContainer.append(
+            createImageLink(mediaData.poster_path, mediaData.id, mediaData.name, type),
+            createCardInformation(mediaData.name, mediaData.first_air_date)
+        );
+    }
 
     return cardContainer;
 }
 
-function createImageLink(poster, id, title) {
+function createImageLink(poster, id, title, type) {
     // Creates an anchor to link each API backdrop_path value
     const image = document.createElement('img');
     image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__;
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `movie-details.html?id=${id}`;
+    anchor.href = `${type}-details.html?id=${id}`;
     anchor.alt = title;
     anchor.appendChild(image);
 
@@ -7226,7 +7236,7 @@ __webpack_require__.r(__webpack_exports__);
 
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
     results.forEach(movie => {
-        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie));
+        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie, 'movie'));
     })
 }
 
@@ -7235,7 +7245,7 @@ async function displayPopularTV() {
 
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
     results.forEach(show => {
-        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(show));
+        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'show'));
     })
 }
 
@@ -7501,4 +7511,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle37435d835d8240107539.js.map
+//# sourceMappingURL=bundle97603561f6c829a5d5e7.js.map

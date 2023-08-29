@@ -1,22 +1,32 @@
 import noImage from '../assets/no-image.jpg'
 
-function createCardContainer(media) {
+function createCardContainer(mediaData, type) {
     // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
-    cardContainer.append(createImageLink(media.poster_path, media.id, media.original_title), createCardInformation(media.original_title, media.release_date));
+    if (type === 'movie') {
+        cardContainer.append(
+            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title),
+            createCardInformation(mediaData.original_title, mediaData.release_date)
+        );
+    } else if (type === 'show') {
+        cardContainer.append(
+            createImageLink(mediaData.poster_path, mediaData.id, mediaData.name, type),
+            createCardInformation(mediaData.name, mediaData.first_air_date)
+        );
+    }
 
     return cardContainer;
 }
 
-function createImageLink(poster, id, title) {
+function createImageLink(poster, id, title, type) {
     // Creates an anchor to link each API backdrop_path value
     const image = document.createElement('img');
     image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : noImage;
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `movie-details.html?id=${id}`;
+    anchor.href = `${type}-details.html?id=${id}`;
     anchor.alt = title;
     anchor.appendChild(image);
 

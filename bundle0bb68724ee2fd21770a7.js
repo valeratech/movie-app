@@ -7158,7 +7158,7 @@ function createCardContainer(mediaData, type) {
     cardContainer.className = 'card';
     if (type === 'movie') {
         cardContainer.append(
-            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title),
+            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title, type),
             createCardInformation(mediaData.original_title, mediaData.release_date)
         );
     } else if (type === 'show') {
@@ -7220,6 +7220,7 @@ function createCardInformation(title, text) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   displayMovieDetails: () => (/* binding */ displayMovieDetails),
 /* harmony export */   displayPopularMovies: () => (/* binding */ displayPopularMovies),
 /* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV)
 /* harmony export */ });
@@ -7245,12 +7246,12 @@ async function displayPopularTV() {
 
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
     results.forEach(show => {
-        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'show'));
+        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'shows'));
     })
 }
 
 async function displayMovieDetails() {
-
+    console.log(window.location.search);
 }
 
 
@@ -7512,6 +7513,7 @@ function init() {
             break;
         case '/movie-details.html':
             console.log('Movie Details');
+            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMovieDetails)();
             break;
         case '/tv-details.html':
             console.log('TV Details')
@@ -7530,4 +7532,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle20688aa44410e5c935ab.js.map
+//# sourceMappingURL=bundle0bb68724ee2fd21770a7.js.map

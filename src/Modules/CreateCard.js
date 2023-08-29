@@ -12,7 +12,7 @@ function createCardContainer(media) {
 function createImageLink(poster, id, title) {
     // Creates an anchor to link each API backdrop_path value
     const image = document.createElement('img');
-    image.src =  `https://image.tmdb.org/t/p/w500${poster ? poster : noImage}`;
+    image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : noImage;
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');

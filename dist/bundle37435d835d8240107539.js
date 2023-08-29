@@ -7164,7 +7164,7 @@ function createCardContainer(media) {
 function createImageLink(poster, id, title) {
     // Creates an anchor to link each API backdrop_path value
     const image = document.createElement('img');
-    image.src =  `https://image.tmdb.org/t/p/w500${poster ? poster : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__}`;
+    image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__;
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
@@ -7220,9 +7220,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// Requests movie data using the API.js module and passes either the TV or Movie argument
+// Requests movie data using the API.js module and passes either the tv or movie argument
  async function displayPopularMovies() {
     const moviesContainer = document.getElementById('popular-movies');
+
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
     results.forEach(movie => {
         moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie));
@@ -7230,8 +7231,12 @@ __webpack_require__.r(__webpack_exports__);
 }
 
 async function displayPopularTV() {
+    const moviesContainer = document.getElementById('popular-shows');
+
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
-    console.log(results);
+    results.forEach(show => {
+        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(show));
+    })
 }
 
 
@@ -7496,4 +7501,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle51a70dff899ec41b7ef9.js.map
+//# sourceMappingURL=bundle37435d835d8240107539.js.map

@@ -2,15 +2,13 @@ import fetchAPIData from "./API";
 import createCardContainer from "./CreateCard";
 import toggleSpinner from "./ToggleSpinner";
 
+// Requests movie data using the API.js module and passes either the TV or Movie argument
  async function displayPopularMovies() {
     const moviesContainer = document.getElementById('popular-movies');
-    toggleSpinner();
     const {results} = await fetchAPIData('movie/popular');
     results.forEach(movie => {
         moviesContainer.append(createCardContainer(movie));
     })
-    toggleSpinner();
-
 }
 
 async function displayPopularTV() {

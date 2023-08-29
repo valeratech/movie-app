@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
+import './styles/spinner.css';
 import {displayPopularMovies, displayPopularTV} from "./Modules/DisplayMedia";
 
 // Create an object to retrieve the current html page-name for routing

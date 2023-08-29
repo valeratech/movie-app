@@ -7178,7 +7178,7 @@ function createImageLink(poster, id, title, type) {
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `${type}-details.html?id=${id}`;
+    anchor.href = `${type}-details.html?id=${id}`; // Set ID parameter in the URL which can be used to render movie page
     anchor.alt = title;
     anchor.appendChild(image);
 
@@ -7249,7 +7249,38 @@ async function displayPopularTV() {
     })
 }
 
+async function displayMovieDetails() {
 
+}
+
+
+
+/***/ }),
+
+/***/ "./src/Modules/HighlightActiveLink.js":
+/*!********************************************!*\
+  !*** ./src/Modules/HighlightActiveLink.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// Loop through all nav-link classes and apply the "active" class for highlighting
+function highlightActiveLink(currentPage) {
+    const links = document.querySelectorAll('.nav-link');
+    console.log(currentPage);
+    console.log(links);
+    links.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    })
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (highlightActiveLink);
 
 /***/ }),
 
@@ -7452,6 +7483,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
 /* harmony import */ var _styles_spinner_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/spinner.css */ "./src/styles/spinner.css");
 /* harmony import */ var _Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modules/DisplayMedia */ "./src/Modules/DisplayMedia.js");
+/* harmony import */ var _Modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Modules/HighlightActiveLink */ "./src/Modules/HighlightActiveLink.js");
+
 
 
 
@@ -7464,19 +7497,6 @@ __webpack_require__.r(__webpack_exports__);
 const global = {
     currentPage: window.location.pathname
 }
-
-// Loop through all nav-link classes and apply the "active" class for highlighting
-function highlightActiveLink() {
-    const links = document.querySelectorAll('.nav-link');
-    console.log(global.currentPage);
-    console.log(links);
-    links.forEach(link => {
-        if (link.getAttribute('href') === global.currentPage) {
-            link.classList.add('active');
-        }
-    })
-}
-
 
 // Create a Router and initialize through a condition to navigate through html pages
 function init() {
@@ -7501,14 +7521,13 @@ function init() {
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
-    highlightActiveLink();
+    (0,_Modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
 }
 
 document.addEventListener('DOMContentLoaded', init)
-highlightActiveLink();
-
+;(0,_Modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle97603561f6c829a5d5e7.js.map
+//# sourceMappingURL=bundle20688aa44410e5c935ab.js.map

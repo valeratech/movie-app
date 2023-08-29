@@ -5,24 +5,12 @@ import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 import './styles/spinner.css';
 import {displayPopularMovies, displayPopularTV} from "./Modules/DisplayMedia";
+import highlightActiveLink from "./Modules/HighlightActiveLink";
 
 // Create an object to retrieve the current html page-name for routing
 const global = {
     currentPage: window.location.pathname
 }
-
-// Loop through all nav-link classes and apply the "active" class for highlighting
-function highlightActiveLink() {
-    const links = document.querySelectorAll('.nav-link');
-    console.log(global.currentPage);
-    console.log(links);
-    links.forEach(link => {
-        if (link.getAttribute('href') === global.currentPage) {
-            link.classList.add('active');
-        }
-    })
-}
-
 
 // Create a Router and initialize through a condition to navigate through html pages
 function init() {
@@ -47,8 +35,8 @@ function init() {
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
-    highlightActiveLink();
+    highlightActiveLink(global.currentPage);
 }
 
 document.addEventListener('DOMContentLoaded', init)
-highlightActiveLink();
+highlightActiveLink(global.currentPage);

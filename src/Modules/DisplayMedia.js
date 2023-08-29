@@ -21,4 +21,8 @@ async function displayPopularTV() {
     })
 }
 
+async function displayMovieDetails() {
+
+}
+
 export {displayPopularMovies, displayPopularTV};

@@ -26,7 +26,7 @@ function createImageLink(poster, id, title, type) {
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `${type}-details.html?id=${id}`;
+    anchor.href = `${type}-details.html?id=${id}`; // Set ID parameter in the URL which can be used to render movie page
     anchor.alt = title;
     anchor.appendChild(image);
 

@@ -6933,15 +6933,13 @@ async function fetchAPIData(endpoint) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createCardContainer: () => (/* binding */ createCardContainer),
-/* harmony export */   createCardInformation: () => (/* binding */ createCardInformation),
-/* harmony export */   createImageLink: () => (/* binding */ createImageLink)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
 
 
 function createCardContainer(media) {
-    // Create card containers for movie banner tiles
+    // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
     cardContainer.append(createImageLink(media.poster_path, media.id, media.original_title), createCardInformation(media.original_title, media.release_date));
@@ -6954,6 +6952,7 @@ function createImageLink(poster, id, title) {
     const image = document.createElement('img');
     image.src =  `https://image.tmdb.org/t/p/w500${poster ? poster : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__}`;
 
+    // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
     anchor.href = `movie-details.html?id=${id}`;
     anchor.alt = title;
@@ -6976,7 +6975,7 @@ function createCardInformation(title, text) {
     cardBodyTextContainer.className = 'card-text';
     cardBodyTextContainer.appendChild(cardBodyText);
 
-    // Create card body container and append the card informatio
+    // Create card body container and append the card information
     const cardBody = document.createElement('div');
     cardBody.className = 'card-body';
     cardBody.append(cardBodyTitle, cardBodyTextContainer);
@@ -6984,7 +6983,7 @@ function createCardInformation(title, text) {
     return cardBody;
 }
 
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCardContainer);
 
 /***/ }),
 
@@ -7002,16 +7001,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
 /* harmony import */ var _CreateCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateCard */ "./src/Modules/CreateCard.js");
+/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/Modules/ToggleSpinner.js");
+
 
 
 
  async function displayPopularMovies() {
     const moviesContainer = document.getElementById('popular-movies');
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_2__["default"])();
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
-    console.log(results);
     results.forEach(movie => {
-        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__.createCardContainer)(movie));
+        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie));
     })
+    ;(0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_2__["default"])();
+
 }
 
 async function displayPopularTV() {
@@ -7019,6 +7022,27 @@ async function displayPopularTV() {
     console.log(results);
 }
 
+
+
+/***/ }),
+
+/***/ "./src/Modules/ToggleSpinner.js":
+/*!**************************************!*\
+  !*** ./src/Modules/ToggleSpinner.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function toggleSpinner() {
+    const spinner = document.querySelector('.spinner');
+    spinner.classList.toggle('show');
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toggleSpinner);
 
 
 /***/ }),
@@ -7258,4 +7282,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle91895fb9f28cf042a482.js.map
+//# sourceMappingURL=bundle7224c2a14c0ff7e7fd1d.js.map

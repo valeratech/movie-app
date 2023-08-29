@@ -6038,6 +6038,156 @@
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/spinner.css":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/spinner.css ***!
+  \*************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/* Spinner From: https://codepen.io/tbrownvisuals/pen/edGYvx */
+.spinner {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* Transparent Overlay */
+.spinner:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(20, 20, 20, 0.8), rgba(0, 0, 0, 0.8));
+  background: -webkit-radial-gradient(rgba(20, 20, 20, 0.8), rgba(0, 0, 0, 0.8));
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.spinner:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.spinner:not(:required):after {
+  content: "";
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 150ms infinite linear;
+  -moz-animation: spinner 150ms infinite linear;
+  -ms-animation: spinner 150ms infinite linear;
+  -o-animation: spinner 150ms infinite linear;
+  animation: spinner 150ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0, rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) 0 1.5em 0 0, rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0, rgba(255, 255, 255, 0.75) -1.5em 0 0 0, rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0, rgba(255, 255, 255, 0.75) 0 -1.5em 0 0, rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}`, "",{"version":3,"sources":["webpack://./src/styles/spinner.css"],"names":[],"mappings":"AAAA,8DAAA;AACA;EACI,eAAA;EACA,YAAA;EACA,WAAA;EACA,UAAA;EACA,cAAA;EACA,YAAA;EACA,MAAA;EACA,OAAA;EACA,SAAA;EACA,QAAA;EACA,aAAA;AACJ;;AAEA;EACI,cAAA;AACJ;;AAEA,wBAAA;AACA;EACI,WAAA;EACA,cAAA;EACA,eAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,sEAAA;EAEA,8EAAA;AAAJ;;AAMA,yDAAA;AACA;EACI,2BAAA;EACA,WAAA;EACA,kBAAA;EACA,iBAAA;EACA,6BAAA;EACA,SAAA;AAHJ;;AAMA;EACI,WAAA;EACA,cAAA;EACA,eAAA;EACA,UAAA;EACA,WAAA;EACA,kBAAA;EACA,gDAAA;EACA,6CAAA;EACA,4CAAA;EACA,2CAAA;EACA,wCAAA;EACA,oBAAA;EACA,gWAAA;EAQA,wVAAA;AAVJ;;AAoBA,cAAA;AAEA;EACI;IACI,+BAAA;IACA,4BAAA;IACA,2BAAA;IACA,0BAAA;IACA,uBAAA;EAlBN;EAoBE;IACI,iCAAA;IACA,8BAAA;IACA,6BAAA;IACA,4BAAA;IACA,yBAAA;EAlBN;AACF;AAoBA;EACI;IACI,+BAAA;IACA,4BAAA;IACA,2BAAA;IACA,0BAAA;IACA,uBAAA;EAlBN;EAoBE;IACI,iCAAA;IACA,8BAAA;IACA,6BAAA;IACA,4BAAA;IACA,yBAAA;EAlBN;AACF;AAoBA;EACI;IACI,+BAAA;IACA,4BAAA;IACA,2BAAA;IACA,0BAAA;IACA,uBAAA;EAlBN;EAoBE;IACI,iCAAA;IACA,8BAAA;IACA,6BAAA;IACA,4BAAA;IACA,yBAAA;EAlBN;AACF;AAoBA;EACI;IACI,+BAAA;IACA,4BAAA;IACA,2BAAA;IACA,0BAAA;IACA,uBAAA;EAlBN;EAoBE;IACI,iCAAA;IACA,8BAAA;IACA,6BAAA;IACA,4BAAA;IACA,yBAAA;EAlBN;AACF","sourcesContent":["/* Spinner From: https://codepen.io/tbrownvisuals/pen/edGYvx */\n.spinner {\n    position: fixed;\n    z-index: 999;\n    height: 2em;\n    width: 2em;\n    overflow: show;\n    margin: auto;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    display: none;\n}\n\n.show {\n    display: block;\n}\n\n/* Transparent Overlay */\n.spinner:before {\n    content: '';\n    display: block;\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: radial-gradient(rgba(20, 20, 20, 0.8), rgba(0, 0, 0, 0.8));\n\n    background: -webkit-radial-gradient(\n            rgba(20, 20, 20, 0.8),\n            rgba(0, 0, 0, 0.8)\n    );\n}\n\n/* :not(:required) hides these rules from IE9 and below */\n.spinner:not(:required) {\n    /* hide \"loading...\" text */\n    font: 0/0 a;\n    color: transparent;\n    text-shadow: none;\n    background-color: transparent;\n    border: 0;\n}\n\n.spinner:not(:required):after {\n    content: '';\n    display: block;\n    font-size: 10px;\n    width: 1em;\n    height: 1em;\n    margin-top: -0.5em;\n    -webkit-animation: spinner 150ms infinite linear;\n    -moz-animation: spinner 150ms infinite linear;\n    -ms-animation: spinner 150ms infinite linear;\n    -o-animation: spinner 150ms infinite linear;\n    animation: spinner 150ms infinite linear;\n    border-radius: 0.5em;\n    -webkit-box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0,\n    rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0,\n    rgba(255, 255, 255, 0.75) 0 1.5em 0 0,\n    rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0,\n    rgba(255, 255, 255, 0.75) -1.5em 0 0 0,\n    rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0,\n    rgba(255, 255, 255, 0.75) 0 -1.5em 0 0,\n    rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;\n    box-shadow: rgba(255, 255, 255, 0.75) 1.5em 0 0 0,\n    rgba(255, 255, 255, 0.75) 1.1em 1.1em 0 0,\n    rgba(255, 255, 255, 0.75) 0 1.5em 0 0,\n    rgba(255, 255, 255, 0.75) -1.1em 1.1em 0 0,\n    rgba(255, 255, 255, 0.75) -1.5em 0 0 0,\n    rgba(255, 255, 255, 0.75) -1.1em -1.1em 0 0,\n    rgba(255, 255, 255, 0.75) 0 -1.5em 0 0,\n    rgba(255, 255, 255, 0.75) 1.1em -1.1em 0 0;\n}\n\n/* Animation */\n\n@-webkit-keyframes spinner {\n    0% {\n        -webkit-transform: rotate(0deg);\n        -moz-transform: rotate(0deg);\n        -ms-transform: rotate(0deg);\n        -o-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(360deg);\n        -moz-transform: rotate(360deg);\n        -ms-transform: rotate(360deg);\n        -o-transform: rotate(360deg);\n        transform: rotate(360deg);\n    }\n}\n@-moz-keyframes spinner {\n    0% {\n        -webkit-transform: rotate(0deg);\n        -moz-transform: rotate(0deg);\n        -ms-transform: rotate(0deg);\n        -o-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(360deg);\n        -moz-transform: rotate(360deg);\n        -ms-transform: rotate(360deg);\n        -o-transform: rotate(360deg);\n        transform: rotate(360deg);\n    }\n}\n@-o-keyframes spinner {\n    0% {\n        -webkit-transform: rotate(0deg);\n        -moz-transform: rotate(0deg);\n        -ms-transform: rotate(0deg);\n        -o-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(360deg);\n        -moz-transform: rotate(360deg);\n        -ms-transform: rotate(360deg);\n        -o-transform: rotate(360deg);\n        transform: rotate(360deg);\n    }\n}\n@keyframes spinner {\n    0% {\n        -webkit-transform: rotate(0deg);\n        -moz-transform: rotate(0deg);\n        -ms-transform: rotate(0deg);\n        -o-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(360deg);\n        -moz-transform: rotate(360deg);\n        -ms-transform: rotate(360deg);\n        -o-transform: rotate(360deg);\n        transform: rotate(360deg);\n    }\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/style.css":
 /*!***********************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/style.css ***!
@@ -6572,6 +6722,61 @@ module.exports = function (item) {
 
 /***/ }),
 
+/***/ "./src/styles/spinner.css":
+/*!********************************!*\
+  !*** ./src/styles/spinner.css ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_spinner_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./spinner.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/spinner.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_spinner_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_spinner_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_spinner_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_spinner_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./src/styles/style.css":
 /*!******************************!*\
   !*** ./src/styles/style.css ***!
@@ -6911,12 +7116,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/Modules/ToggleSpinner.js");
+
+
 // Fetch popular movie data from themoviedb.org and return objects
 async function fetchAPIData(endpoint) {
     const API_KEY = 'e9dd849d4f789bb12085092d84ad45f7';
     const API_URL = 'https://api.themoviedb.org/3/';
+
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
     const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
     const data = await res.json();
+
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
     return (data);
 }
 
@@ -7006,15 +7220,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// Requests movie data using the API.js module and passes either the TV or Movie argument
  async function displayPopularMovies() {
     const moviesContainer = document.getElementById('popular-movies');
-    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_2__["default"])();
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
     results.forEach(movie => {
         moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie));
     })
-    ;(0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_2__["default"])();
-
 }
 
 async function displayPopularTV() {
@@ -7223,7 +7435,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/brands */ "./node_modules/@fortawesome/fontawesome-free/js/brands.js");
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
-/* harmony import */ var _Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modules/DisplayMedia */ "./src/Modules/DisplayMedia.js");
+/* harmony import */ var _styles_spinner_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/spinner.css */ "./src/styles/spinner.css");
+/* harmony import */ var _Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modules/DisplayMedia */ "./src/Modules/DisplayMedia.js");
+
 
 
 
@@ -7255,11 +7469,11 @@ function init() {
         case '/':
         case '/index.html':
             console.log('movie');
-            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_5__.displayPopularMovies)();
+            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMovies)();
             break;
         case '/shows.html':
             console.log('tv')
-            ;(0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_5__.displayPopularTV)();
+            ;(0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularTV)();
             break;
         case '/movie-details.html':
             console.log('Movie Details');
@@ -7282,4 +7496,4 @@ highlightActiveLink();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle7224c2a14c0ff7e7fd1d.js.map
+//# sourceMappingURL=bundle51a70dff899ec41b7ef9.js.map

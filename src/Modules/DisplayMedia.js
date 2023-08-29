@@ -17,12 +17,12 @@ async function displayPopularTV() {
 
     const {results} = await fetchAPIData('tv/popular');
     results.forEach(show => {
-        moviesContainer.append(createCardContainer(show, 'show'));
+        moviesContainer.append(createCardContainer(show, 'shows'));
     })
 }
 
 async function displayMovieDetails() {
-
+    console.log(window.location.search);
 }
 
-export {displayPopularMovies, displayPopularTV};
+export {displayPopularMovies, displayPopularTV, displayMovieDetails};

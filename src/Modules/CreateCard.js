@@ -4,9 +4,10 @@ function createCardContainer(mediaData, type) {
     // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
+
     if (type === 'movie') {
         cardContainer.append(
-            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title),
+            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title, type),
             createCardInformation(mediaData.original_title, mediaData.release_date)
         );
     } else if (type === 'show') {

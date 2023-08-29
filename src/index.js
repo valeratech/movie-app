@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 import './styles/spinner.css';
-import {displayPopularMovies, displayPopularTV} from "./Modules/DisplayMedia";
+import {displayPopularMovies, displayPopularTV, displayMovieDetails} from "./Modules/DisplayMedia";
 import highlightActiveLink from "./Modules/HighlightActiveLink";
 
 // Create an object to retrieve the current html page-name for routing
@@ -26,6 +26,7 @@ function init() {
             break;
         case '/movie-details.html':
             console.log('Movie Details');
+            displayMovieDetails();
             break;
         case '/tv-details.html':
             console.log('TV Details')

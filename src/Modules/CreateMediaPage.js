@@ -2,25 +2,20 @@ import noImage from '../assets/no-image.jpg'
 
 function createMediaPage(pageData) {
     const mainContainer = document.querySelector('#movie-details')
-    mainContainer.appendChild(createDetailsTop(pageData));
+    mainContainer.appendChild(createDetailsTopContainer(pageData));
 }
 
-function createDetailsTop(pageData) {
+function createDetailsTopContainer(pageData) {
     // Creates the top half of the Media Details Page
 
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
-    topContainer.appendChild(
+    topContainer.append(
         createTopPagePoster(pageData),
     )
 
     return topContainer;
 }
-
-function createDetailsTopInfo(pageData) {
-
-}
-
 
 function createTopPagePoster(pageData) {
 
@@ -35,6 +30,17 @@ function createTopPagePoster(pageData) {
 
     return container;
 }
+
+function createDetailsTopInfo(pageData) {
+
+}
+
+function createDetailsMainTitle() {
+   const mainTitle = document.createElement('h2');
+
+   return mainTitle;
+}
+
 
 function createDetailsBottom() {
     // Creates the bottom half of the Media Details Page

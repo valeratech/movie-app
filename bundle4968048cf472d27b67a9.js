@@ -7153,14 +7153,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function createMediaPage(pageData) {
-    createDetailsTop(pageData);
-
+    const mainContainer = document.querySelector('#movie-details')
+    mainContainer.appendChild(createDetailsTop(pageData));
 }
 
 function createDetailsTop(pageData) {
     // Creates the top half of the Media Details Page
+
     const topContainer = document.createElement('div');
-    topContainer.append(
+    topContainer.className = 'details-top';
+    topContainer.appendChild(
         createTopPagePoster(pageData),
     )
 
@@ -7173,13 +7175,15 @@ function createDetailsTopInfo(pageData) {
 
 
 function createTopPagePoster(pageData) {
-    console.log(pageData);
-    const container = document.createElement('div');
 
+    console.log(`https://image.tmdb.org/t/p/w500${pageData.poster_path}`)
     const image = document.createElement('img');
-    // image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : noImage;
+    image.src = `https://image.tmdb.org/t/p/w500${pageData.poster_path}`;
     image.className = "card-img-top";
     image.alt = "Movie Title";
+
+    const container = document.createElement('div');
+    container.appendChild(image);
 
     return container;
 }
@@ -7188,6 +7192,14 @@ function createDetailsBottom() {
     // Creates the bottom half of the Media Details Page
     const topContainer = document.createElement('div');
 }
+
+function createBottomHeader() {}
+
+function createBottomList() {}
+
+function createBottomSubHeader() {}
+
+function crreatBottomListGroup() {}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
 
@@ -7640,4 +7652,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle6b85c28b0904e8c04f24.js.map
+//# sourceMappingURL=bundle4968048cf472d27b67a9.js.map

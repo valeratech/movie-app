@@ -1,15 +1,16 @@
 import noImage from '../assets/no-image.jpg'
 
 function createMediaPage(pageData) {
-    createDetailsTop(pageData);
-
+    const mainContainer = document.querySelector('#movie-details')
+    mainContainer.appendChild(createDetailsTop(pageData));
 }
 
 function createDetailsTop(pageData) {
     // Creates the top half of the Media Details Page
 
     const topContainer = document.createElement('div');
-    topContainer.append(
+    topContainer.className = 'details-top';
+    topContainer.appendChild(
         createTopPagePoster(pageData),
     )
 
@@ -22,12 +23,15 @@ function createDetailsTopInfo(pageData) {
 
 
 function createTopPagePoster(pageData) {
-    const container = document.createElement('div');
 
+    console.log(`https://image.tmdb.org/t/p/w500${pageData.poster_path}`)
     const image = document.createElement('img');
-    // image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : noImage;
+    image.src = `https://image.tmdb.org/t/p/w500${pageData.poster_path}`;
     image.className = "card-img-top";
     image.alt = "Movie Title";
+
+    const container = document.createElement('div');
+    container.appendChild(image);
 
     return container;
 }

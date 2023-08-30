@@ -7138,10 +7138,10 @@ async function fetchAPIData(endpoint) {
 
 /***/ }),
 
-/***/ "./src/Modules/CreateCard.js":
-/*!***********************************!*\
-  !*** ./src/Modules/CreateCard.js ***!
-  \***********************************/
+/***/ "./src/Modules/CreateMediaTile.js":
+/*!****************************************!*\
+  !*** ./src/Modules/CreateMediaTile.js ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7152,26 +7152,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
 
 
-function createCardContainer(mediaData, type) {
+function createMediaTileContainer(mediaData, type) {
     // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
+    console.log(type);
     if (type === 'movie') {
         cardContainer.append(
-            createImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title, type),
-            createCardInformation(mediaData.original_title, mediaData.release_date)
+            createPosterImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title, type),
+            createMediaTileInformation(mediaData.original_title, mediaData.release_date)
         );
     } else if (type === 'show') {
         cardContainer.append(
-            createImageLink(mediaData.poster_path, mediaData.id, mediaData.name, type),
-            createCardInformation(mediaData.name, mediaData.first_air_date)
+            createPosterImageLink(mediaData.poster_path, mediaData.id, mediaData.name, type),
+            createMediaTileInformation(mediaData.name, mediaData.first_air_date)
         );
     }
 
     return cardContainer;
 }
 
-function createImageLink(poster, id, title, type) {
+function createPosterImageLink(poster, id, title, type) {
     // Creates an anchor to link each API backdrop_path value
     const image = document.createElement('img');
     image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__;
@@ -7185,29 +7186,29 @@ function createImageLink(poster, id, title, type) {
     return anchor;
 }
 
-function createCardInformation(title, text) {
+function createMediaTileInformation(title, text) {
     // Create card information for original_tile and release_date API values to fill tiles
-    const cardBodyTitle = document.createElement('h5');
-    cardBodyTitle.className = 'card-title';
-    cardBodyTitle.appendChild(document.createTextNode(title));
+    const mediaBodyTitle = document.createElement('h5');
+    mediaBodyTitle.className = 'card-title';
+    mediaBodyTitle.appendChild(document.createTextNode(title));
 
-    const cardBodyText = document.createElement('small');
-    cardBodyText.className = 'text-muted';
-    cardBodyText.appendChild(document.createTextNode(`Release: ${text}`));
+    const mediaBodyText = document.createElement('small');
+    mediaBodyText.className = 'text-muted';
+    mediaBodyText.appendChild(document.createTextNode(`Release: ${text}`));
 
-    const cardBodyTextContainer = document.createElement('p');
-    cardBodyTextContainer.className = 'card-text';
-    cardBodyTextContainer.appendChild(cardBodyText);
+    const mediaBodyTextContainer = document.createElement('p');
+    mediaBodyTextContainer.className = 'card-text';
+    mediaBodyTextContainer.appendChild(mediaBodyText);
 
     // Create card body container and append the card information
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-    cardBody.append(cardBodyTitle, cardBodyTextContainer);
+    const mediaTileContainer = document.createElement('div');
+    mediaTileContainer.className = 'card-body';
+    mediaTileContainer.append(mediaBodyTitle, mediaBodyTextContainer);
 
-    return cardBody;
+    return mediaTileContainer;
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCardContainer);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaTileContainer);
 
 /***/ }),
 
@@ -7225,9 +7226,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV)
 /* harmony export */ });
 /* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
-/* harmony import */ var _CreateCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateCard */ "./src/Modules/CreateCard.js");
-/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/Modules/ToggleSpinner.js");
-
+/* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/Modules/CreateMediaTile.js");
 
 
 
@@ -7237,7 +7236,7 @@ __webpack_require__.r(__webpack_exports__);
 
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
     results.forEach(movie => {
-        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(movie, 'movie'));
+        moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(movie, 'movie'));
     })
 }
 
@@ -7245,14 +7244,18 @@ async function displayPopularTV() {
     const moviesContainer = document.getElementById('popular-shows');
 
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
+    console.log(results);
     results.forEach(show => {
-        moviesContainer.append((0,_CreateCard__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'shows'));
+        moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'show'));
     })
 }
 
 async function displayMovieDetails() {
-    console.log(window.location.search);
+    const id = window.location.search.split('=')[1];
+    const movieDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`movie/${id}`);
+    console.log(movieDetails);
 }
+
 
 
 
@@ -7532,4 +7535,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle0bb68724ee2fd21770a7.js.map
+//# sourceMappingURL=bundleff16f0ad4685ab51907a.js.map

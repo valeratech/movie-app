@@ -7154,25 +7154,20 @@ __webpack_require__.r(__webpack_exports__);
 
 function createMediaPage(pageData) {
     const mainContainer = document.querySelector('#movie-details')
-    mainContainer.appendChild(createDetailsTop(pageData));
+    mainContainer.appendChild(createDetailsTopContainer(pageData));
 }
 
-function createDetailsTop(pageData) {
+function createDetailsTopContainer(pageData) {
     // Creates the top half of the Media Details Page
 
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
-    topContainer.appendChild(
+    topContainer.append(
         createTopPagePoster(pageData),
     )
 
     return topContainer;
 }
-
-function createDetailsTopInfo(pageData) {
-
-}
-
 
 function createTopPagePoster(pageData) {
 
@@ -7187,6 +7182,17 @@ function createTopPagePoster(pageData) {
 
     return container;
 }
+
+function createDetailsTopInfo(pageData) {
+
+}
+
+function createDetailsMainTitle() {
+   const mainTitle = document.createElement('h2');
+
+   return mainTitle;
+}
+
 
 function createDetailsBottom() {
     // Creates the bottom half of the Media Details Page
@@ -7652,4 +7658,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4968048cf472d27b67a9.js.map
+//# sourceMappingURL=bundleaa0e49a3dbe6deba8369.js.map

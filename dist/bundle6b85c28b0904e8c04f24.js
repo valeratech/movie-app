@@ -7138,6 +7138,109 @@ async function fetchAPIData(endpoint) {
 
 /***/ }),
 
+/***/ "./src/Modules/CreateMediaPage.js":
+/*!****************************************!*\
+  !*** ./src/Modules/CreateMediaPage.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
+
+
+function createMediaPage(pageData) {
+    createDetailsTop(pageData);
+
+}
+
+function createDetailsTop(pageData) {
+    // Creates the top half of the Media Details Page
+    const topContainer = document.createElement('div');
+    topContainer.append(
+        createTopPagePoster(pageData),
+    )
+
+    return topContainer;
+}
+
+function createDetailsTopInfo(pageData) {
+
+}
+
+
+function createTopPagePoster(pageData) {
+    console.log(pageData);
+    const container = document.createElement('div');
+
+    const image = document.createElement('img');
+    // image.src = poster ? `https://image.tmdb.org/t/p/w500${poster}` : noImage;
+    image.className = "card-img-top";
+    image.alt = "Movie Title";
+
+    return container;
+}
+
+function createDetailsBottom() {
+    // Creates the bottom half of the Media Details Page
+    const topContainer = document.createElement('div');
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
+
+
+// <div class="details-top">
+//     <div>
+//         <img
+//             src="../images/no-image.jpg"
+//             class="card-img-top"
+//             alt="Movie Title"
+//         />
+//     </div>
+//     <div>
+//         <h2>Movie Title</h2>
+//         <p>
+//             <i class="fas fa-star text-primary"></i>
+//             8 / 10
+//         </p>
+//         <p class="text-muted">Release Date: XX/XX/XXXX</p>
+//         <p>
+//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
+//             atque molestiae error debitis provident dolore hic odit, impedit
+//             sint, voluptatum consectetur assumenda expedita perferendis
+//             obcaecati veritatis voluptatibus. Voluptatum repellat suscipit,
+//             quae molestiae cupiditate modi libero dolorem commodi obcaecati!
+//             Ratione quia corporis recusandae delectus perspiciatis consequatur
+//             ipsam. Cumque omnis ad recusandae.
+//         </p>
+//         <h5>Genres</h5>
+//         <ul class="list-group">
+//             <li>Genre 1</li>
+//             <li>Genre 2</li>
+//             <li>Genre 3</li>
+//         </ul>
+//         <a href="#" target="_blank" class="btn">Visit Movie Homepage</a>
+//     </div>
+// </div>
+//
+//
+// <div class="details-bottom">
+//     <h2>Movie Info</h2>
+//     <ul>
+//         <li><span class="text-secondary">Budget:</span> $1,000,000</li>
+//         <li><span class="text-secondary">Revenue:</span> $2,000,000</li>
+//         <li><span class="text-secondary">Runtime:</span> 90 minutes</li>
+//         <li><span class="text-secondary">Status:</span> Released</li>
+//     </ul>
+//     <h4>Production Companies</h4>
+//     <div class="list-group">Company 1, Company 2, Company 3</div>
+// </div>
+
+/***/ }),
+
 /***/ "./src/Modules/CreateMediaTile.js":
 /*!****************************************!*\
   !*** ./src/Modules/CreateMediaTile.js ***!
@@ -7227,6 +7330,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
 /* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/Modules/CreateMediaTile.js");
+/* harmony import */ var _CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateMediaPage */ "./src/Modules/CreateMediaPage.js");
+
 
 
 
@@ -7253,7 +7358,7 @@ async function displayPopularTV() {
 async function displayMovieDetails() {
     const id = window.location.search.split('=')[1];
     const movieDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`movie/${id}`);
-    console.log(movieDetails);
+    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(movieDetails);
 }
 
 
@@ -7535,4 +7640,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleff16f0ad4685ab51907a.js.map
+//# sourceMappingURL=bundle6b85c28b0904e8c04f24.js.map

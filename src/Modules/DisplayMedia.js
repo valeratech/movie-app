@@ -1,5 +1,6 @@
 import fetchAPIData from "./API";
 import createMediaTileContainer from "./CreateMediaTile";
+import createMediaPage from "./CreateMediaPage";
 
 // Requests movie data using the API.js module and passes either the tv or movie argument
  async function displayPopularMovies() {
@@ -24,7 +25,7 @@ async function displayPopularTV() {
 async function displayMovieDetails() {
     const id = window.location.search.split('=')[1];
     const movieDetails = await fetchAPIData(`movie/${id}`);
-    console.log(movieDetails);
+    createMediaPage(movieDetails);
 }
 
 

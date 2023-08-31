@@ -7165,6 +7165,7 @@ function createDetailsTopContainer(topData) {
     topContainer.className = 'details-top';
     topContainer.append(
         createTopSubContainerOne(topData),
+        createTopSubContainerTwo(topData)
     )
 
     return topContainer;
@@ -7181,8 +7182,6 @@ function createTopSubContainerOne(topData) {
 
 
 function createTopPagePoster(topData) {
-
-    console.log(`https://image.tmdb.org/t/p/w500${topData.poster_path}`)
     const image = document.createElement('img');
     image.src = `https://image.tmdb.org/t/p/w500${topData.poster_path}`;
     image.className = "card-img-top";
@@ -7192,12 +7191,23 @@ function createTopPagePoster(topData) {
 }
 
 
-function createTopSubContainerTwo (pageData) {
+function createTopSubContainerTwo(topData) {
+    // Creates the first sub-container which will be nested in createDetailsTopContainer
+    const container = document.createElement('div');
+    container.className = 'details-top--sub-two';
+    container.append(
+        createDetailsMainTitle(topData),
+    )
 
+    return container;
 }
 
-function createDetailsMainTitle(data) {
-   const mainTitle = document.createElement('h2');
+function createDetailsMainTitle(topData) {
+    const mainTitle = document.createElement('h2');
+
+    const movieTitle = document.createTextNode(topData.original_title);
+    console.log(movieTitle);
+    mainTitle.appendChild(movieTitle);
 
    return mainTitle;
 }
@@ -7667,4 +7677,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlec557b8030dbe189b0c16.js.map
+//# sourceMappingURL=bundle36ed2db5ed674cd97093.js.map

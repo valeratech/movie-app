@@ -40,11 +40,22 @@ function createTopPagePoster(topData) {
 
 
 function createTopSubContainerTwo(topData) {
+    // Creates the first sub-container which will be nested in createDetailsTopContainer
+    const container = document.createElement('div');
+    container.className = 'details-top--sub-two';
+    container.append(
+        createDetailsMainTitle(topData),
+    )
 
+    return container;
 }
 
-function createDetailsMainTitle(data) {
-   const mainTitle = document.createElement('h2');
+function createDetailsMainTitle(topData) {
+    const mainTitle = document.createElement('h2');
+
+    const movieTitle = document.createTextNode(topData.original_title);
+    console.log(movieTitle);
+    mainTitle.appendChild(movieTitle);
 
    return mainTitle;
 }

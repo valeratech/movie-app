@@ -17,6 +17,18 @@ function createDetailsTopContainer(pageData) {
     return topContainer;
 }
 
+function createTopSubContainerOne () {
+    // Creates the first sub-container which will be nested in createDetailsTopContainer
+    const container = document.createElement('div');
+    container.className = 'details-top--sub-one';
+}
+
+function createTopSubContainerTwo () {
+    // Creates the first sub-container which will be nested in createDetailsTopContainer
+    const container = document.createElement('div');
+    container.className = 'details-top--sub-two';
+}
+
 function createTopPagePoster(pageData) {
 
     console.log(`https://image.tmdb.org/t/p/w500${pageData.poster_path}`)

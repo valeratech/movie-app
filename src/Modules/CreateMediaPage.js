@@ -1,53 +1,49 @@
 import noImage from '../assets/no-image.jpg'
 
 function createMediaPage(pageData) {
+    // The main container for the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
     mainContainer.appendChild(createDetailsTopContainer(pageData));
 }
 
-function createDetailsTopContainer(pageData) {
-    // Creates the top half of the Media Details Page
+function createDetailsTopContainer(topData) {
+    // Creates the top half of the Media Details Page which will be nested in createMediaPage
 
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
     topContainer.append(
-        createTopPagePoster(pageData),
+        createTopSubContainerOne(topData),
+        createTopSubContainerTwo(topData)
     )
 
     return topContainer;
 }
 
-function createTopSubContainerOne () {
+function createTopSubContainerOne(topData) {
     // Creates the first sub-container which will be nested in createDetailsTopContainer
     const container = document.createElement('div');
     container.className = 'details-top--sub-one';
-}
-
-function createTopSubContainerTwo () {
-    // Creates the first sub-container which will be nested in createDetailsTopContainer
-    const container = document.createElement('div');
-    container.className = 'details-top--sub-two';
-}
-
-function createTopPagePoster(pageData) {
-
-    console.log(`https://image.tmdb.org/t/p/w500${pageData.poster_path}`)
-    const image = document.createElement('img');
-    image.src = `https://image.tmdb.org/t/p/w500${pageData.poster_path}`;
-    image.className = "card-img-top";
-    image.alt = "Movie Title";
-
-    const container = document.createElement('div');
-    container.appendChild(image);
+    container.appendChild(createTopPagePoster(topData));
 
     return container;
 }
 
-function createDetailsTopInfo(pageData) {
+
+function createTopPagePoster(topData) {
+    const image = document.createElement('img');
+    image.src = `https://image.tmdb.org/t/p/w500${topData.poster_path}`;
+    image.className = "card-img-top";
+    image.alt = "Movie Title";
+
+    return image;
+}
+
+
+function createTopSubContainerTwo(topData) {
 
 }
 
-function createDetailsMainTitle() {
+function createDetailsMainTitle(data) {
    const mainTitle = document.createElement('h2');
 
    return mainTitle;
@@ -65,7 +61,7 @@ function createBottomList() {}
 
 function createBottomSubHeader() {}
 
-function crreatBottomListGroup() {}
+function createBottomListGroup() {}
 
 export default createMediaPage;
 

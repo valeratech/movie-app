@@ -7153,41 +7153,50 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function createMediaPage(pageData) {
+    // The main container for the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
     mainContainer.appendChild(createDetailsTopContainer(pageData));
 }
 
-function createDetailsTopContainer(pageData) {
-    // Creates the top half of the Media Details Page
+function createDetailsTopContainer(topData) {
+    // Creates the top half of the Media Details Page which will be nested in createMediaPage
 
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
     topContainer.append(
-        createTopPagePoster(pageData),
+        createTopSubContainerOne(topData),
     )
 
     return topContainer;
 }
 
-function createTopPagePoster(pageData) {
-
-    console.log(`https://image.tmdb.org/t/p/w500${pageData.poster_path}`)
-    const image = document.createElement('img');
-    image.src = `https://image.tmdb.org/t/p/w500${pageData.poster_path}`;
-    image.className = "card-img-top";
-    image.alt = "Movie Title";
-
+function createTopSubContainerOne(topData) {
+    // Creates the first sub-container which will be nested in createDetailsTopContainer
     const container = document.createElement('div');
-    container.appendChild(image);
+    container.className = 'details-top--sub-one';
+    container.appendChild(createTopPagePoster(topData));
 
     return container;
 }
 
-function createDetailsTopInfo(pageData) {
+
+function createTopPagePoster(topData) {
+
+    console.log(`https://image.tmdb.org/t/p/w500${topData.poster_path}`)
+    const image = document.createElement('img');
+    image.src = `https://image.tmdb.org/t/p/w500${topData.poster_path}`;
+    image.className = "card-img-top";
+    image.alt = "Movie Title";
+
+    return image;
+}
+
+
+function createTopSubContainerTwo (pageData) {
 
 }
 
-function createDetailsMainTitle() {
+function createDetailsMainTitle(data) {
    const mainTitle = document.createElement('h2');
 
    return mainTitle;
@@ -7205,7 +7214,7 @@ function createBottomList() {}
 
 function createBottomSubHeader() {}
 
-function crreatBottomListGroup() {}
+function createBottomListGroup() {}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
 
@@ -7658,4 +7667,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleaa0e49a3dbe6deba8369.js.map
+//# sourceMappingURL=bundlec557b8030dbe189b0c16.js.map

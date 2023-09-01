@@ -126,9 +126,24 @@ function createMovieHomepageButton(topData) {
     return link;
 }
 
-function createDetailsBottomContainer() {
+function createDetailsBottomContainer(bottomData) {
     // Creates the bottom half of the Media Details Page
     const bottomContainer = document.createElement('div');
+    bottomContainer.className = 'details-bottom';
+    bottomContainer.append(
+        createMovieInfoHeader(bottomData),
+
+    )
+
+    return bottomContainer;
+}
+
+function createMovieInfoHeader(bottomData) {
+    // Creates the movie info header for the bottom half of the media-page which will be appended to createDetailsBottomContainer
+    const movieInfo = document.createElement('h2');
+    movieInfo.appendChild(document.createTextNode('Movie Info'));
+
+    return movieInfo;
 }
 
 function createBottomHeader() {}

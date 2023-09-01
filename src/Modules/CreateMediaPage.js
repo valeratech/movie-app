@@ -3,7 +3,10 @@ import noImage from '../assets/no-image.jpg'
 function createMediaPage(pageData) {
     // The main container for the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
-    mainContainer.appendChild(createDetailsTopContainer(pageData));
+    mainContainer.append(
+        createDetailsTopContainer(pageData),
+        createDetailsBottomContainer(pageData),
+    );
 }
 
 function createDetailsTopContainer(topData) {

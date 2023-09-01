@@ -7201,8 +7201,9 @@ function createTopSubContainerTwo(topData) {
         createMovieRating(topData),
         createReleaseDateInfo(topData),
         createMovieOverview(topData),
-        createGenresSubHeading(topData),
+        createMovieGenresHeading(topData),
         createMovieGenresList(topData),
+        createMovieHomepageButton(topData),
     )
 
     return container;
@@ -7248,7 +7249,7 @@ function createMovieOverview(topData) {
     return container;
 }
 
-function createGenresSubHeading(topData) {
+function createMovieGenresHeading(topData) {
     // Creates a "Genres" sub-heading which will be appended into the createTopSubContainerTwo
     const heading = document.createElement('h5');
     heading.appendChild(document.createTextNode('Genres'));
@@ -7267,12 +7268,20 @@ function createMovieGenresList(topData) {
     return listContainer;
 }
 
+function createMovieHomepageButton(topData) {
+    const link = document.createElement('a');
+    link.href = '/';
+    link.target = '_blank';
+    link.className = 'btn';
+    link.appendChild(document.createTextNode('Visit Movie Homepage'));
+
+    return link;
+}
+
 function createDetailsBottom() {
     // Creates the bottom half of the Media Details Page
     const topContainer = document.createElement('div');
 }
-
-
 
 function createBottomHeader() {}
 
@@ -7733,4 +7742,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle8615f2c74f28b664ee6a.js.map
+//# sourceMappingURL=bundled99ea3ec3d8168212001.js.map

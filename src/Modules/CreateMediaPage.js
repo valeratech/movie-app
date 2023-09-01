@@ -51,6 +51,7 @@ function createTopSubContainerTwo(topData) {
         createMovieOverview(topData),
         createMovieGenresHeading(topData),
         createMovieGenresList(topData),
+        createMovieHomepageButton(topData),
     )
 
     return container;
@@ -115,13 +116,19 @@ function createMovieGenresList(topData) {
     return listContainer;
 }
 
+function createMovieHomepageButton(topData) {
+    const link = document.createElement('a');
+    link.href = '/';
+    link.target = '_blank';
+    link.className = 'btn';
+    link.appendChild(document.createTextNode('Visit Movie Homepage'));
+
+    return link;
+}
+
 function createDetailsBottom() {
     // Creates the bottom half of the Media Details Page
     const topContainer = document.createElement('div');
-}
-
-function createMovieHomepageButton() {
-
 }
 
 function createBottomHeader() {}

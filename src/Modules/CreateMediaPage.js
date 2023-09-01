@@ -49,7 +49,7 @@ function createTopSubContainerTwo(topData) {
         createMovieRating(topData),
         createReleaseDateInfo(topData),
         createMovieOverview(topData),
-        createGenresSubHeading(topData),
+        createMovieGenresHeading(topData),
         createMovieGenresList(topData),
     )
 
@@ -96,7 +96,7 @@ function createMovieOverview(topData) {
     return container;
 }
 
-function createGenresSubHeading(topData) {
+function createMovieGenresHeading(topData) {
     // Creates a "Genres" sub-heading which will be appended into the createTopSubContainerTwo
     const heading = document.createElement('h5');
     heading.appendChild(document.createTextNode('Genres'));
@@ -120,7 +120,9 @@ function createDetailsBottom() {
     const topContainer = document.createElement('div');
 }
 
+function createMovieHomepageButton() {
 
+}
 
 function createBottomHeader() {}
 

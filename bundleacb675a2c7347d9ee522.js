@@ -7197,21 +7197,42 @@ function createTopSubContainerTwo(topData) {
     container.className = 'details-top--sub-two';
     container.append(
         createDetailsMainTitle(topData),
+        createMovieRating(topData),
+        createReleaseDateInfo(topData),
     )
 
     return container;
 }
 
 function createDetailsMainTitle(topData) {
-    const mainTitle = document.createElement('h2');
-
+    // Creates the main title which will be appended into the createTopSubContainerTwo
     const movieTitle = document.createTextNode(topData.original_title);
     console.log(movieTitle);
+
+    const mainTitle = document.createElement('h2');
     mainTitle.appendChild(movieTitle);
 
    return mainTitle;
 }
 
+function createMovieRating(topData) {
+    const starIcon = document.createElement('i');
+    starIcon.className = 'fas fa-star text-primary';
+    console.log(topData);
+    const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
+
+    const ratingContainer = document.createElement('p');
+    ratingContainer.append(starIcon, rating)
+
+    return ratingContainer;
+}
+
+function createReleaseDateInfo(topData) {
+    const releaseDateInfo = document.createElement('p');
+    releaseDateInfo.appendChild(document.createTextNode(`Release Date: ${topData.release_date}`));
+
+    return releaseDateInfo;
+}
 
 function createDetailsBottom() {
     // Creates the bottom half of the Media Details Page
@@ -7677,4 +7698,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle36ed2db5ed674cd97093.js.map
+//# sourceMappingURL=bundleacb675a2c7347d9ee522.js.map

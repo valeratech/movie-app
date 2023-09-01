@@ -50,6 +50,7 @@ function createTopSubContainerTwo(topData) {
         createReleaseDateInfo(topData),
         createMovieOverview(topData),
         createGenresSubHeading(topData),
+        createMovieGenresList(topData),
     )
 
     return container;
@@ -96,10 +97,22 @@ function createMovieOverview(topData) {
 }
 
 function createGenresSubHeading(topData) {
+    // Creates a "Genres" sub-heading which will be appended into the createTopSubContainerTwo
     const heading = document.createElement('h5');
     heading.appendChild(document.createTextNode('Genres'));
 
     return heading;
+}
+
+function createMovieGenresList(topData) {
+    const listContainer = document.createElement('ul');
+    topData.genres.forEach(genre => {
+        const list = document.createElement('li');
+        list.appendChild(document.createTextNode(genre.name));
+        listContainer.appendChild(list);
+    })
+
+    return listContainer;
 }
 
 function createDetailsBottom() {

@@ -7182,6 +7182,7 @@ function createTopSubContainerOne(topData) {
 
 
 function createTopPagePoster(topData) {
+    // Creates the movie poster which will be appended into the createTopSubContainerOne
     const image = document.createElement('img');
     image.src = `https://image.tmdb.org/t/p/w500${topData.poster_path}`;
     image.className = "card-img-top";
@@ -7199,6 +7200,7 @@ function createTopSubContainerTwo(topData) {
         createDetailsMainTitle(topData),
         createMovieRating(topData),
         createReleaseDateInfo(topData),
+        createMovieOverview(topData),
     )
 
     return container;
@@ -7216,6 +7218,7 @@ function createDetailsMainTitle(topData) {
 }
 
 function createMovieRating(topData) {
+    // Creates the movie rating which will be appended into the createTopSubContainerTwo
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
     console.log(topData);
@@ -7228,10 +7231,19 @@ function createMovieRating(topData) {
 }
 
 function createReleaseDateInfo(topData) {
+    // Creates the release date info which will be appended into the createTopSubContainerTwo
     const releaseDateInfo = document.createElement('p');
     releaseDateInfo.appendChild(document.createTextNode(`Release Date: ${topData.release_date}`));
 
     return releaseDateInfo;
+}
+
+function createMovieOverview(topData) {
+    // Creates the movie overview which will be appended into the createTopSubContainerTwo
+    const container = document.createElement('p');
+    container.appendChild(document.createTextNode(topData.overview));
+
+    return container;
 }
 
 function createDetailsBottom() {
@@ -7698,4 +7710,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleacb675a2c7347d9ee522.js.map
+//# sourceMappingURL=bundleb9207c8ccd8f33790711.js.map

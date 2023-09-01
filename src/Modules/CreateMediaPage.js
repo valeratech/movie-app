@@ -126,9 +126,9 @@ function createMovieHomepageButton(topData) {
     return link;
 }
 
-function createDetailsBottom() {
+function createDetailsBottomContainer() {
     // Creates the bottom half of the Media Details Page
-    const topContainer = document.createElement('div');
+    const bottomContainer = document.createElement('div');
 }
 
 function createBottomHeader() {}

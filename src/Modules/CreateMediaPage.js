@@ -149,13 +149,7 @@ function createMovieInfoHeader(bottomData) {
     return movieInfo;
 }
 
-function createBottomHeader() {}
 
-function createBottomList() {}
-
-function createBottomSubHeader() {}
-
-function createBottomListGroup() {}
 
 export default createMediaPage;
 

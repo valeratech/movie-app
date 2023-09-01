@@ -7155,7 +7155,10 @@ __webpack_require__.r(__webpack_exports__);
 function createMediaPage(pageData) {
     // The main container for the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
-    mainContainer.appendChild(createDetailsTopContainer(pageData));
+    mainContainer.append(
+        createDetailsTopContainer(pageData),
+        createDetailsBottomContainer(pageData),
+    );
 }
 
 function createDetailsTopContainer(topData) {
@@ -7278,9 +7281,24 @@ function createMovieHomepageButton(topData) {
     return link;
 }
 
-function createDetailsBottom() {
+function createDetailsBottomContainer(bottomData) {
     // Creates the bottom half of the Media Details Page
-    const topContainer = document.createElement('div');
+    const bottomContainer = document.createElement('div');
+    bottomContainer.className = 'details-bottom';
+    bottomContainer.append(
+        createMovieInfoHeader(bottomData),
+
+    )
+
+    return bottomContainer;
+}
+
+function createMovieInfoHeader(bottomData) {
+    // Creates the movie info header for the bottom half of the media-page which will be appended to createDetailsBottomContainer
+    const movieInfo = document.createElement('h2');
+    movieInfo.appendChild(document.createTextNode('Movie Info'));
+
+    return movieInfo;
 }
 
 function createBottomHeader() {}
@@ -7742,4 +7760,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundled99ea3ec3d8168212001.js.map
+//# sourceMappingURL=bundle4e9319ab9e50848b5571.js.map

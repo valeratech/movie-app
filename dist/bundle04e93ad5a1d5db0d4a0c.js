@@ -7361,9 +7361,17 @@ function createProductionInfoHeader() {
 }
 
 function createCompanyList(bottomData) {
+    // Creates a list on the same line within a container - last item to append to  createDetailsBottomContainer
     const div = document.createElement('div');
+    div.className = 'list-group';
+
+    // Loop through the production names and add a comma if object is no the last item in the index
     bottomData.production_companies.forEach((company, index) => {
-        if (index !== 1) {
+        console.log(index);
+        if (bottomData.production_companies.length === 1) {
+            const text = document.createTextNode(`${company.name}`)
+            div.appendChild(text);
+        } else if (index !== bottomData.production_companies.length -1) {
             const text = document.createTextNode(`${company.name}, `);
             div.appendChild(text);
         } else {
@@ -7826,4 +7834,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlee766689a1f751e0b845d.js.map
+//# sourceMappingURL=bundle04e93ad5a1d5db0d4a0c.js.map

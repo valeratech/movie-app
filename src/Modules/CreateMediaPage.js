@@ -167,7 +167,11 @@ function createMovieInfoItem(name, info) {
 
     // Create nodes which will be appended to the span and list container
     const nameText = document.createTextNode(`${name}: `);
-    const infoText =  document.createTextNode(info);
+    const infoText =  document.createTextNode(
+        name === 'Budget' || name === 'Revenue' ? `$${info}`
+            : name === 'Runtime' ? `${info} minutes`
+            : info
+    );
 
     const span = document.createElement('span');
     span.className = 'text-secondary';

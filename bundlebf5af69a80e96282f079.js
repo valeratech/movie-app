@@ -7366,19 +7366,9 @@ function createCompanyList(bottomData) {
     div.className = 'list-group';
 
     // Loop through the production names and add a comma if object is no the last item in the index
-    bottomData.production_companies.forEach((company, index) => {
-        console.log(index);
-        if (bottomData.production_companies.length === 1) {
-            const text = document.createTextNode(`${company.name}`)
-            div.appendChild(text);
-        } else if (index !== bottomData.production_companies.length -1) {
-            const text = document.createTextNode(`${company.name}, `);
-            div.appendChild(text);
-        } else {
-            const text = document.createTextNode(`${company.name}`);
-            div.appendChild(text);
-        }
-    })
+    div.appendChild(
+        document.createTextNode(bottomData.production_companies.map(company => company.name).join(', '))
+    );
 
     return div;
 }
@@ -7834,4 +7824,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle04e93ad5a1d5db0d4a0c.js.map
+//# sourceMappingURL=bundlebf5af69a80e96282f079.js.map

@@ -7156,9 +7156,29 @@ function createMediaPage(pageData) {
     // The main container that will display information in the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
     mainContainer.append(
+        createOverlay(pageData.backdrop_path),
         createDetailsTopContainer(pageData),
         createDetailsBottomContainer(pageData),
     );
+
+}
+
+function createOverlay(imagePath) {
+    // Creates a media-image backdrop for the media page
+    const div = document.createElement('div');
+    div.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${imagePath}`;
+    div.style.backgroundSize = 'cover';
+    div.style.backgroundPosition = 'center';
+    div.style.backgroundRepeat = 'no-repeat';
+    div.style.height = '100vh';
+    div.style.width = '100vw';
+    div.style.position = 'absolute';
+    div.style.top = '0';
+    div.style.left = '0';
+    div.style.zIndex = '-1';
+    div.style.opacity = '0.1';
+
+    return div;
 }
 
 function createDetailsTopContainer(topData) {
@@ -7824,4 +7844,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlebf5af69a80e96282f079.js.map
+//# sourceMappingURL=bundle58b7a4eb12adc3aa1278.js.map

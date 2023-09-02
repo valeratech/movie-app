@@ -135,7 +135,8 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
-        createMovieInfoObject(bottomData)
+        createMovieInfoObject(bottomData),
+        createMovieInfoList(bottomData)
     )
 
     return bottomContainer;
@@ -153,13 +154,13 @@ function createMovieInfoObject(bottomData) {
     const {budget, revenue, runtime, status} = bottomData;
     const obj = {budget, revenue, runtime, status};
     const items = [
-        {name: 'Budget', budget},
-        {name: 'Revenue', revenue},
-        {name: 'Runtime', runtime},
-        {name: 'Status', status}
+        {name: 'Budget', info: obj.budget},
+        {name: 'Revenue', info: obj.revenue},
+        {name: 'Runtime', info: obj.runtime},
+        {name: 'Status', info: obj.status}
     ];
 
-    console.log(items);
+    return items;
 }
 
 function createMovieInfoItem(name, info) {
@@ -169,11 +170,19 @@ function createMovieInfoItem(name, info) {
     span.className = 'text-secondary';
     const nameText = document.createTextNode(name);
     const infoText =  document.createTextNode(info);
+    span.appendChild(nameText);
+    list.append(
+        span,
+        nameText
+    );
 
     return list;
 }
 
-function createMovieInfoList(listItem) {
+function createMovieInfoList(bottomData) {
+    const listContainer = document.createElement('ul');
+
+    const movieInfo = createMovieInfoObject(bottomData);
 
 
 

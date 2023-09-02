@@ -168,7 +168,7 @@ function createMovieInfoItem(name, info) {
     // Create nodes which will be appended to the span and list container
     const nameText = document.createTextNode(`${name}: `);
     const infoText =  document.createTextNode(
-        name === 'Budget' || name === 'Revenue' ? `$${info}`
+        name === 'Budget' || name === 'Revenue' ? `$${parseInt(info).toLocaleString("en-us")}`
             : name === 'Runtime' ? `${info} minutes`
             : info
     );

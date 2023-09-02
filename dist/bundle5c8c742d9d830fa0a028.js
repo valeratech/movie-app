@@ -7320,7 +7320,7 @@ function createMovieInfoItem(name, info) {
     // Create nodes which will be appended to the span and list container
     const nameText = document.createTextNode(`${name}: `);
     const infoText =  document.createTextNode(
-        name === 'Budget' || name === 'Revenue' ? `$${info}`
+        name === 'Budget' || name === 'Revenue' ? `$${parseInt(info).toLocaleString("en-us")}`
             : name === 'Runtime' ? `${info} minutes`
             : info
     );
@@ -7802,4 +7802,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle19b44d51c62d2f82dc2e.js.map
+//# sourceMappingURL=bundle5c8c742d9d830fa0a028.js.map

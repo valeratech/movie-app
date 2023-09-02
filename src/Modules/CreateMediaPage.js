@@ -1,7 +1,7 @@
 import noImage from '../assets/no-image.jpg'
 
 function createMediaPage(pageData) {
-    // The main container for the movie-details.html page
+    // The main container that will display information in the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
     mainContainer.append(
         createDetailsTopContainer(pageData),
@@ -136,6 +136,7 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
         createMovieInfoList(bottomData),
+        createProductionInfoHeader(),
     )
 
     return bottomContainer;
@@ -150,6 +151,7 @@ function createMovieInfoHeader(bottomData) {
 }
 
 function createMovieInfoObject(bottomData) {
+    // Decontructs and extracts data into a new object from the main-API movie data object
     const {budget, revenue, runtime, status} = bottomData;
     const obj = {budget, revenue, runtime, status};
     const items = [
@@ -197,6 +199,12 @@ function createMovieInfoList(bottomData) {
     })
 
     return listContainer;
+}
+
+
+function createProductionInfoHeader() {
+    // Creates a subheader for the production companies that appends to createDetailsBottomContainer
+    return document.createElement('h4').appendChild(document.createTextNode('Production Companies'));
 }
 
 export default createMediaPage;

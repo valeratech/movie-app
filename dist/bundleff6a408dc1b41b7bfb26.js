@@ -7288,6 +7288,7 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
         createMovieInfoList(bottomData),
+        createProductionInfoHeader(),
     )
 
     return bottomContainer;
@@ -7351,6 +7352,10 @@ function createMovieInfoList(bottomData) {
     return listContainer;
 }
 
+
+function createProductionInfoHeader() {
+    return document.createElement('h4').appendChild(document.createTextNode('Production Companies'));
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
 
 
@@ -7802,4 +7807,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle5c8c742d9d830fa0a028.js.map
+//# sourceMappingURL=bundleff6a408dc1b41b7bfb26.js.map

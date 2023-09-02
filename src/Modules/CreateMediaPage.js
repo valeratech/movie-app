@@ -135,8 +135,7 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
-        createMovieInfoObject(bottomData),
-        createMovieInfoList(bottomData)
+        createMovieInfoList(bottomData),
     )
 
     return bottomContainer;
@@ -177,7 +176,7 @@ function createMovieInfoItem(name, info) {
     const list = document.createElement('li');
     list.append(
         span,
-        nameText
+        infoText
     );
 
     return list;
@@ -187,9 +186,13 @@ function createMovieInfoList(bottomData) {
     const listContainer = document.createElement('ul');
 
     const movieInfo = createMovieInfoObject(bottomData);
+    movieInfo.forEach(item => {
+        listContainer.appendChild(
+            createMovieInfoItem(item.name, item.info)
+        )
+    })
 
-
-
+    return listContainer;
 }
 
 export default createMediaPage;

@@ -166,7 +166,7 @@ function createMovieInfoItem(name, info) {
     // Creates a list container with associated info to populate the unordered createMovieInfoList function
 
     // Create nodes which will be appended to the span and list container
-    const nameText = document.createTextNode(name);
+    const nameText = document.createTextNode(`${name}: `);
     const infoText =  document.createTextNode(info);
 
     const span = document.createElement('span');

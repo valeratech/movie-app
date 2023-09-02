@@ -7318,7 +7318,7 @@ function createMovieInfoItem(name, info) {
     // Creates a list container with associated info to populate the unordered createMovieInfoList function
 
     // Create nodes which will be appended to the span and list container
-    const nameText = document.createTextNode(name);
+    const nameText = document.createTextNode(`${name}: `);
     const infoText =  document.createTextNode(info);
 
     const span = document.createElement('span');
@@ -7798,4 +7798,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleb43632c27041afde36a4.js.map
+//# sourceMappingURL=bundle707877d3fcb8d21ae3cc.js.map

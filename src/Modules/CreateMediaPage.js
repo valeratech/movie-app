@@ -164,6 +164,13 @@ function createMovieInfoObject(bottomData) {
 
 function createMovieInfoItem(name, info) {
 
+    const list = document.createElement('li');
+    const span = document.createElement('span');
+    span.className = 'text-secondary';
+    const nameText = document.createTextNode(name);
+    const infoText =  document.createTextNode(info);
+
+    return list;
 }
 
 function createMovieInfoList(listItem) {

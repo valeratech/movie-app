@@ -7287,7 +7287,8 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
-        createMovieInfoObject(bottomData)
+        createMovieInfoObject(bottomData),
+        createMovieInfoList(bottomData)
     )
 
     return bottomContainer;
@@ -7305,21 +7306,40 @@ function createMovieInfoObject(bottomData) {
     const {budget, revenue, runtime, status} = bottomData;
     const obj = {budget, revenue, runtime, status};
     const items = [
-        {name: 'Budget', budget},
-        {name: 'Revenue', revenue},
-        {name: 'Runtime', runtime},
-        {name: 'Status', status}
-    ]
+        {name: 'Budget', info: obj.budget},
+        {name: 'Revenue', info: obj.revenue},
+        {name: 'Runtime', info: obj.runtime},
+        {name: 'Status', info: obj.status}
+    ];
 
     console.log(items);
 }
 
+function createMovieInfoItem(name, info) {
+
+    const list = document.createElement('li');
+    const span = document.createElement('span');
+    span.className = 'text-secondary';
+    const nameText = document.createTextNode(name);
+    const infoText =  document.createTextNode(info);
+    span.appendChild(nameText);
+    list.append(
+        span,
+        nameText
+    );
+
+    return list;
+}
+
 function createMovieInfoList(bottomData) {
-    // const listContainer = document.createElement('ul');
-    // listContainer.append(
-    //     document.createElement('li')
-    //         .(document.createTextNode())
-    // )
+    const listContainer = document.createElement('ul');
+
+    const movieInfo = createMovieInfoObject(bottomData);
+    movieInfo.forEach(item => {
+        listContainer.appendChild(createMovieInfoItem(item.name, item.info))
+    })
+
+
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
@@ -7773,4 +7793,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle78c07e2b5364874f0890.js.map
+//# sourceMappingURL=bundle423ba720dafe20f1de51.js.map

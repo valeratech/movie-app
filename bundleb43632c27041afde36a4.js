@@ -7287,8 +7287,7 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
-        createMovieInfoObject(bottomData),
-        createMovieInfoList(bottomData)
+        createMovieInfoList(bottomData),
     )
 
     return bottomContainer;
@@ -7312,20 +7311,24 @@ function createMovieInfoObject(bottomData) {
         {name: 'Status', info: obj.status}
     ];
 
-    console.log(items);
+    return items;
 }
 
 function createMovieInfoItem(name, info) {
+    // Creates a list container with associated info to populate the unordered createMovieInfoList function
 
-    const list = document.createElement('li');
-    const span = document.createElement('span');
-    span.className = 'text-secondary';
+    // Create nodes which will be appended to the span and list container
     const nameText = document.createTextNode(name);
     const infoText =  document.createTextNode(info);
+
+    const span = document.createElement('span');
+    span.className = 'text-secondary';
     span.appendChild(nameText);
+
+    const list = document.createElement('li');
     list.append(
         span,
-        nameText
+        infoText
     );
 
     return list;
@@ -7336,10 +7339,12 @@ function createMovieInfoList(bottomData) {
 
     const movieInfo = createMovieInfoObject(bottomData);
     movieInfo.forEach(item => {
-        listContainer.appendChild(createMovieInfoItem(item.name, item.info))
+        listContainer.appendChild(
+            createMovieInfoItem(item.name, item.info)
+        )
     })
 
-
+    return listContainer;
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
@@ -7793,4 +7798,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle423ba720dafe20f1de51.js.map
+//# sourceMappingURL=bundleb43632c27041afde36a4.js.map

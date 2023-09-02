@@ -7287,7 +7287,7 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
-
+        createMovieInfoObject(bottomData)
     )
 
     return bottomContainer;
@@ -7301,13 +7301,26 @@ function createMovieInfoHeader(bottomData) {
     return movieInfo;
 }
 
-function createBottomHeader() {}
+function createMovieInfoObject(bottomData) {
+    const {budget, revenue, runtime, status} = bottomData;
+    const obj = {budget, revenue, runtime, status};
+    const items = [
+        {name: 'Budget', budget},
+        {name: 'Revenue', revenue},
+        {name: 'Runtime', runtime},
+        {name: 'Status', status}
+    ]
 
-function createBottomList() {}
+    console.log(items);
+}
 
-function createBottomSubHeader() {}
-
-function createBottomListGroup() {}
+function createMovieInfoList(bottomData) {
+    // const listContainer = document.createElement('ul');
+    // listContainer.append(
+    //     document.createElement('li')
+    //         .(document.createTextNode())
+    // )
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
 
@@ -7760,4 +7773,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4e9319ab9e50848b5571.js.map
+//# sourceMappingURL=bundle78c07e2b5364874f0890.js.map

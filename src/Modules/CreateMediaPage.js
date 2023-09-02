@@ -135,7 +135,7 @@ function createDetailsBottomContainer(bottomData) {
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
         createMovieInfoHeader(bottomData),
-
+        createMovieInfoObject(bottomData)
     )
 
     return bottomContainer;
@@ -149,7 +149,28 @@ function createMovieInfoHeader(bottomData) {
     return movieInfo;
 }
 
+function createMovieInfoObject(bottomData) {
+    const {budget, revenue, runtime, status} = bottomData;
+    const obj = {budget, revenue, runtime, status};
+    const items = [
+        {name: 'Budget', budget},
+        {name: 'Revenue', revenue},
+        {name: 'Runtime', runtime},
+        {name: 'Status', status}
+    ];
 
+    console.log(items);
+}
+
+function createMovieInfoItem(name, info) {
+
+}
+
+function createMovieInfoList(listItem) {
+
+
+
+}
 
 export default createMediaPage;
 

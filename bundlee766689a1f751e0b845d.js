@@ -7153,7 +7153,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function createMediaPage(pageData) {
-    // The main container for the movie-details.html page
+    // The main container that will display information in the movie-details.html page
     const mainContainer = document.querySelector('#movie-details')
     mainContainer.append(
         createDetailsTopContainer(pageData),
@@ -7289,6 +7289,7 @@ function createDetailsBottomContainer(bottomData) {
         createMovieInfoHeader(bottomData),
         createMovieInfoList(bottomData),
         createProductionInfoHeader(),
+        createCompanyList(bottomData)
     )
 
     return bottomContainer;
@@ -7303,6 +7304,7 @@ function createMovieInfoHeader(bottomData) {
 }
 
 function createMovieInfoObject(bottomData) {
+    // Decontructs and extracts data into a new object from the main-API movie data object
     const {budget, revenue, runtime, status} = bottomData;
     const obj = {budget, revenue, runtime, status};
     const items = [
@@ -7354,8 +7356,25 @@ function createMovieInfoList(bottomData) {
 
 
 function createProductionInfoHeader() {
+    // Creates a subheader for the production companies that appends to createDetailsBottomContainer
     return document.createElement('h4').appendChild(document.createTextNode('Production Companies'));
 }
+
+function createCompanyList(bottomData) {
+    const div = document.createElement('div');
+    bottomData.production_companies.forEach((company, index) => {
+        if (index !== 1) {
+            const text = document.createTextNode(`${company.name}, `);
+            div.appendChild(text);
+        } else {
+            const text = document.createTextNode(`${company.name}`);
+            div.appendChild(text);
+        }
+    })
+
+    return div;
+}
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createMediaPage);
 
 
@@ -7807,4 +7826,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleff6a408dc1b41b7bfb26.js.map
+//# sourceMappingURL=bundlee766689a1f751e0b845d.js.map

@@ -28,5 +28,12 @@ async function displayMovieDetails() {
     createMediaPage(movieDetails);
 }
 
+async function displayTvDetails() {
+    const id = window.location.search.split('=')[1];
+    const tvDetails = await fetchAPIData(`tv/${id}`);
+    console.log(tvDetails);
+    createMediaPage(tvDetails);
+}
 
-export {displayPopularMovies, displayPopularTV, displayMovieDetails};
+
+export {displayPopularMovies, displayPopularTV, displayMovieDetails, displayTvDetails};

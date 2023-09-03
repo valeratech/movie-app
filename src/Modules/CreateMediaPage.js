@@ -83,7 +83,6 @@ function createTopSubContainerTwo(topData) {
 function createDetailsMainTitle(topData) {
     // Creates the main title which will be appended into the createTopSubContainerTwo
     const movieTitle = document.createTextNode(topData.original_title);
-    console.log(movieTitle);
 
     const mainTitle = document.createElement('h2');
     mainTitle.appendChild(movieTitle);
@@ -95,7 +94,6 @@ function createMovieRating(topData) {
     // Creates the movie rating which will be appended into the createTopSubContainerTwo
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
-    console.log(topData);
     const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
 
     const ratingContainer = document.createElement('p');

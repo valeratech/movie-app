@@ -7221,12 +7221,12 @@ function createTopSubContainerTwo(topData) {
     container.className = 'details-top--sub-two';
     container.append(
         createDetailsMainTitle(topData),
-        createMovieRating(topData),
+        createMediaRating(topData),
         createReleaseDateInfo(topData),
-        createMovieOverview(topData),
-        createMovieGenresHeading(topData),
-        createMovieGenresList(topData),
-        createMovieHomepageButton(topData),
+        createMediaOverview(topData),
+        createMediaGenresHeading(topData),
+        createMediaGenresList(topData),
+        createMediaHomepageButton(topData),
     )
 
     return container;
@@ -7242,7 +7242,7 @@ function createDetailsMainTitle(topData) {
    return mainTitle;
 }
 
-function createMovieRating(topData) {
+function createMediaRating(topData) {
     // Creates the movie rating which will be appended into the createTopSubContainerTwo
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
@@ -7262,7 +7262,7 @@ function createReleaseDateInfo(topData) {
     return releaseDateInfo;
 }
 
-function createMovieOverview(topData) {
+function createMediaOverview(topData) {
     // Creates the movie overview which will be appended into the createTopSubContainerTwo
     const container = document.createElement('p');
     container.appendChild(document.createTextNode(topData.overview));
@@ -7270,7 +7270,7 @@ function createMovieOverview(topData) {
     return container;
 }
 
-function createMovieGenresHeading(topData) {
+function createMediaGenresHeading(topData) {
     // Creates a "Genres" sub-heading which will be appended into the createTopSubContainerTwo
     const heading = document.createElement('h5');
     heading.appendChild(document.createTextNode('Genres'));
@@ -7278,7 +7278,7 @@ function createMovieGenresHeading(topData) {
     return heading;
 }
 
-function createMovieGenresList(topData) {
+function createMediaGenresList(topData) {
     const listContainer = document.createElement('ul');
     topData.genres.forEach(genre => {
         const list = document.createElement('li');
@@ -7289,7 +7289,7 @@ function createMovieGenresList(topData) {
     return listContainer;
 }
 
-function createMovieHomepageButton(topData) {
+function createMediaHomepageButton(topData) {
     const link = document.createElement('a');
     link.href = '/';
     link.target = '_blank';
@@ -7304,8 +7304,8 @@ function createDetailsBottomContainer(bottomData) {
     const bottomContainer = document.createElement('div');
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
-        createMovieInfoHeader(bottomData),
-        createMovieInfoList(bottomData),
+        createMediaInfoHeader(bottomData),
+        createMediaInfoList(bottomData),
         createProductionInfoHeader(),
         createCompanyList(bottomData)
     )
@@ -7313,7 +7313,7 @@ function createDetailsBottomContainer(bottomData) {
     return bottomContainer;
 }
 
-function createMovieInfoHeader(bottomData) {
+function createMediaInfoHeader(bottomData) {
     // Creates the movie info header for the bottom half of the media-page which will be appended to createDetailsBottomContainer
     const movieInfo = document.createElement('h2');
     movieInfo.appendChild(document.createTextNode('Movie Info'));
@@ -7321,7 +7321,7 @@ function createMovieInfoHeader(bottomData) {
     return movieInfo;
 }
 
-function createMovieInfoObject(bottomData) {
+function createMediaInfoObject(bottomData) {
     // Decontructs and extracts data into a new object from the main-API movie data object
     const {budget, revenue, runtime, status} = bottomData;
     const obj = {budget, revenue, runtime, status};
@@ -7335,7 +7335,7 @@ function createMovieInfoObject(bottomData) {
     return items;
 }
 
-function createMovieInfoItem(name, info) {
+function createMediaInfoItem(name, info) {
     // Creates a list container with associated info to populate the unordered createMovieInfoList function
 
     // Create nodes which will be appended to the span and list container
@@ -7359,13 +7359,13 @@ function createMovieInfoItem(name, info) {
     return list;
 }
 
-function createMovieInfoList(bottomData) {
+function createMediaInfoList(bottomData) {
     const listContainer = document.createElement('ul');
 
-    const movieInfo = createMovieInfoObject(bottomData);
+    const movieInfo = createMediaInfoObject(bottomData);
     movieInfo.forEach(item => {
         listContainer.appendChild(
-            createMovieInfoItem(item.name, item.info)
+            createMediaInfoItem(item.name, item.info)
         )
     })
 
@@ -7851,4 +7851,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle8085eec2ae9faaa171bf.js.map
+//# sourceMappingURL=bundle7924396f630153e35656.js.map

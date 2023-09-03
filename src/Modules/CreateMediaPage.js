@@ -1,14 +1,22 @@
 import noImage from '../assets/no-image.jpg'
 
-function createMediaPage(pageData) {
+function createMediaPage(pageData, type) {
     // The main container that will display information in the movie-details.html page
-    const mainContainer = document.querySelector('#movie-details')
-    mainContainer.append(
-        createOverlay(pageData.backdrop_path),
-        createDetailsTopContainer(pageData),
-        createDetailsBottomContainer(pageData),
-    );
-
+    if (type === 'movie') {
+        const movieContainer = document.querySelector('#movie-details');
+        movieContainer.append(
+            createOverlay(pageData.backdrop_path),
+            createDetailsTopContainer(pageData),
+            createDetailsBottomContainer(pageData),
+        );
+    } else {
+        const tvContainer = document.querySelector('#show-details');
+        tvContainer.append(
+            createOverlay(pageData.backdrop_path),
+            createDetailsTopContainer(pageData),
+            createDetailsBottomContainer(pageData),
+        )
+    }
 }
 
 function createOverlay(imagePath) {
@@ -57,7 +65,7 @@ function createTopPagePoster(topData) {
     const image = document.createElement('img');
     image.src = `https://image.tmdb.org/t/p/w500${topData.poster_path}`;
     image.className = "card-img-top";
-    image.alt = "Movie Title";
+    image.alt = "Media Title";
 
     return image;
 }

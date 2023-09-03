@@ -25,14 +25,14 @@ async function displayPopularTV() {
 async function displayMovieDetails() {
     const id = window.location.search.split('=')[1];
     const movieDetails = await fetchAPIData(`movie/${id}`);
-    createMediaPage(movieDetails);
+    createMediaPage(movieDetails, 'movie');
 }
 
 async function displayTvDetails() {
     const id = window.location.search.split('=')[1];
     const tvDetails = await fetchAPIData(`tv/${id}`);
     console.log(tvDetails);
-    createMediaPage(tvDetails);
+    createMediaPage(tvDetails, 'tv');
 }
 
 

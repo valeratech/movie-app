@@ -7235,7 +7235,6 @@ function createTopSubContainerTwo(topData) {
 function createDetailsMainTitle(topData) {
     // Creates the main title which will be appended into the createTopSubContainerTwo
     const movieTitle = document.createTextNode(topData.original_title);
-    console.log(movieTitle);
 
     const mainTitle = document.createElement('h2');
     mainTitle.appendChild(movieTitle);
@@ -7247,7 +7246,6 @@ function createMovieRating(topData) {
     // Creates the movie rating which will be appended into the createTopSubContainerTwo
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
-    console.log(topData);
     const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
 
     const ratingContainer = document.createElement('p');
@@ -7530,7 +7528,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   displayMovieDetails: () => (/* binding */ displayMovieDetails),
 /* harmony export */   displayPopularMovies: () => (/* binding */ displayPopularMovies),
-/* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV)
+/* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV),
+/* harmony export */   displayTvDetails: () => (/* binding */ displayTvDetails)
 /* harmony export */ });
 /* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
 /* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/Modules/CreateMediaTile.js");
@@ -7563,6 +7562,13 @@ async function displayMovieDetails() {
     const id = window.location.search.split('=')[1];
     const movieDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`movie/${id}`);
     (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(movieDetails);
+}
+
+async function displayTvDetails() {
+    const id = window.location.search.split('=')[1];
+    const tvDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`tv/${id}`);
+    console.log(tvDetails);
+    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(tvDetails);
 }
 
 
@@ -7829,6 +7835,7 @@ function init() {
             break;
         case '/tv-details.html':
             console.log('TV Details')
+            ;(0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayTvDetails)();
             break;
         case '/search.html':
             console.log('Search')
@@ -7844,4 +7851,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle58b7a4eb12adc3aa1278.js.map
+//# sourceMappingURL=bundle6ba508484ab3fe8bec42.js.map

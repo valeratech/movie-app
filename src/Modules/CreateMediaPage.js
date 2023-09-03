@@ -71,12 +71,12 @@ function createTopPagePoster(topData) {
 }
 
 
-function createTopSubContainerTwo(topData) {
+function createTopSubContainerTwo(topData, type) {
     // Creates the first sub-container which will be nested in createDetailsTopContainer
     const container = document.createElement('div');
     container.className = 'details-top--sub-two';
     container.append(
-        createDetailsMainTitle(topData),
+        createDetailsMainTitle(topData, type),
         createMediaRating(topData),
         createReleaseDateInfo(topData),
         createMediaOverview(topData),
@@ -88,14 +88,24 @@ function createTopSubContainerTwo(topData) {
     return container;
 }
 
-function createDetailsMainTitle(topData) {
+function createDetailsMainTitle(topData, type) {
     // Creates the main title which will be appended into the createTopSubContainerTwo
-    const movieTitle = document.createTextNode(topData.original_title);
+    if (type === 'movie') {
+        const movieTitle = document.createTextNode(topData.original_title);
 
-    const mainTitle = document.createElement('h2');
-    mainTitle.appendChild(movieTitle);
+        const mainTitle = document.createElement('h2');
+        mainTitle.appendChild(movieTitle);
 
-   return mainTitle;
+        return mainTitle;
+    } else {
+        const tvTitle = document.createTextNode(topData.name);
+
+        const mainTitle = document.createElement('h2');
+        mainTitle.appendChild(tvTitle);
+
+        return mainTitle;
+    }
+
 }
 
 function createMediaRating(topData) {

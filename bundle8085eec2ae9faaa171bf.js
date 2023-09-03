@@ -7484,7 +7484,7 @@ function createPosterImageLink(poster, id, title, type) {
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `${type}-details.html?id=${id}`; // Set ID parameter in the URL which can be used to render movie page
+    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${id}`; // Set ID parameter in the URL which can be used to render movie page
     anchor.alt = title;
     anchor.appendChild(image);
 
@@ -7834,8 +7834,8 @@ function init() {
             (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMovieDetails)();
             break;
         case '/tv-details.html':
-            console.log('TV Details')
-            ;(0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayTvDetails)();
+            console.log('TV Details');
+            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayTvDetails)();
             break;
         case '/search.html':
             console.log('Search')
@@ -7851,4 +7851,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle6ba508484ab3fe8bec42.js.map
+//# sourceMappingURL=bundle8085eec2ae9faaa171bf.js.map

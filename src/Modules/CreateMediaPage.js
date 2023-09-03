@@ -6,15 +6,15 @@ function createMediaPage(pageData, type) {
         const movieContainer = document.querySelector('#movie-details');
         movieContainer.append(
             createOverlay(pageData.backdrop_path),
-            createDetailsTopContainer(pageData),
-            createDetailsBottomContainer(pageData),
+            createDetailsTopContainer(pageData, type),
+            createDetailsBottomContainer(pageData, type),
         );
     } else {
         const tvContainer = document.querySelector('#show-details');
         tvContainer.append(
             createOverlay(pageData.backdrop_path),
-            createDetailsTopContainer(pageData),
-            createDetailsBottomContainer(pageData),
+            createDetailsTopContainer(pageData, type),
+            createDetailsBottomContainer(pageData, type),
         )
     }
 }
@@ -37,14 +37,14 @@ function createOverlay(imagePath) {
     return div;
 }
 
-function createDetailsTopContainer(topData) {
+function createDetailsTopContainer(topData, type) {
     // Creates the top half of the Media Details Page which will be nested in createMediaPage
-
+    console.log('this', type)
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
     topContainer.append(
         createTopSubContainerOne(topData),
-        createTopSubContainerTwo(topData)
+        createTopSubContainerTwo(topData, type)
     )
 
     return topContainer;
@@ -78,11 +78,11 @@ function createTopSubContainerTwo(topData, type) {
     container.append(
         createDetailsMainTitle(topData, type),
         createMediaRating(topData),
-        createReleaseDateInfo(topData),
+        createMediaDateInfo(topData, type),
         createMediaOverview(topData),
         createMediaGenresHeading(topData),
         createMediaGenresList(topData),
-        createMediaHomepageButton(topData),
+        createMediaHomepageButton(topData, type),
     )
 
     return container;
@@ -90,22 +90,15 @@ function createTopSubContainerTwo(topData, type) {
 
 function createDetailsMainTitle(topData, type) {
     // Creates the main title which will be appended into the createTopSubContainerTwo
-    if (type === 'movie') {
-        const movieTitle = document.createTextNode(topData.original_title);
+
+        const titleText= document.createTextNode(
+            type === 'movie' ? topData.original_title : topData.name
+        );
 
         const mainTitle = document.createElement('h2');
-        mainTitle.appendChild(movieTitle);
+        mainTitle.appendChild(titleText);
 
         return mainTitle;
-    } else {
-        const tvTitle = document.createTextNode(topData.name);
-
-        const mainTitle = document.createElement('h2');
-        mainTitle.appendChild(tvTitle);
-
-        return mainTitle;
-    }
-
 }
 
 function createMediaRating(topData) {
@@ -120,12 +113,15 @@ function createMediaRating(topData) {
     return ratingContainer;
 }
 
-function createReleaseDateInfo(topData) {
+function createMediaDateInfo(topData, type) {
     // Creates the release date info which will be appended into the createTopSubContainerTwo
-    const releaseDateInfo = document.createElement('p');
-    releaseDateInfo.appendChild(document.createTextNode(`Release Date: ${topData.release_date}`));
+    const mediaDateInfo = document.createElement('p');
+    mediaDateInfo.appendChild(document.createTextNode(
+        type === 'movie' ? `Release Date: ${topData.release_date}` : `First Air Date: ${topData.first_air_date}`
+        )
+    );
 
-    return releaseDateInfo;
+    return mediaDateInfo;
 }
 
 function createMediaOverview(topData) {
@@ -155,17 +151,19 @@ function createMediaGenresList(topData) {
     return listContainer;
 }
 
-function createMediaHomepageButton(topData) {
+function createMediaHomepageButton(topData, type) {
     const link = document.createElement('a');
     link.href = '/';
     link.target = '_blank';
     link.className = 'btn';
-    link.appendChild(document.createTextNode('Visit Movie Homepage'));
+    link.appendChild(document.createTextNode(
+        type === 'movie' ? 'Visit Movie Homepage' : 'Visit Show Homepage')
+    );
 
     return link;
 }
 
-function createDetailsBottomContainer(bottomData) {
+function createDetailsBottomContainer(bottomData, type) {
     // Creates the bottom half of the Media Details Page
     const bottomContainer = document.createElement('div');
     bottomContainer.className = 'details-bottom';
@@ -182,7 +180,10 @@ function createDetailsBottomContainer(bottomData) {
 function createMediaInfoHeader(bottomData) {
     // Creates the movie info header for the bottom half of the media-page which will be appended to createDetailsBottomContainer
     const movieInfo = document.createElement('h2');
-    movieInfo.appendChild(document.createTextNode('Movie Info'));
+    movieInfo.appendChild(document.createTextNode(
+        'Movie Info'
+        )
+    );
 
     return movieInfo;
 }

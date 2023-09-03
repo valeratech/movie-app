@@ -7152,15 +7152,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/no-image.jpg */ "./src/assets/no-image.jpg");
 
 
-function createMediaPage(pageData) {
+function createMediaPage(pageData, type) {
     // The main container that will display information in the movie-details.html page
-    const mainContainer = document.querySelector('#movie-details')
-    mainContainer.append(
-        createOverlay(pageData.backdrop_path),
-        createDetailsTopContainer(pageData),
-        createDetailsBottomContainer(pageData),
-    );
-
+    if (type === 'movie') {
+        const movieContainer = document.querySelector('#movie-details');
+        movieContainer.append(
+            createOverlay(pageData.backdrop_path),
+            createDetailsTopContainer(pageData),
+            createDetailsBottomContainer(pageData),
+        );
+    } else {
+        const tvContainer = document.querySelector('#show-details');
+        tvContainer.append(
+            createOverlay(pageData.backdrop_path),
+            createDetailsTopContainer(pageData),
+            createDetailsBottomContainer(pageData),
+        )
+    }
 }
 
 function createOverlay(imagePath) {
@@ -7561,14 +7569,14 @@ async function displayPopularTV() {
 async function displayMovieDetails() {
     const id = window.location.search.split('=')[1];
     const movieDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`movie/${id}`);
-    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(movieDetails);
+    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(movieDetails, 'movie');
 }
 
 async function displayTvDetails() {
     const id = window.location.search.split('=')[1];
     const tvDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`tv/${id}`);
     console.log(tvDetails);
-    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(tvDetails);
+    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(tvDetails, 'tv');
 }
 
 
@@ -7851,4 +7859,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle7924396f630153e35656.js.map
+//# sourceMappingURL=bundle2ebf5c3645a5be57d914.js.map

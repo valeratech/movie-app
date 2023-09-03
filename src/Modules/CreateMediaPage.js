@@ -168,8 +168,8 @@ function createDetailsBottomContainer(bottomData, type) {
     const bottomContainer = document.createElement('div');
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
-        createMediaInfoHeader(bottomData),
-        createMediaInfoList(bottomData),
+        createMediaInfoHeader(bottomData, type),
+        createMediaInfoList(bottomData, type),
         createProductionInfoHeader(),
         createCompanyList(bottomData)
     )
@@ -177,29 +177,43 @@ function createDetailsBottomContainer(bottomData, type) {
     return bottomContainer;
 }
 
-function createMediaInfoHeader(bottomData) {
+function createMediaInfoHeader(bottomData, type) {
     // Creates the movie info header for the bottom half of the media-page which will be appended to createDetailsBottomContainer
-    const movieInfo = document.createElement('h2');
-    movieInfo.appendChild(document.createTextNode(
-        'Movie Info'
+    const mediaInfoHeader = document.createElement('h2');
+    mediaInfoHeader.appendChild(document.createTextNode(
+        type === 'movie' ? 'Movie Info' : 'Show Info'
         )
     );
 
-    return movieInfo;
+    return mediaInfoHeader;
 }
 
-function createMediaInfoObject(bottomData) {
+function createMediaInfoObject(bottomData, type) {
     // Decontructs and extracts data into a new object from the main-API movie data object
-    const {budget, revenue, runtime, status} = bottomData;
-    const obj = {budget, revenue, runtime, status};
-    const items = [
-        {name: 'Budget', info: obj.budget},
-        {name: 'Revenue', info: obj.revenue},
-        {name: 'Runtime', info: obj.runtime},
-        {name: 'Status', info: obj.status}
-    ];
+    if (type === 'movie') {
+        const {budget, revenue, runtime, status} = bottomData;
+        const obj = {budget, revenue, runtime, status};
+        const items = [
+            {name: 'Budget', info: obj.budget},
+            {name: 'Revenue', info: obj.revenue},
+            {name: 'Runtime', info: obj.runtime},
+            {name: 'Status', info: obj.status}
+        ];
 
-    return items;
+        return items;
+
+    } else {
+        const {number_of_episodes, first_air_date, status} = bottomData;
+        const obj = {number_of_episodes, first_air_date, status};
+        const items = [
+            {name: 'Number of Episodes', info: obj.number_of_episodes},
+            {name: 'First Air Date', info: obj.first_air_date},
+            {name: 'Status', info: obj.status}
+        ];
+
+        return items;
+    }
+
 }
 
 function createMediaInfoItem(name, info) {
@@ -226,11 +240,11 @@ function createMediaInfoItem(name, info) {
     return list;
 }
 
-function createMediaInfoList(bottomData) {
+function createMediaInfoList(bottomData, type) {
     const listContainer = document.createElement('ul');
 
-    const movieInfo = createMediaInfoObject(bottomData);
-    movieInfo.forEach(item => {
+    const mediaInfo = createMediaInfoObject(bottomData, type);
+    mediaInfo.forEach(item => {
         listContainer.appendChild(
             createMediaInfoItem(item.name, item.info)
         )
@@ -259,51 +273,3 @@ function createCompanyList(bottomData) {
 }
 
 export default createMediaPage;
-
-
-// <div class="details-top">
-//     <div>
-//         <img
-//             src="../images/no-image.jpg"
-//             class="card-img-top"
-//             alt="Movie Title"
-//         />
-//     </div>
-//     <div>
-//         <h2>Movie Title</h2>
-//         <p>
-//             <i class="fas fa-star text-primary"></i>
-//             8 / 10
-//         </p>
-//         <p class="text-muted">Release Date: XX/XX/XXXX</p>
-//         <p>
-//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-//             atque molestiae error debitis provident dolore hic odit, impedit
-//             sint, voluptatum consectetur assumenda expedita perferendis
-//             obcaecati veritatis voluptatibus. Voluptatum repellat suscipit,
-//             quae molestiae cupiditate modi libero dolorem commodi obcaecati!
-//             Ratione quia corporis recusandae delectus perspiciatis consequatur
-//             ipsam. Cumque omnis ad recusandae.
-//         </p>
-//         <h5>Genres</h5>
-//         <ul class="list-group">
-//             <li>Genre 1</li>
-//             <li>Genre 2</li>
-//             <li>Genre 3</li>
-//         </ul>
-//         <a href="#" target="_blank" class="btn">Visit Movie Homepage</a>
-//     </div>
-// </div>
-//
-//
-// <div class="details-bottom">
-//     <h2>Movie Info</h2>
-//     <ul>
-//         <li><span class="text-secondary">Budget:</span> $1,000,000</li>
-//         <li><span class="text-secondary">Revenue:</span> $2,000,000</li>
-//         <li><span class="text-secondary">Runtime:</span> 90 minutes</li>
-//         <li><span class="text-secondary">Status:</span> Released</li>
-//     </ul>
-//     <h4>Production Companies</h4>
-//     <div class="list-group">Company 1, Company 2, Company 3</div>
-// </div>

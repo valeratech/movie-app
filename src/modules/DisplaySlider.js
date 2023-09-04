@@ -6,21 +6,23 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import noImage from "../assets/no-image.jpg";
 
-async function displaySlider() {
-    // PLACE HOLDER VARIABLE BELOW
-    const type = 'movie';
+function createSliderPoster(mediaData, type) {
+    const image = document.createElement('img');
+    image.src = mediaData.poster_path ? `https://image.tmdb.org/t/p/w500${mediaData.poster_path}` : noImage;
+
+    const anchor = document.createElement('a');
+    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${mediaData.id}`; // Set ID parameter in the URL which can be used to render movie page
+    anchor.alt = mediaData.title;
+    anchor.appendChild(image);
+
+    return anchor;
+}
+
+async function displaySlider(type) {
     const {results} = await fetchAPIData('movie/now_playing');
     console.log(results);
     results.forEach(media => {
         const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-        const image = document.createElement('img');
-        image.src = media.poster_path ? `https://image.tmdb.org/t/p/w500${media.poster_path}` : noImage;
-
-        const anchor = document.createElement('a');
-        anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${media.id}`; // Set ID parameter in the URL which can be used to render movie page
-        anchor.alt = media.title;
-        anchor.appendChild(image);
 
         const star = document.createElement('i');
         star.className = 'fas fa-star text-primary';
@@ -33,7 +35,7 @@ async function displaySlider() {
 
         const swiperDiv = document.createElement('div');
         swiperDiv.className = "swiper-slide";
-        swiperDiv.append(anchor, header);
+        swiperDiv.append(createSliderPoster(media, type), header);
 
         swiperWrapper.appendChild(swiperDiv);
     })

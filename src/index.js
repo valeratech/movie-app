@@ -20,7 +20,7 @@ function init() {
         case '/index.html':
             console.log('movie');
             displayPopularMovies();
-            displaySlider();
+            displaySlider('movie');
             break;
         case '/shows.html':
             console.log('tv')

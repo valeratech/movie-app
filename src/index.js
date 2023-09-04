@@ -6,6 +6,7 @@ import './styles/style.css';
 import './styles/spinner.css';
 import {displayPopularMovies, displayPopularTV, displayMovieDetails, displayTvDetails} from "./modules/DisplayMedia";
 import highlightActiveLink from "./modules/HighlightActiveLink";
+import displaySlider from "./modules/DisplaySlider";
 
 // Create an object to retrieve the current html page-name for routing
 const global = {
@@ -19,6 +20,7 @@ function init() {
         case '/index.html':
             console.log('movie');
             displayPopularMovies();
+            displaySlider();
             break;
         case '/shows.html':
             console.log('tv')

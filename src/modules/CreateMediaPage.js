@@ -283,4 +283,4 @@ function createCompanyList(bottomData) {
     return div;
 }
 
-export {createMediaPage, createMediaRatingIcon, createMediaRatingContainer};
+export default createMediaPage;

@@ -1,12 +1,22 @@
-import createPosterImageLink from './CreateMediaTile';
-
-
+import fetchAPIData from "./API";
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 async function displaySlider() {
-    const div = document.createElement('div');
-
+    const {results} = await fetchAPIData('movie/now_playing');
+    console.log(results);
 
 }
+
+// init Swiper:
+const swiper = new Swiper('.swiper', {
+    // configure Swiper to use modules
+    modules: [Navigation, Pagination],
+    ...
+});
 
 function createSwiperHeader() {
     const header = document.createElement('h4');

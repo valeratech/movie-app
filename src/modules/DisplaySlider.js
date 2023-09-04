@@ -1,7 +1,11 @@
 import createPosterImageLink from './CreateMediaTile';
 
-function displaySlider() {
+
+
+async function displaySlider() {
     const div = document.createElement('div');
+
+
 }
 
 function createSwiperHeader() {

@@ -77,7 +77,7 @@ function createTopSubContainerTwo(topData, type) {
     container.className = 'details-top--sub-two';
     container.append(
         createDetailsMainTitle(topData, type),
-        createMediaRating(topData),
+        createMediaRatingContainer(topData),
         createMediaDateInfo(topData, type),
         createMediaOverview(topData),
         createMediaGenresHeading(topData),
@@ -101,14 +101,25 @@ function createDetailsMainTitle(topData, type) {
         return mainTitle;
 }
 
-function createMediaRating(topData) {
-    // Creates the movie rating which will be appended into the createTopSubContainerTwo
+
+function createMediaRatingIcon() {
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
+
+    return starIcon;
+}
+
+function createMediaRating(topData) {
     const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
 
+    return rating;
+}
+
+function createMediaRatingContainer(topData) {
+    // Creates the movie rating which will be appended into the createTopSubContainerTwo
+
     const ratingContainer = document.createElement('p');
-    ratingContainer.append(starIcon, rating)
+    ratingContainer.append(createMediaRatingIcon(), createMediaRating(topData));
 
     return ratingContainer;
 }
@@ -272,4 +283,4 @@ function createCompanyList(bottomData) {
     return div;
 }
 
-export default createMediaPage;
+export {createMediaPage, createMediaRatingIcon, createMediaRatingContainer};

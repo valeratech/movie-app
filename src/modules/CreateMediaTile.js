@@ -56,4 +56,4 @@ function createMediaTileInformation(title, text) {
     return mediaTileContainer;
 }
 
-export {createMediaTileContainer, createPosterImageLink};
+export default createMediaTileContainer;

@@ -4,8 +4,8 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 import './styles/spinner.css';
-import {displayPopularMovies, displayPopularTV, displayMovieDetails, displayTvDetails} from "./Modules/DisplayMedia";
-import highlightActiveLink from "./Modules/HighlightActiveLink";
+import {displayPopularMovies, displayPopularTV, displayMovieDetails, displayTvDetails} from "./modules/DisplayMedia";
+import highlightActiveLink from "./modules/HighlightActiveLink";
 
 // Create an object to retrieve the current html page-name for routing
 const global = {

@@ -8427,21 +8427,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-async function displaySlider() {
-    // PLACE HOLDER VARIABLE BELOW
-    const type = 'movie';
+function createSliderPoster(mediaData, type) {
+    const image = document.createElement('img');
+    image.src = mediaData.poster_path ? `https://image.tmdb.org/t/p/w500${mediaData.poster_path}` : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_6__;
+
+    const anchor = document.createElement('a');
+    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${mediaData.id}`; // Set ID parameter in the URL which can be used to render movie page
+    anchor.alt = mediaData.title;
+    anchor.appendChild(image);
+
+    return anchor;
+}
+
+async function displaySlider(type) {
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/now_playing');
     console.log(results);
     results.forEach(media => {
         const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-        const image = document.createElement('img');
-        image.src = media.poster_path ? `https://image.tmdb.org/t/p/w500${media.poster_path}` : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_6__;
-
-        const anchor = document.createElement('a');
-        anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${media.id}`; // Set ID parameter in the URL which can be used to render movie page
-        anchor.alt = media.title;
-        anchor.appendChild(image);
 
         const star = document.createElement('i');
         star.className = 'fas fa-star text-primary';
@@ -8454,7 +8456,7 @@ async function displaySlider() {
 
         const swiperDiv = document.createElement('div');
         swiperDiv.className = "swiper-slide";
-        swiperDiv.append(anchor, header);
+        swiperDiv.append(createSliderPoster(media, type), header);
 
         swiperWrapper.appendChild(swiperDiv);
     })
@@ -8485,30 +8487,12 @@ function initSwiper() {
     });
 }
 
-// init Swiper:
-// const swiper = new Swiper('.swiper', {
-//     // configure Swiper to use modules
-//     modules: [Navigation, Pagination],
-//     ...
-// });
-
 function createSwiperHeader() {
     const header = document.createElement('h4');
 
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (displaySlider);
-
-
-
-// <div class="swiper-slide">
-//     <a href="movie-details.html?id=1">
-//         <img src="./images/no-image.jpg" alt="Movie Title" />
-//     </a>
-//     <h4 class="swiper-rating">
-//         <i class="fas fa-star text-secondary"></i> 8 / 10
-//     </h4>
-// </div>
 
 /***/ }),
 
@@ -18683,7 +18667,7 @@ function init() {
         case '/index.html':
             console.log('movie');
             (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMovies)();
-            (0,_modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__["default"])();
+            (0,_modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__["default"])('movie');
             break;
         case '/shows.html':
             console.log('tv')
@@ -18711,4 +18695,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1e678ad244082ce418d7.js.map
+//# sourceMappingURL=bundle8d09fbba1c399a1b0d12.js.map

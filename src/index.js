@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 import './styles/spinner.css';
-import {displayPopularMovies, displayPopularTV, displayMovieDetails, displayTvDetails} from "./modules/DisplayMedia";
+import {displayPopularMedia, displayPopularTV, displayMovieDetails, displayTvDetails} from "./modules/DisplayMedia";
 import highlightActiveLink from "./modules/HighlightActiveLink";
 import displaySlider from "./modules/DisplaySlider";
 
@@ -19,12 +19,12 @@ function init() {
         case '/':
         case '/index.html':
             console.log('movie');
-            displayPopularMovies();
+            displayPopularMedia('movie');
             displaySlider('movie');
             break;
         case '/shows.html':
             console.log('tv')
-            displayPopularTV();
+            displayPopularMedia('tv');
             displaySlider('tv');
             break;
         case '/movie-details.html':

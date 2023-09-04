@@ -3,21 +3,14 @@ import createMediaTileContainer from "./CreateMediaTile";
 import createMediaPage from "./CreateMediaPage";
 
 // Requests movie data using the API.js module and passes either the tv or movie argument
- async function displayPopularMovies() {
-    const moviesContainer = document.getElementById('popular-movies');
+ async function displayPopularMedia(type) {
+    const moviesContainer = document.getElementById(
+        type === 'movie' ? 'popular-movies' : 'popular-shows'
+    );
 
-    const {results} = await fetchAPIData('movie/popular');
-    results.forEach(movie => {
-        moviesContainer.append(createMediaTileContainer(movie, 'movie'));
-    })
-}
-
-async function displayPopularTV() {
-    const moviesContainer = document.getElementById('popular-shows');
-
-    const {results} = await fetchAPIData('tv/popular');
-    results.forEach(show => {
-        moviesContainer.append(createMediaTileContainer(show, 'show'));
+    const {results} = await fetchAPIData(`${type}/popular`);
+    results.forEach(media => {
+        moviesContainer.append(createMediaTileContainer(media, type === 'movie' ? type : 'show'));
     })
 }
 
@@ -35,4 +28,4 @@ async function displayTvDetails() {
 }
 
 
-export {displayPopularMovies, displayPopularTV, displayMovieDetails, displayTvDetails};
+export {displayPopularMedia, displayPopularTV, displayMovieDetails, displayTvDetails};

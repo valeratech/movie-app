@@ -17,7 +17,7 @@ async function displaySlider(type) {
         const swiperWrapper = document.querySelector('.swiper-wrapper');
         swiperWrapper.appendChild(swiperDiv);
     })
-    initSwiper()
+    initSwiper();
 }
 
 function createSliderPoster(mediaData, type) {

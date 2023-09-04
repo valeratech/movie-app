@@ -7572,6 +7572,49 @@ async function displayTvDetails() {
 
 /***/ }),
 
+/***/ "./src/modules/DisplaySlider.js":
+/*!**************************************!*\
+  !*** ./src/modules/DisplaySlider.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/modules/CreateMediaTile.js");
+/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./API */ "./src/modules/API.js");
+
+
+
+async function displaySlider() {
+    const div = document.createElement('div');
+    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_1__["default"])('movie/now_playing');
+    console.log(results);
+
+}
+
+function createSwiperHeader() {
+    const header = document.createElement('h4');
+
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (displaySlider);
+
+
+
+// <div class="swiper-slide">
+//     <a href="movie-details.html?id=1">
+//         <img src="./images/no-image.jpg" alt="Movie Title" />
+//     </a>
+//     <h4 class="swiper-rating">
+//         <i class="fas fa-star text-secondary"></i> 8 / 10
+//     </h4>
+// </div>
+
+/***/ }),
+
 /***/ "./src/modules/HighlightActiveLink.js":
 /*!********************************************!*\
   !*** ./src/modules/HighlightActiveLink.js ***!
@@ -7799,6 +7842,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_spinner_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/spinner.css */ "./src/styles/spinner.css");
 /* harmony import */ var _modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/DisplayMedia */ "./src/modules/DisplayMedia.js");
 /* harmony import */ var _modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/HighlightActiveLink */ "./src/modules/HighlightActiveLink.js");
+/* harmony import */ var _modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/DisplaySlider */ "./src/modules/DisplaySlider.js");
+
 
 
 
@@ -7820,6 +7865,7 @@ function init() {
         case '/index.html':
             console.log('movie');
             (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMovies)();
+            (0,_modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__["default"])();
             break;
         case '/shows.html':
             console.log('tv')
@@ -7847,4 +7893,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1b1e490c8c648f6f7333.js.map
+//# sourceMappingURL=bundle280636d38eb05fb935eb.js.map

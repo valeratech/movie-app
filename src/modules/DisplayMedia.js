@@ -14,18 +14,10 @@ import createMediaPage from "./CreateMediaPage";
     })
 }
 
-async function displayMovieDetails() {
+async function displayMediaDetails(type) {
     const id = window.location.search.split('=')[1];
-    const movieDetails = await fetchAPIData(`movie/${id}`);
-    createMediaPage(movieDetails, 'movie');
+    const mediaDetails = await fetchAPIData(`${type}/${id}`);
+    createMediaPage(mediaDetails, type);
 }
 
-async function displayTvDetails() {
-    const id = window.location.search.split('=')[1];
-    const tvDetails = await fetchAPIData(`tv/${id}`);
-    console.log(tvDetails);
-    createMediaPage(tvDetails, 'tv');
-}
-
-
-export {displayPopularMedia, displayPopularTV, displayMovieDetails, displayTvDetails};
+export {displayPopularMedia, displayMediaDetails};

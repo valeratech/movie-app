@@ -18,25 +18,34 @@ function createSliderPoster(mediaData, type) {
     return anchor;
 }
 
+function createSliderRatingIcon() {
+    const star = document.createElement('i');
+    star.className = 'fas fa-star text-primary';
+
+    return star;
+}
+
+function createSliderRating(mediaData) {
+    const rating = document.createTextNode(` ${(parseFloat(mediaData.vote_average).toFixed(1))} / 10`);
+
+    return rating;
+}
+
+function createSliderHeading(mediaData) {
+    const header = document.createElement('h4');
+    header.className = "swiper-rating";
+    header.append(createSliderRatingIcon(), createSliderRating(mediaData));
+}
+
 async function displaySlider(type) {
     const {results} = await fetchAPIData('movie/now_playing');
     console.log(results);
     results.forEach(media => {
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-        const star = document.createElement('i');
-        star.className = 'fas fa-star text-primary';
-
-        const rating = document.createTextNode(` ${(parseFloat(media.vote_average).toFixed(1))} / 10`);
-
-        const header = document.createElement('h4');
-        header.className = "swiper-rating";
-        header.append(star, rating);
-
         const swiperDiv = document.createElement('div');
         swiperDiv.className = "swiper-slide";
-        swiperDiv.append(createSliderPoster(media, type), header);
+        swiperDiv.append(createSliderPoster(media, type), createSliderHeading(media));
 
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
         swiperWrapper.appendChild(swiperDiv);
     })
     initSwiper()

@@ -39,7 +39,6 @@ function createOverlay(imagePath) {
 
 function createDetailsTopContainer(topData, type) {
     // Creates the top half of the Media Details Page which will be nested in createMediaPage
-    console.log('this', type)
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
     topContainer.append(

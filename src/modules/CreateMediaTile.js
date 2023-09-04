@@ -4,7 +4,6 @@ function createMediaTileContainer(mediaData, type) {
     // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
-    console.log(type);
     if (type === 'movie') {
         cardContainer.append(
             createPosterImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title, type),

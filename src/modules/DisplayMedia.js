@@ -16,7 +16,6 @@ async function displayPopularTV() {
     const moviesContainer = document.getElementById('popular-shows');
 
     const {results} = await fetchAPIData('tv/popular');
-    console.log(results);
     results.forEach(show => {
         moviesContainer.append(createMediaTileContainer(show, 'show'));
     })

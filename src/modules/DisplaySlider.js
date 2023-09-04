@@ -6,6 +6,20 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import noImage from "../assets/no-image.jpg";
 
+async function displaySlider(type) {
+    const {results} = await fetchAPIData(`${type === 'movie' ? 'movie/now_playing' : 'tv/on_the_air'}`);
+    console.log(results);
+    results.forEach(media => {
+        const swiperDiv = document.createElement('div');
+        swiperDiv.className = "swiper-slide";
+        swiperDiv.append(createSliderPoster(media, type), createSliderHeading(media));
+
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        swiperWrapper.appendChild(swiperDiv);
+    })
+    initSwiper()
+}
+
 function createSliderPoster(mediaData, type) {
     const image = document.createElement('img');
     image.src = mediaData.poster_path ? `https://image.tmdb.org/t/p/w500${mediaData.poster_path}` : noImage;
@@ -35,20 +49,8 @@ function createSliderHeading(mediaData) {
     const header = document.createElement('h4');
     header.className = "swiper-rating";
     header.append(createSliderRatingIcon(), createSliderRating(mediaData));
-}
 
-async function displaySlider(type) {
-    const {results} = await fetchAPIData('movie/now_playing');
-    console.log(results);
-    results.forEach(media => {
-        const swiperDiv = document.createElement('div');
-        swiperDiv.className = "swiper-slide";
-        swiperDiv.append(createSliderPoster(media, type), createSliderHeading(media));
-
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-        swiperWrapper.appendChild(swiperDiv);
-    })
-    initSwiper()
+    return header;
 }
 
 function initSwiper() {
@@ -73,11 +75,6 @@ function initSwiper() {
             },
         },
     });
-}
-
-function createSwiperHeader() {
-    const header = document.createElement('h4');
-
 }
 
 export default displaySlider;

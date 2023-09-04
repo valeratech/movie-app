@@ -25,6 +25,7 @@ function init() {
         case '/shows.html':
             console.log('tv')
             displayPopularTV();
+            displaySlider('tv');
             break;
         case '/movie-details.html':
             console.log('Movie Details');

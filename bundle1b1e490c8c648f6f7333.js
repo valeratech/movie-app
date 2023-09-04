@@ -7105,9 +7105,9 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/Modules/API.js":
+/***/ "./src/modules/API.js":
 /*!****************************!*\
-  !*** ./src/Modules/API.js ***!
+  !*** ./src/modules/API.js ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -7116,7 +7116,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/Modules/ToggleSpinner.js");
+/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/modules/ToggleSpinner.js");
 
 
 // Fetch popular movie data from themoviedb.org and return objects
@@ -7138,9 +7138,9 @@ async function fetchAPIData(endpoint) {
 
 /***/ }),
 
-/***/ "./src/Modules/CreateMediaPage.js":
+/***/ "./src/modules/CreateMediaPage.js":
 /*!****************************************!*\
-  !*** ./src/Modules/CreateMediaPage.js ***!
+  !*** ./src/modules/CreateMediaPage.js ***!
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -7229,7 +7229,7 @@ function createTopSubContainerTwo(topData, type) {
     container.className = 'details-top--sub-two';
     container.append(
         createDetailsMainTitle(topData, type),
-        createMediaRating(topData),
+        createMediaRatingContainer(topData),
         createMediaDateInfo(topData, type),
         createMediaOverview(topData),
         createMediaGenresHeading(topData),
@@ -7253,14 +7253,25 @@ function createDetailsMainTitle(topData, type) {
         return mainTitle;
 }
 
-function createMediaRating(topData) {
-    // Creates the movie rating which will be appended into the createTopSubContainerTwo
+
+function createMediaRatingIcon() {
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
+
+    return starIcon;
+}
+
+function createMediaRating(topData) {
     const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
 
+    return rating;
+}
+
+function createMediaRatingContainer(topData) {
+    // Creates the movie rating which will be appended into the createTopSubContainerTwo
+
     const ratingContainer = document.createElement('p');
-    ratingContainer.append(starIcon, rating)
+    ratingContainer.append(createMediaRatingIcon(), createMediaRating(topData));
 
     return ratingContainer;
 }
@@ -7428,9 +7439,9 @@ function createCompanyList(bottomData) {
 
 /***/ }),
 
-/***/ "./src/Modules/CreateMediaTile.js":
+/***/ "./src/modules/CreateMediaTile.js":
 /*!****************************************!*\
-  !*** ./src/Modules/CreateMediaTile.js ***!
+  !*** ./src/modules/CreateMediaTile.js ***!
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -7502,9 +7513,9 @@ function createMediaTileInformation(title, text) {
 
 /***/ }),
 
-/***/ "./src/Modules/DisplayMedia.js":
+/***/ "./src/modules/DisplayMedia.js":
 /*!*************************************!*\
-  !*** ./src/Modules/DisplayMedia.js ***!
+  !*** ./src/modules/DisplayMedia.js ***!
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -7516,9 +7527,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV),
 /* harmony export */   displayTvDetails: () => (/* binding */ displayTvDetails)
 /* harmony export */ });
-/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/Modules/API.js");
-/* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/Modules/CreateMediaTile.js");
-/* harmony import */ var _CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateMediaPage */ "./src/Modules/CreateMediaPage.js");
+/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/modules/API.js");
+/* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/modules/CreateMediaTile.js");
+/* harmony import */ var _CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateMediaPage */ "./src/modules/CreateMediaPage.js");
 
 
 
@@ -7561,9 +7572,9 @@ async function displayTvDetails() {
 
 /***/ }),
 
-/***/ "./src/Modules/HighlightActiveLink.js":
+/***/ "./src/modules/HighlightActiveLink.js":
 /*!********************************************!*\
-  !*** ./src/Modules/HighlightActiveLink.js ***!
+  !*** ./src/modules/HighlightActiveLink.js ***!
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -7588,9 +7599,9 @@ function highlightActiveLink(currentPage) {
 
 /***/ }),
 
-/***/ "./src/Modules/ToggleSpinner.js":
+/***/ "./src/modules/ToggleSpinner.js":
 /*!**************************************!*\
-  !*** ./src/Modules/ToggleSpinner.js ***!
+  !*** ./src/modules/ToggleSpinner.js ***!
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -7786,8 +7797,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
 /* harmony import */ var _styles_spinner_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/spinner.css */ "./src/styles/spinner.css");
-/* harmony import */ var _Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modules/DisplayMedia */ "./src/Modules/DisplayMedia.js");
-/* harmony import */ var _Modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Modules/HighlightActiveLink */ "./src/Modules/HighlightActiveLink.js");
+/* harmony import */ var _modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/DisplayMedia */ "./src/modules/DisplayMedia.js");
+/* harmony import */ var _modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/HighlightActiveLink */ "./src/modules/HighlightActiveLink.js");
 
 
 
@@ -7808,32 +7819,32 @@ function init() {
         case '/':
         case '/index.html':
             console.log('movie');
-            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMovies)();
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMovies)();
             break;
         case '/shows.html':
             console.log('tv')
-            ;(0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularTV)();
+            ;(0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularTV)();
             break;
         case '/movie-details.html':
             console.log('Movie Details');
-            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMovieDetails)();
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMovieDetails)();
             break;
         case '/tv-details.html':
             console.log('TV Details');
-            (0,_Modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayTvDetails)();
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayTvDetails)();
             break;
         case '/search.html':
             console.log('Search')
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
-    (0,_Modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
+    (0,_modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
 }
 
 document.addEventListener('DOMContentLoaded', init)
-;(0,_Modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
+;(0,_modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2c36942cc2f8a0285e4f.js.map
+//# sourceMappingURL=bundle1b1e490c8c648f6f7333.js.map

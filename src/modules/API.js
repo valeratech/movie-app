@@ -6,13 +6,17 @@ async function fetchAPIData(endpoint) {
     const API_URL = 'https://api.themoviedb.org/3/';
 
     toggleSpinner();
-
-    const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
-    const data = await res.json();
-
-    toggleSpinner();
-
-    return (data);
+    if (endpoint === 'movie' || endpoint === 'tv') {
+        const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
+        const data = await res.json();
+        toggleSpinner();
+        return (data);
+    } else {
+        const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
+        const data = await res.json();
+        toggleSpinner();
+        return (data);
+    }
 }
 
 export default fetchAPIData;

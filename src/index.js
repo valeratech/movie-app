@@ -7,11 +7,19 @@ import './styles/spinner.css';
 import {displayPopularMedia, displayPopularTV, displayMediaDetails, displayTvDetails} from "./modules/DisplayMedia";
 import highlightActiveLink from "./modules/HighlightActiveLink";
 import displaySlider from "./modules/DisplaySlider";
+import searchMedia from "./modules/SearchMedia";
 
 // Create an object to retrieve the current html page-name for routing
-const global = {
-    currentPage: window.location.pathname
+let global = {
+    currentPage: window.location.pathname,
+    search: {
+        term: '',
+        type: '',
+        page: 1,
+        totalPages:1
+    }
 }
+
 
 // Create a Router and initialize through a condition to navigate through html pages
 function init() {
@@ -36,7 +44,8 @@ function init() {
             displayMediaDetails('tv');
             break;
         case '/search.html':
-            console.log('Search')
+            console.log('Search');
+            global.search = searchMedia(global);
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname

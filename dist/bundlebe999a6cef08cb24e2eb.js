@@ -7949,13 +7949,17 @@ async function fetchAPIData(endpoint) {
     const API_URL = 'https://api.themoviedb.org/3/';
 
     (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
-
-    const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
-    const data = await res.json();
-
-    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
-
-    return (data);
+    if (endpoint === 'movie' || endpoint === 'tv') {
+        const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
+        const data = await res.json();
+        (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+        return (data);
+    } else {
+        const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
+        const data = await res.json();
+        (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+        return (data);
+    }
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchAPIData);
@@ -8501,6 +8505,43 @@ function highlightActiveLink(currentPage) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (highlightActiveLink);
+
+/***/ }),
+
+/***/ "./src/modules/SearchMedia.js":
+/*!************************************!*\
+  !*** ./src/modules/SearchMedia.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+function searchMedia(searchState) {
+
+    const currentState = searchState;
+
+    // Retrieve the parameters from the results of the search submission
+    const searchString = window.location.search;
+    const urlParams = new URLSearchParams(searchString);
+
+    currentState.search.type = urlParams.get('type');
+    currentState.search.term = urlParams.get('search-term');
+    console.log(currentState.search);
+    if(currentState.search.term !== '') {
+        // make request and display results
+    } else {
+        alert('Please enter search term');
+    }
+
+    return currentState.search;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchMedia);
 
 /***/ }),
 
@@ -18615,6 +18656,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/DisplayMedia */ "./src/modules/DisplayMedia.js");
 /* harmony import */ var _modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/HighlightActiveLink */ "./src/modules/HighlightActiveLink.js");
 /* harmony import */ var _modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/DisplaySlider */ "./src/modules/DisplaySlider.js");
+/* harmony import */ var _modules_SearchMedia__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/SearchMedia */ "./src/modules/SearchMedia.js");
+
 
 
 
@@ -18626,9 +18669,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Create an object to retrieve the current html page-name for routing
-const global = {
-    currentPage: window.location.pathname
+let global = {
+    currentPage: window.location.pathname,
+    search: {
+        term: '',
+        type: '',
+        page: 1,
+        totalPages:1
+    }
 }
+
 
 // Create a Router and initialize through a condition to navigate through html pages
 function init() {
@@ -18653,7 +18703,8 @@ function init() {
             (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaDetails)('tv');
             break;
         case '/search.html':
-            console.log('Search')
+            console.log('Search');
+            global.search = (0,_modules_SearchMedia__WEBPACK_IMPORTED_MODULE_9__["default"])(global);
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
@@ -18666,4 +18717,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2f283005f5f2cfd36289.js.map
+//# sourceMappingURL=bundlebe999a6cef08cb24e2eb.js.map

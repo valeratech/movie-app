@@ -8344,10 +8344,8 @@ function createMediaTileInformation(title, text) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   displayMovieDetails: () => (/* binding */ displayMovieDetails),
-/* harmony export */   displayPopularMedia: () => (/* binding */ displayPopularMedia),
-/* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV),
-/* harmony export */   displayTvDetails: () => (/* binding */ displayTvDetails)
+/* harmony export */   displayMediaDetails: () => (/* binding */ displayMediaDetails),
+/* harmony export */   displayPopularMedia: () => (/* binding */ displayPopularMedia)
 /* harmony export */ });
 /* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/modules/API.js");
 /* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/modules/CreateMediaTile.js");
@@ -8368,28 +8366,11 @@ __webpack_require__.r(__webpack_exports__);
     })
 }
 
-async function displayPopularTV() {
-    const moviesContainer = document.getElementById('popular-shows');
-
-    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
-    results.forEach(show => {
-        moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'show'));
-    })
-}
-
-async function displayMovieDetails() {
+async function displayMediaDetails(type) {
     const id = window.location.search.split('=')[1];
-    const movieDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`movie/${id}`);
-    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(movieDetails, 'movie');
+    const mediaDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/${id}`);
+    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(mediaDetails, type);
 }
-
-async function displayTvDetails() {
-    const id = window.location.search.split('=')[1];
-    const tvDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`tv/${id}`);
-    console.log(tvDetails);
-    (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(tvDetails, 'tv');
-}
-
 
 
 
@@ -18665,11 +18646,11 @@ function init() {
             break;
         case '/movie-details.html':
             console.log('Movie Details');
-            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMovieDetails)();
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaDetails)('movie');
             break;
         case '/tv-details.html':
             console.log('TV Details');
-            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayTvDetails)();
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaDetails)('tv');
             break;
         case '/search.html':
             console.log('Search')
@@ -18685,4 +18666,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlea2f747494d459213171e.js.map
+//# sourceMappingURL=bundle2f283005f5f2cfd36289.js.map

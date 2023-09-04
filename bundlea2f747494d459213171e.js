@@ -8345,7 +8345,7 @@ function createMediaTileInformation(title, text) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   displayMovieDetails: () => (/* binding */ displayMovieDetails),
-/* harmony export */   displayPopularMovies: () => (/* binding */ displayPopularMovies),
+/* harmony export */   displayPopularMedia: () => (/* binding */ displayPopularMedia),
 /* harmony export */   displayPopularTV: () => (/* binding */ displayPopularTV),
 /* harmony export */   displayTvDetails: () => (/* binding */ displayTvDetails)
 /* harmony export */ });
@@ -8357,12 +8357,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Requests movie data using the API.js module and passes either the tv or movie argument
- async function displayPopularMovies() {
-    const moviesContainer = document.getElementById('popular-movies');
+ async function displayPopularMedia(type) {
+    const moviesContainer = document.getElementById(
+        type === 'movie' ? 'popular-movies' : 'popular-shows'
+    );
 
-    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/popular');
-    results.forEach(movie => {
-        moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(movie, 'movie'));
+    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/popular`);
+    results.forEach(media => {
+        moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(media, type === 'movie' ? type : 'show'));
     })
 }
 
@@ -8430,7 +8432,7 @@ async function displaySlider(type) {
         const swiperWrapper = document.querySelector('.swiper-wrapper');
         swiperWrapper.appendChild(swiperDiv);
     })
-    initSwiper()
+    initSwiper();
 }
 
 function createSliderPoster(mediaData, type) {
@@ -18653,12 +18655,12 @@ function init() {
         case '/':
         case '/index.html':
             console.log('movie');
-            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMovies)();
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMedia)('movie');
             (0,_modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__["default"])('movie');
             break;
         case '/shows.html':
             console.log('tv')
-            ;(0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularTV)();
+            ;(0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularMedia)('tv');
             (0,_modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__["default"])('tv');
             break;
         case '/movie-details.html':
@@ -18683,4 +18685,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1c44f688f60d3a40b92f.js.map
+//# sourceMappingURL=bundlea2f747494d459213171e.js.map

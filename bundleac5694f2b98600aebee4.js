@@ -8020,7 +8020,6 @@ function createOverlay(imagePath) {
 
 function createDetailsTopContainer(topData, type) {
     // Creates the top half of the Media Details Page which will be nested in createMediaPage
-    console.log('this', type)
     const topContainer = document.createElement('div');
     topContainer.className = 'details-top';
     topContainer.append(
@@ -8286,7 +8285,6 @@ function createMediaTileContainer(mediaData, type) {
     // Create card containers for tv/movie banner tiles
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card';
-    console.log(type);
     if (type === 'movie') {
         cardContainer.append(
             createPosterImageLink(mediaData.poster_path, mediaData.id, mediaData.original_title, type),
@@ -8377,7 +8375,6 @@ async function displayPopularTV() {
     const moviesContainer = document.getElementById('popular-shows');
 
     const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('tv/popular');
-    console.log(results);
     results.forEach(show => {
         moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(show, 'show'));
     })
@@ -8427,6 +8424,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+async function displaySlider(type) {
+    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type === 'movie' ? 'movie/now_playing' : 'tv/on_the_air'}`);
+    console.log(results);
+    results.forEach(media => {
+        const swiperDiv = document.createElement('div');
+        swiperDiv.className = "swiper-slide";
+        swiperDiv.append(createSliderPoster(media, type), createSliderHeading(media));
+
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        swiperWrapper.appendChild(swiperDiv);
+    })
+    initSwiper()
+}
+
 function createSliderPoster(mediaData, type) {
     const image = document.createElement('img');
     image.src = mediaData.poster_path ? `https://image.tmdb.org/t/p/w500${mediaData.poster_path}` : _assets_no_image_jpg__WEBPACK_IMPORTED_MODULE_6__;
@@ -8456,20 +8467,8 @@ function createSliderHeading(mediaData) {
     const header = document.createElement('h4');
     header.className = "swiper-rating";
     header.append(createSliderRatingIcon(), createSliderRating(mediaData));
-}
 
-async function displaySlider(type) {
-    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])('movie/now_playing');
-    console.log(results);
-    results.forEach(media => {
-        const swiperDiv = document.createElement('div');
-        swiperDiv.className = "swiper-slide";
-        swiperDiv.append(createSliderPoster(media, type), createSliderHeading(media));
-
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-        swiperWrapper.appendChild(swiperDiv);
-    })
-    initSwiper()
+    return header;
 }
 
 function initSwiper() {
@@ -8494,11 +8493,6 @@ function initSwiper() {
             },
         },
     });
-}
-
-function createSwiperHeader() {
-    const header = document.createElement('h4');
-
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (displaySlider);
@@ -18681,6 +18675,7 @@ function init() {
         case '/shows.html':
             console.log('tv')
             ;(0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayPopularTV)();
+            (0,_modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__["default"])('tv');
             break;
         case '/movie-details.html':
             console.log('Movie Details');
@@ -18704,4 +18699,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle37ecb7f0d1ebcf7d567c.js.map
+//# sourceMappingURL=bundleac5694f2b98600aebee4.js.map

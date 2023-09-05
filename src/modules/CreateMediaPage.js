@@ -180,7 +180,7 @@ function createMediaHomepageButton(topData, type) {
 }
 
 function createDetailsBottomContainer(bottomData, type) {
-    // Creates the bottom half of the Media Details Page
+    // Creates a container for the bottom half of the Media Details Page
     const bottomContainer = document.createElement('div');
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
@@ -205,7 +205,8 @@ function createMediaInfoHeader(bottomData, type) {
 }
 
 function createMediaInfoObject(bottomData, type) {
-    // Decontructs and extracts data into a new object from the main-API movie data object
+    // Deconstructs and extracts data into a new object from the main-API movie data object which will be looped on.
+    // Uses a condition based on the type (movie/tv) and creates the appropriate fields for either type.
     if (type === 'movie') {
         const {budget, revenue, runtime, status} = bottomData;
         const obj = {budget, revenue, runtime, status};
@@ -257,6 +258,7 @@ function createMediaInfoItem(name, info) {
 }
 
 function createMediaInfoList(bottomData, type) {
+    // Create a container and build/append each item using createMediaInfoItem
     const listContainer = document.createElement('ul');
 
     const mediaInfo = createMediaInfoObject(bottomData, type);

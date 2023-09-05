@@ -8123,7 +8123,7 @@ function createMediaHomepageButton(topData, type) {
 }
 
 function createDetailsBottomContainer(bottomData, type) {
-    // Creates the bottom half of the Media Details Page
+    // Creates a container for the bottom half of the Media Details Page
     const bottomContainer = document.createElement('div');
     bottomContainer.className = 'details-bottom';
     bottomContainer.append(
@@ -8148,7 +8148,8 @@ function createMediaInfoHeader(bottomData, type) {
 }
 
 function createMediaInfoObject(bottomData, type) {
-    // Decontructs and extracts data into a new object from the main-API movie data object
+    // Deconstructs and extracts data into a new object from the main-API movie data object which will be looped on.
+    // Uses a condition based on the type (movie/tv) and creates the appropriate fields for either type.
     if (type === 'movie') {
         const {budget, revenue, runtime, status} = bottomData;
         const obj = {budget, revenue, runtime, status};
@@ -8200,6 +8201,7 @@ function createMediaInfoItem(name, info) {
 }
 
 function createMediaInfoList(bottomData, type) {
+    // Create a container and build/append each item using createMediaInfoItem
     const listContainer = document.createElement('ul');
 
     const mediaInfo = createMediaInfoObject(bottomData, type);
@@ -8558,6 +8560,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _SearchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchAPI */ "./src/modules/SearchAPI.js");
+/* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/modules/CreateMediaTile.js");
+/* harmony import */ var _FetchAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FetchAPI */ "./src/modules/FetchAPI.js");
+
+
 
 
 async function searchMedia(searchState) {
@@ -8574,8 +8580,18 @@ async function searchMedia(searchState) {
 
     // Check if search input is empty and send an alert otherwise fetch/search data
     if(currentState.search.term !== '') {
-        const searchDetails = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
-        console.log(searchDetails);
+        const {results, total_pages, page} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
+        const mediaContainer = document.getElementById(
+            currentState.search.type === 'movie' ? 'popular-movies'
+                : currentState.search.type === 'tv' ? 'popular-shows'
+                : 'search-results'
+        );
+
+        results.forEach(media => {
+            mediaContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(
+                media,
+                currentState.search.type === 'movie' ? currentState.search.type : 'show'));
+        });
     } else {
         alert('Please enter search term');
     }
@@ -18759,4 +18775,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle68d9140eb8763aa90dc1.js.map
+//# sourceMappingURL=bundle9c6d6dad336a29c4ccd6.js.map

@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './styles/style.css';
 import './styles/spinner.css';
-import {displayPopularMedia, displayPopularTV, displayMediaDetails, displayTvDetails} from "./modules/DisplayMedia";
+import {displayPopularMedia, displayPopularTV, displayMediaPageDetails, displayTvDetails} from "./modules/DisplayMedia";
 import highlightActiveLink from "./modules/HighlightActiveLink";
 import displaySlider from "./modules/DisplaySlider";
 import searchMedia from "./modules/SearchMedia";
@@ -37,11 +37,11 @@ function init() {
             break;
         case '/movie-details.html':
             console.log('Movie Details');
-            displayMediaDetails('movie');
+            displayMediaPageDetails('movie');
             break;
         case '/tv-details.html':
             console.log('TV Details');
-            displayMediaDetails('tv');
+            displayMediaPageDetails('tv');
             break;
         case '/search.html':
             console.log('Search');

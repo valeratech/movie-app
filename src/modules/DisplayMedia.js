@@ -4,13 +4,13 @@ import createMediaPage from "./CreateMediaPage";
 
 // Requests movie data using the FetchAPI.js module and passes either the tv or movie argument
  async function displayPopularMedia(type) {
-    const moviesContainer = document.getElementById(
+    const mediaContainer = document.getElementById(
         type === 'movie' ? 'popular-movies' : 'popular-shows'
     );
 
     const {results} = await fetchAPIData(`${type}/popular`, type);
     results.forEach(media => {
-        moviesContainer.append(createMediaTileContainer(media, type === 'movie' ? type : 'show'));
+        mediaContainer.append(createMediaTileContainer(media, type === 'movie' ? type : 'show'));
     })
 }
 

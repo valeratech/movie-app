@@ -7929,43 +7929,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/modules/API.js":
-/*!****************************!*\
-  !*** ./src/modules/API.js ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/modules/ToggleSpinner.js");
-
-
-// Fetch popular movie data from themoviedb.org and return objects
-async function fetchAPIData(endpoint) {
-    const API_KEY = 'e9dd849d4f789bb12085092d84ad45f7';
-    const API_URL = 'https://api.themoviedb.org/3/';
-
-    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
-    if (endpoint === 'movie' || endpoint === 'tv') {
-        const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
-        const data = await res.json();
-        (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
-        return (data);
-    } else {
-        const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
-        const data = await res.json();
-        (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
-        return (data);
-    }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchAPIData);
-
-/***/ }),
-
 /***/ "./src/modules/CreateMediaPage.js":
 /*!****************************************!*\
   !*** ./src/modules/CreateMediaPage.js ***!
@@ -8351,20 +8314,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   displayMediaDetails: () => (/* binding */ displayMediaDetails),
 /* harmony export */   displayPopularMedia: () => (/* binding */ displayPopularMedia)
 /* harmony export */ });
-/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/modules/API.js");
+/* harmony import */ var _FetchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FetchAPI */ "./src/modules/FetchAPI.js");
 /* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/modules/CreateMediaTile.js");
 /* harmony import */ var _CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CreateMediaPage */ "./src/modules/CreateMediaPage.js");
 
 
 
 
-// Requests movie data using the API.js module and passes either the tv or movie argument
+// Requests movie data using the FetchAPI.js module and passes either the tv or movie argument
  async function displayPopularMedia(type) {
     const moviesContainer = document.getElementById(
         type === 'movie' ? 'popular-movies' : 'popular-shows'
     );
 
-    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/popular`);
+    const {results} = await (0,_FetchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/popular`, type);
     results.forEach(media => {
         moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(media, type === 'movie' ? type : 'show'));
     })
@@ -8372,7 +8335,7 @@ __webpack_require__.r(__webpack_exports__);
 
 async function displayMediaDetails(type) {
     const id = window.location.search.split('=')[1];
-    const mediaDetails = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/${id}`);
+    const mediaDetails = await (0,_FetchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/${id}`);
     (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(mediaDetails, type);
 }
 
@@ -8391,7 +8354,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./src/modules/API.js");
+/* harmony import */ var _FetchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FetchAPI */ "./src/modules/FetchAPI.js");
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.mjs");
 /* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.css");
@@ -8407,7 +8370,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 async function displaySlider(type) {
-    const {results} = await (0,_API__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type === 'movie' ? 'movie/now_playing' : 'tv/on_the_air'}`);
+    const {results} = await (0,_FetchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type === 'movie' ? 'movie/now_playing' : 'tv/on_the_air'}`);
     console.log(results);
     results.forEach(media => {
         const swiperDiv = document.createElement('div');
@@ -8481,6 +8444,38 @@ function initSwiper() {
 
 /***/ }),
 
+/***/ "./src/modules/FetchAPI.js":
+/*!*********************************!*\
+  !*** ./src/modules/FetchAPI.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/modules/ToggleSpinner.js");
+
+
+// Fetch popular movie data from themoviedb.org and return objects
+async function fetchAPIData(endpoint) {
+    const API_KEY = 'e9dd849d4f789bb12085092d84ad45f7';
+    const API_URL = 'https://api.themoviedb.org/3/';
+
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+    const res = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`);
+    const data = await res.json();
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+    return (data);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchAPIData);
+
+/***/ }),
+
 /***/ "./src/modules/HighlightActiveLink.js":
 /*!********************************************!*\
   !*** ./src/modules/HighlightActiveLink.js ***!
@@ -8508,6 +8503,42 @@ function highlightActiveLink(currentPage) {
 
 /***/ }),
 
+/***/ "./src/modules/SearchAPI.js":
+/*!**********************************!*\
+  !*** ./src/modules/SearchAPI.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleSpinner */ "./src/modules/ToggleSpinner.js");
+
+
+async function searchAPIData(type, term) {
+    console.log('this', type,term)
+    const API_KEY = 'e9dd849d4f789bb12085092d84ad45f7';
+    const API_URL = 'https://api.themoviedb.org/3/';
+
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+    const response = await fetch(
+        `${API_URL}search/${type}?api_key=${API_KEY}&language=en-US&query=${term}`
+    );
+
+    const data = await response.json();
+
+    (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+    return data;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchAPIData);
+
+/***/ }),
+
 /***/ "./src/modules/SearchMedia.js":
 /*!************************************!*\
   !*** ./src/modules/SearchMedia.js ***!
@@ -8519,9 +8550,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _SearchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchAPI */ "./src/modules/SearchAPI.js");
 
 
-function searchMedia(searchState) {
+
+async function searchMedia(searchState) {
 
     const currentState = searchState;
 
@@ -8533,12 +8566,13 @@ function searchMedia(searchState) {
     currentState.search.term = urlParams.get('search-term');
     console.log(currentState.search);
     if(currentState.search.term !== '') {
-        // make request and display results
+        const searchDetails = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
+        console.log(searchDetails);
     } else {
         alert('Please enter search term');
     }
 
-    return currentState.search;
+    // return currentState.search;
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchMedia);
@@ -18717,4 +18751,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlebe999a6cef08cb24e2eb.js.map
+//# sourceMappingURL=bundle7e80738482cb142d0424.js.map

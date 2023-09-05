@@ -73,6 +73,9 @@ function initSwiper() {
             1200: {
                 slidesPerView: 4,
             },
+            2000: {
+                slidesPerView: 5,
+            }
         },
     });
 }

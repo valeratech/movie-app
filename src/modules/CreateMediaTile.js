@@ -26,7 +26,9 @@ function createPosterImageLink(poster, id, title, type) {
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${id}`; // Set ID parameter in the URL which can be used to render movie page
+
+    // Set ID parameter in the URL which can be used to render movie page
+    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${id}`;
     anchor.alt = title;
     anchor.appendChild(image);
 

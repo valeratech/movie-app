@@ -1,6 +1,7 @@
+import searchAPIData from "./SearchAPI";
 
 
-function searchMedia(searchState) {
+async function searchMedia(searchState) {
 
     const currentState = searchState;
 
@@ -12,12 +13,13 @@ function searchMedia(searchState) {
     currentState.search.term = urlParams.get('search-term');
     console.log(currentState.search);
     if(currentState.search.term !== '') {
-        // make request and display results
+        const searchDetails = await searchAPIData(currentState.search.type, currentState.search.term);
+        console.log(searchDetails);
     } else {
         alert('Please enter search term');
     }
 
-    return currentState.search;
+    // return currentState.search;
 }
 
 export default searchMedia;

@@ -7963,7 +7963,7 @@ function createMediaPage(pageData, type) {
 }
 
 function createOverlay(imagePath) {
-    // Creates a media-image backdrop for the media page
+    // Creates a media-image backdrop using css specifications for the media page
     const div = document.createElement('div');
     div.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${imagePath}`;
     div.style.backgroundSize = 'cover';
@@ -8017,6 +8017,8 @@ function createTopSubContainerTwo(topData, type) {
     // Creates the first sub-container which will be nested in createDetailsTopContainer
     const container = document.createElement('div');
     container.className = 'details-top--sub-two';
+
+    // Build Sub-Container-Two by appending functions that builds each individual container
     container.append(
         createDetailsMainTitle(topData, type),
         createMediaRatingContainer(topData),
@@ -8032,7 +8034,7 @@ function createTopSubContainerTwo(topData, type) {
 
 function createDetailsMainTitle(topData, type) {
     // Creates the main title which will be appended into the createTopSubContainerTwo
-
+    // Takes a ternary to look for either 'tv' or 'movie' type and create the appropriate data
         const titleText= document.createTextNode(
             type === 'movie' ? topData.original_title : topData.name
         );
@@ -8045,6 +8047,7 @@ function createDetailsMainTitle(topData, type) {
 
 
 function createMediaRatingIcon() {
+    // Use font awesome to create a start symbol to be used in createMediaRatingContainer
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
 
@@ -8052,14 +8055,14 @@ function createMediaRatingIcon() {
 }
 
 function createMediaRating(topData) {
+    // Rounds the media-vote-average to be used in createMediaRatingContainer
     const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
 
     return rating;
 }
 
 function createMediaRatingContainer(topData) {
-    // Creates the movie rating which will be appended into the createTopSubContainerTwo
-
+    // Creates a movie rating container which will be appended into createTopSubContainerTwo
     const ratingContainer = document.createElement('p');
     ratingContainer.append(createMediaRatingIcon(), createMediaRating(topData));
 
@@ -8067,7 +8070,7 @@ function createMediaRatingContainer(topData) {
 }
 
 function createMediaDateInfo(topData, type) {
-    // Creates the release date info which will be appended into the createTopSubContainerTwo
+    // Creates the release date info which will be appended into createTopSubContainerTwo
     const mediaDateInfo = document.createElement('p');
     mediaDateInfo.appendChild(document.createTextNode(
         type === 'movie' ? `Release Date: ${topData.release_date}` : `First Air Date: ${topData.first_air_date}`
@@ -8078,7 +8081,7 @@ function createMediaDateInfo(topData, type) {
 }
 
 function createMediaOverview(topData) {
-    // Creates the movie overview which will be appended into the createTopSubContainerTwo
+    // Creates the media overview which will be appended into createTopSubContainerTwo
     const container = document.createElement('p');
     container.appendChild(document.createTextNode(topData.overview));
 
@@ -8086,7 +8089,7 @@ function createMediaOverview(topData) {
 }
 
 function createMediaGenresHeading(topData) {
-    // Creates a "Genres" sub-heading which will be appended into the createTopSubContainerTwo
+    // Creates a "Genres" sub-heading which will be appended into createTopSubContainerTwo
     const heading = document.createElement('h5');
     heading.appendChild(document.createTextNode('Genres'));
 
@@ -8094,6 +8097,7 @@ function createMediaGenresHeading(topData) {
 }
 
 function createMediaGenresList(topData) {
+    // Builds an unordered list of media genres which will be appended into createMediaRatingContainer
     const listContainer = document.createElement('ul');
     topData.genres.forEach(genre => {
         const list = document.createElement('li');
@@ -8105,8 +8109,10 @@ function createMediaGenresList(topData) {
 }
 
 function createMediaHomepageButton(topData, type) {
+    // Create a link element whch navigates back to the approriate 'tv' or 'movie' home page
+    // using on a ternary condition which depending on the type (tv/movie)
     const link = document.createElement('a');
-    link.href = '/';
+    link.href = type === 'movie' ? '/' : '/shows.html';
     link.target = '_blank';
     link.className = 'btn';
     link.appendChild(document.createTextNode(
@@ -8524,6 +8530,7 @@ async function searchAPIData(type, term) {
 
     (0,_ToggleSpinner__WEBPACK_IMPORTED_MODULE_0__["default"])();
 
+    // Gather movie or tv 'type' and the 'term' we are searching on and fetch results
     const response = await fetch(
         `${API_URL}search/${type}?api_key=${API_KEY}&language=en-US&query=${term}`
     );
@@ -8553,9 +8560,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchAPI */ "./src/modules/SearchAPI.js");
 
 
-
 async function searchMedia(searchState) {
-
+    // Sends a search query using SearchAPI.js after a form a submission from the homepage
     const currentState = searchState;
 
     // Retrieve the parameters from the results of the search submission
@@ -8565,6 +8571,8 @@ async function searchMedia(searchState) {
     currentState.search.type = urlParams.get('type');
     currentState.search.term = urlParams.get('search-term');
     console.log(currentState.search);
+
+    // Check if search input is empty and send an alert otherwise fetch/search data
     if(currentState.search.term !== '') {
         const searchDetails = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
         console.log(searchDetails);
@@ -18751,4 +18759,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle7e80738482cb142d0424.js.map
+//# sourceMappingURL=bundle68d9140eb8763aa90dc1.js.map

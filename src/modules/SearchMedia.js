@@ -12,12 +12,13 @@ async function searchMedia(searchState) {
 
     currentState.search.type = urlParams.get('type');
     currentState.search.term = urlParams.get('search-term');
-    console.log(currentState.search);
+    const type = currentState.search.type;
 
     // Check if search input is empty and send an alert otherwise fetch/search data
     if(currentState.search.term !== '') {
         // Deconstruct the required keys from the search API results which will be used for display and pagination
         const {results, total_pages, page} = await searchAPIData(currentState.search.type, currentState.search.term);
+        console.log('THIS', type);
         // Use a ternary condition to render the active html page with required results
         const mediaContainer = document.getElementById(
             currentState.search.type === 'movie' ? 'popular-movies'
@@ -28,7 +29,7 @@ async function searchMedia(searchState) {
         results.forEach(media => {
             mediaContainer.append(createMediaTileContainer(
                 media,
-                currentState.search.type === 'movie' ? currentState.search.type : 'show'));
+                type === 'movie' ? type : 'show'));
         });
     } else {
         alert('Please enter search term');

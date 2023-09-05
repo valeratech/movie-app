@@ -8319,7 +8319,7 @@ function createMediaTileInformation(title, text) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   displayMediaDetails: () => (/* binding */ displayMediaDetails),
+/* harmony export */   displayMediaPageDetails: () => (/* binding */ displayMediaPageDetails),
 /* harmony export */   displayPopularMedia: () => (/* binding */ displayPopularMedia)
 /* harmony export */ });
 /* harmony import */ var _FetchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FetchAPI */ "./src/modules/FetchAPI.js");
@@ -8331,17 +8331,20 @@ __webpack_require__.r(__webpack_exports__);
 
 // Requests movie data using the FetchAPI.js module and passes either the tv or movie argument
  async function displayPopularMedia(type) {
-    const moviesContainer = document.getElementById(
+    // Populate the main movie/tv page with tiles using CreateMediaTile.js module
+     const mediaContainer = document.getElementById(
         type === 'movie' ? 'popular-movies' : 'popular-shows'
     );
 
     const {results} = await (0,_FetchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/popular`, type);
+    // Loop through each movie results and render a tile container
     results.forEach(media => {
-        moviesContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(media, type === 'movie' ? type : 'show'));
+        mediaContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(media, type === 'movie' ? type : 'show'));
     })
 }
 
-async function displayMediaDetails(type) {
+async function displayMediaPageDetails(type) {
+    // Display the specific single media page (tv/movie) by extracting the ID and fetching the data
     const id = window.location.search.split('=')[1];
     const mediaDetails = await (0,_FetchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(`${type}/${id}`);
     (0,_CreateMediaPage__WEBPACK_IMPORTED_MODULE_2__["default"])(mediaDetails, type);
@@ -8576,11 +8579,14 @@ async function searchMedia(searchState) {
 
     currentState.search.type = urlParams.get('type');
     currentState.search.term = urlParams.get('search-term');
-    console.log(currentState.search);
+    const type = currentState.search.type;
 
     // Check if search input is empty and send an alert otherwise fetch/search data
     if(currentState.search.term !== '') {
+        // Deconstruct the required keys from the search API results which will be used for display and pagination
         const {results, total_pages, page} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
+        console.log('THIS', type);
+        // Use a ternary condition to render the active html page with required results
         const mediaContainer = document.getElementById(
             currentState.search.type === 'movie' ? 'popular-movies'
                 : currentState.search.type === 'tv' ? 'popular-shows'
@@ -8590,7 +8596,7 @@ async function searchMedia(searchState) {
         results.forEach(media => {
             mediaContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(
                 media,
-                currentState.search.type === 'movie' ? currentState.search.type : 'show'));
+                type === 'movie' ? type : 'show'));
         });
     } else {
         alert('Please enter search term');
@@ -18754,11 +18760,11 @@ function init() {
             break;
         case '/movie-details.html':
             console.log('Movie Details');
-            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaDetails)('movie');
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaPageDetails)('movie');
             break;
         case '/tv-details.html':
             console.log('TV Details');
-            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaDetails)('tv');
+            (0,_modules_DisplayMedia__WEBPACK_IMPORTED_MODULE_6__.displayMediaPageDetails)('tv');
             break;
         case '/search.html':
             console.log('Search');
@@ -18775,4 +18781,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle9c6d6dad336a29c4ccd6.js.map
+//# sourceMappingURL=bundle69d8e0f8c761ac7b6148.js.map

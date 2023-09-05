@@ -7,6 +7,7 @@ async function searchAPIData(type, term) {
 
     toggleSpinner();
 
+    // Gather movie or tv 'type' and the 'term' we are searching on and fetch results
     const response = await fetch(
         `${API_URL}search/${type}?api_key=${API_KEY}&language=en-US&query=${term}`
     );

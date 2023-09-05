@@ -20,7 +20,7 @@ function createMediaPage(pageData, type) {
 }
 
 function createOverlay(imagePath) {
-    // Creates a media-image backdrop for the media page
+    // Creates a media-image backdrop using css specifications for the media page
     const div = document.createElement('div');
     div.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${imagePath}`;
     div.style.backgroundSize = 'cover';
@@ -74,6 +74,8 @@ function createTopSubContainerTwo(topData, type) {
     // Creates the first sub-container which will be nested in createDetailsTopContainer
     const container = document.createElement('div');
     container.className = 'details-top--sub-two';
+
+    // Build Sub-Container-Two by appending functions that builds each individual container
     container.append(
         createDetailsMainTitle(topData, type),
         createMediaRatingContainer(topData),
@@ -89,7 +91,7 @@ function createTopSubContainerTwo(topData, type) {
 
 function createDetailsMainTitle(topData, type) {
     // Creates the main title which will be appended into the createTopSubContainerTwo
-
+    // Takes a ternary to look for either 'tv' or 'movie' type and create the appropriate data
         const titleText= document.createTextNode(
             type === 'movie' ? topData.original_title : topData.name
         );
@@ -102,6 +104,7 @@ function createDetailsMainTitle(topData, type) {
 
 
 function createMediaRatingIcon() {
+    // Use font awesome to create a start symbol to be used in createMediaRatingContainer
     const starIcon = document.createElement('i');
     starIcon.className = 'fas fa-star text-primary';
 
@@ -109,14 +112,14 @@ function createMediaRatingIcon() {
 }
 
 function createMediaRating(topData) {
+    // Rounds the media-vote-average to be used in createMediaRatingContainer
     const rating = document.createTextNode(` ${(parseFloat(topData.vote_average).toFixed(1))} / 10`);
 
     return rating;
 }
 
 function createMediaRatingContainer(topData) {
-    // Creates the movie rating which will be appended into the createTopSubContainerTwo
-
+    // Creates a movie rating container which will be appended into createTopSubContainerTwo
     const ratingContainer = document.createElement('p');
     ratingContainer.append(createMediaRatingIcon(), createMediaRating(topData));
 
@@ -124,7 +127,7 @@ function createMediaRatingContainer(topData) {
 }
 
 function createMediaDateInfo(topData, type) {
-    // Creates the release date info which will be appended into the createTopSubContainerTwo
+    // Creates the release date info which will be appended into createTopSubContainerTwo
     const mediaDateInfo = document.createElement('p');
     mediaDateInfo.appendChild(document.createTextNode(
         type === 'movie' ? `Release Date: ${topData.release_date}` : `First Air Date: ${topData.first_air_date}`
@@ -135,7 +138,7 @@ function createMediaDateInfo(topData, type) {
 }
 
 function createMediaOverview(topData) {
-    // Creates the movie overview which will be appended into the createTopSubContainerTwo
+    // Creates the media overview which will be appended into createTopSubContainerTwo
     const container = document.createElement('p');
     container.appendChild(document.createTextNode(topData.overview));
 
@@ -143,7 +146,7 @@ function createMediaOverview(topData) {
 }
 
 function createMediaGenresHeading(topData) {
-    // Creates a "Genres" sub-heading which will be appended into the createTopSubContainerTwo
+    // Creates a "Genres" sub-heading which will be appended into createTopSubContainerTwo
     const heading = document.createElement('h5');
     heading.appendChild(document.createTextNode('Genres'));
 
@@ -151,6 +154,7 @@ function createMediaGenresHeading(topData) {
 }
 
 function createMediaGenresList(topData) {
+    // Builds an unordered list of media genres which will be appended into createMediaRatingContainer
     const listContainer = document.createElement('ul');
     topData.genres.forEach(genre => {
         const list = document.createElement('li');
@@ -162,8 +166,10 @@ function createMediaGenresList(topData) {
 }
 
 function createMediaHomepageButton(topData, type) {
+    // Create a link element whch navigates back to the approriate 'tv' or 'movie' home page
+    // using on a ternary condition which depending on the type (tv/movie)
     const link = document.createElement('a');
-    link.href = '/';
+    link.href = type === 'movie' ? '/' : '/shows.html';
     link.target = '_blank';
     link.className = 'btn';
     link.appendChild(document.createTextNode(

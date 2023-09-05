@@ -8277,7 +8277,9 @@ function createPosterImageLink(poster, id, title, type) {
 
     // https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL
     const anchor = document.createElement('a');
-    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${id}`; // Set ID parameter in the URL which can be used to render movie page
+
+    // Set ID parameter in the URL which can be used to render movie page
+    anchor.href = `${type === 'movie' ? 'movie' : 'tv'}-details.html?id=${id}`;
     anchor.alt = title;
     anchor.appendChild(image);
 
@@ -8447,6 +8449,9 @@ function initSwiper() {
             1200: {
                 slidesPerView: 4,
             },
+            2000: {
+                slidesPerView: 5,
+            }
         },
     });
 }
@@ -8579,6 +8584,9 @@ async function searchMedia(searchState) {
 
     currentState.search.type = urlParams.get('type');
     currentState.search.term = urlParams.get('search-term');
+
+    // Create a function-scope variable 'type' to be used throughout the entire function
+    // currentState.search.type gets modified after API call!
     const type = currentState.search.type;
 
     // Check if search input is empty and send an alert otherwise fetch/search data
@@ -8586,6 +8594,7 @@ async function searchMedia(searchState) {
         // Deconstruct the required keys from the search API results which will be used for display and pagination
         const {results, total_pages, page} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
         console.log('THIS', type);
+
         // Use a ternary condition to render the active html page with required results
         const mediaContainer = document.getElementById(
             currentState.search.type === 'movie' ? 'popular-movies'
@@ -18781,4 +18790,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle69d8e0f8c761ac7b6148.js.map
+//# sourceMappingURL=bundlee95f038323a92a9693c0.js.map

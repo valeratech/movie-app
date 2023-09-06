@@ -35,12 +35,18 @@ async function searchMedia(globalObject) {
                 : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
                 : 'search-results'
         );
-        console.log(mediaContainer);
+        // Create the tiles by looping through the API data and calling the createMediaTileContainer
         results.forEach(media => {
             mediaContainer.append(createMediaTileContainer(
                 media,
                 type === 'movie' ? type : 'show'));
         });
+        // Create a search results heading using the info stored in globalState
+        const totalResultsContainer = document.getElementById('search-results-heading');
+        const totalResultsHeading = document.createElement('h2');
+        const totalResults = document.createTextNode(`${results.length} of ${globalState.search.totalResults}`);
+        totalResultsHeading.appendChild(totalResults);
+        totalResultsContainer.appendChild(totalResultsHeading);
     } else {
         alert('Please enter search term');
     }

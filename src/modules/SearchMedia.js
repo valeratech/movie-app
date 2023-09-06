@@ -1,34 +1,41 @@
 import searchAPIData from "./SearchAPI";
 import createMediaTileContainer from "./CreateMediaTile";
 import fetchAPIData from "./FetchAPI";
+import updateGlobal from "./UpdateGlobal";
 
-async function searchMedia(searchState) {
+async function searchMedia(globalObject) {
     // Sends a search query using SearchAPI.js after a form a submission from the homepage
-    const currentState = searchState;
+    const globalState = globalObject;
 
     // Retrieve the parameters from the results of the search submission
     const searchString = window.location.search;
     const urlParams = new URLSearchParams(searchString);
 
-    currentState.search.type = urlParams.get('type');
-    currentState.search.term = urlParams.get('search-term');
+    globalState.search.type = urlParams.get('type');
+    globalState.search.term = urlParams.get('search-term');
 
     // Create a function-scope variable 'type' to be used throughout the entire function
     // currentState.search.type gets modified after API call!
-    const type = currentState.search.type;
+    const type = globalState.search.type;
 
     // Check if search input is empty and send an alert otherwise fetch/search data
-    if(currentState.search.term !== '') {
-        // Deconstruct the required keys from the search API results which will be used for display and pagination
-        const {results, total_pages, page} = await searchAPIData(currentState.search.type, currentState.search.term);
 
+    if(globalState.search.term !== '' && globalState.search.term !== null) {
+        // Deconstruct the required keys from the search API results which will be used for display and pagination
+        const {results, total_pages, page} = await searchAPIData(globalState.search.type, globalState.search.term);
+
+        globalState.search.totalPages = total_pages;
+        globalState.search.page = page;
+        updateGlobal(globalState);
+        console.log(global)
         // Use a ternary condition to render the active html page with required results
+        console.log(globalState.currentPage);
         const mediaContainer = document.getElementById(
-            currentState.search.type === 'movie' ? 'popular-movies'
-                : currentState.search.type === 'tv' ? 'popular-shows'
+            globalState.search.type === 'movie' && globalState.currentPage !== '/search.html'  ? 'popular-movies'
+                : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
                 : 'search-results'
         );
-
+        console.log(mediaContainer);
         results.forEach(media => {
             mediaContainer.append(createMediaTileContainer(
                 media,

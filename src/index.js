@@ -20,7 +20,6 @@ let global = {
     }
 }
 
-
 // Create a Router and initialize through a condition to navigate through html pages
 function init() {
     switch (global.currentPage) {
@@ -45,7 +44,7 @@ function init() {
             break;
         case '/search.html':
             console.log('Search');
-            global.search = searchMedia(global);
+            searchMedia(global);
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname

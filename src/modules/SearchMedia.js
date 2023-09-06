@@ -15,12 +15,7 @@ async function searchMedia(globalObject) {
     globalState.search.type = urlParams.get('type');
     globalState.search.term = urlParams.get('search-term');
 
-    // Create a function-scope variable 'type' to be used throughout the entire function
-    // currentState.search.type gets modified after API call!
-    const type = globalState.search.type;
-
     // Check if search input is empty and send an alert otherwise fetch/search data
-
     if(globalState.search.term !== '' && globalState.search.term !== null) {
         // Deconstruct the required keys from the search API results which will be used for display and pagination
         const {results, total_pages, page, total_results} = await searchAPIData(globalState.search.type, globalState.search.term);
@@ -36,12 +31,14 @@ async function searchMedia(globalObject) {
                 : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
                 : 'search-results'
         );
+
         // Create the tiles by looping through the API data and calling the createMediaTileContainer
         results.forEach(media => {
             mediaContainer.append(createMediaTileContainer(
                 media,
-                type === 'movie' ? type : 'show'));
+                globalState.search.type === 'movie' ? globalState.search.type : 'show'));
         });
+
         // Create a search results heading using the info stored in globalState
         createSearchResultsHeading(globalState.search.term, results.length, globalState.search.totalResults);
 

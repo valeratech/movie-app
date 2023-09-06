@@ -1,6 +1,6 @@
 import toggleSpinner from "./ToggleSpinner";
 
-async function searchAPIData(type, term) {
+async function searchAPIData(type, term, page) {
     const API_KEY = 'e9dd849d4f789bb12085092d84ad45f7';
     const API_URL = 'https://api.themoviedb.org/3/';
 

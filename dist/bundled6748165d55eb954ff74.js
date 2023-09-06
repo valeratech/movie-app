@@ -8595,14 +8595,14 @@ async function searchMedia(globalObject) {
 
     if(globalState.search.term !== '' && globalState.search.term !== null) {
         // Deconstruct the required keys from the search API results which will be used for display and pagination
-        const {results, total_pages, page} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState.search.type, globalState.search.term);
+        const {results, total_pages, page, total_results} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState.search.type, globalState.search.term);
 
         globalState.search.totalPages = total_pages;
         globalState.search.page = page;
+        globalState.search.totalResults = total_results;
         (0,_UpdateGlobal__WEBPACK_IMPORTED_MODULE_3__["default"])(globalState);
         console.log(__webpack_require__.g)
         // Use a ternary condition to render the active html page with required results
-        console.log(globalState.currentPage);
         const mediaContainer = document.getElementById(
             globalState.search.type === 'movie' && globalState.currentPage !== '/search.html'  ? 'popular-movies'
                 : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
@@ -18773,7 +18773,8 @@ let global = {
         term: '',
         type: '',
         page: 1,
-        totalPages:1
+        totalPages:1,
+        totalResults: 0
     }
 }
 
@@ -18815,4 +18816,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4b017c02d2eb5c532ced.js.map
+//# sourceMappingURL=bundled6748165d55eb954ff74.js.map

@@ -16,7 +16,8 @@ let global = {
         term: '',
         type: '',
         page: 1,
-        totalPages:1
+        totalPages:1,
+        totalResults: 0
     }
 }
 

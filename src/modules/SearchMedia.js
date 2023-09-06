@@ -2,6 +2,7 @@ import searchAPIData from "./SearchAPI";
 import createMediaTileContainer from "./CreateMediaTile";
 import fetchAPIData from "./FetchAPI";
 import updateGlobal from "./UpdateGlobal";
+import createSearchResultsHeading from "./CreateSearchResultsHeading";
 
 async function searchMedia(globalObject) {
     // Sends a search query using SearchAPI.js after a form a submission from the homepage
@@ -28,7 +29,7 @@ async function searchMedia(globalObject) {
         globalState.search.page = page;
         globalState.search.totalResults = total_results;
         updateGlobal(globalState);
-        console.log(global)
+
         // Use a ternary condition to render the active html page with required results
         const mediaContainer = document.getElementById(
             globalState.search.type === 'movie' && globalState.currentPage !== '/search.html'  ? 'popular-movies'
@@ -42,11 +43,8 @@ async function searchMedia(globalObject) {
                 type === 'movie' ? type : 'show'));
         });
         // Create a search results heading using the info stored in globalState
-        const totalResultsContainer = document.getElementById('search-results-heading');
-        const totalResultsHeading = document.createElement('h2');
-        const totalResults = document.createTextNode(`${results.length} of ${globalState.search.totalResults}`);
-        totalResultsHeading.appendChild(totalResults);
-        totalResultsContainer.appendChild(totalResultsHeading);
+        createSearchResultsHeading(globalState.search.term, results.length, globalState.search.totalResults);
+
     } else {
         alert('Please enter search term');
     }

@@ -8608,12 +8608,18 @@ async function searchMedia(globalObject) {
                 : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
                 : 'search-results'
         );
-        console.log(mediaContainer);
+        // Create the tiles by looping through the API data and calling the createMediaTileContainer
         results.forEach(media => {
             mediaContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(
                 media,
                 type === 'movie' ? type : 'show'));
         });
+        // Create a search results heading using the info stored in globalState
+        const totalResultsContainer = document.getElementById('search-results-heading');
+        const totalResultsHeading = document.createElement('h2');
+        const totalResults = document.createTextNode(`${results.length} of ${globalState.search.totalResults}`);
+        totalResultsHeading.appendChild(totalResults);
+        totalResultsContainer.appendChild(totalResultsHeading);
     } else {
         alert('Please enter search term');
     }
@@ -18816,4 +18822,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundled6748165d55eb954ff74.js.map
+//# sourceMappingURL=bundle63ea236af4c95a08eefe.js.map

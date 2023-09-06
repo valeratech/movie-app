@@ -38,8 +38,6 @@ async function searchMedia(searchState) {
     } else {
         alert('Please enter search term');
     }
-
-    // return currentState.search;
 }
 
 export default searchMedia;

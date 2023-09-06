@@ -8509,8 +8509,6 @@ __webpack_require__.r(__webpack_exports__);
 // Loop through all nav-link classes and apply the "active" class for highlighting
 function highlightActiveLink(currentPage) {
     const links = document.querySelectorAll('.nav-link');
-    console.log(currentPage);
-    console.log(links);
     links.forEach(link => {
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
@@ -8537,7 +8535,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 async function searchAPIData(type, term) {
-    console.log('this', type,term)
     const API_KEY = 'e9dd849d4f789bb12085092d84ad45f7';
     const API_URL = 'https://api.themoviedb.org/3/';
 
@@ -8573,37 +8570,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchAPI */ "./src/modules/SearchAPI.js");
 /* harmony import */ var _CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateMediaTile */ "./src/modules/CreateMediaTile.js");
 /* harmony import */ var _FetchAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FetchAPI */ "./src/modules/FetchAPI.js");
+/* harmony import */ var _UpdateGlobal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdateGlobal */ "./src/modules/UpdateGlobal.js");
 
 
 
 
-async function searchMedia(searchState) {
+
+async function searchMedia(globalObject) {
     // Sends a search query using SearchAPI.js after a form a submission from the homepage
-    const currentState = searchState;
+    const globalState = globalObject;
 
     // Retrieve the parameters from the results of the search submission
     const searchString = window.location.search;
     const urlParams = new URLSearchParams(searchString);
 
-    currentState.search.type = urlParams.get('type');
-    currentState.search.term = urlParams.get('search-term');
+    globalState.search.type = urlParams.get('type');
+    globalState.search.term = urlParams.get('search-term');
 
     // Create a function-scope variable 'type' to be used throughout the entire function
     // currentState.search.type gets modified after API call!
-    const type = currentState.search.type;
+    const type = globalState.search.type;
 
     // Check if search input is empty and send an alert otherwise fetch/search data
-    if(currentState.search.term !== '') {
-        // Deconstruct the required keys from the search API results which will be used for display and pagination
-        const {results, total_pages, page} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(currentState.search.type, currentState.search.term);
 
+    if(globalState.search.term !== '' && globalState.search.term !== null) {
+        // Deconstruct the required keys from the search API results which will be used for display and pagination
+        const {results, total_pages, page} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState.search.type, globalState.search.term);
+
+        globalState.search.totalPages = total_pages;
+        globalState.search.page = page;
+        (0,_UpdateGlobal__WEBPACK_IMPORTED_MODULE_3__["default"])(globalState);
+        console.log(__webpack_require__.g)
         // Use a ternary condition to render the active html page with required results
+        console.log(globalState.currentPage);
         const mediaContainer = document.getElementById(
-            currentState.search.type === 'movie' ? 'popular-movies'
-                : currentState.search.type === 'tv' ? 'popular-shows'
+            globalState.search.type === 'movie' && globalState.currentPage !== '/search.html'  ? 'popular-movies'
+                : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
                 : 'search-results'
         );
-
+        console.log(mediaContainer);
         results.forEach(media => {
             mediaContainer.append((0,_CreateMediaTile__WEBPACK_IMPORTED_MODULE_1__["default"])(
                 media,
@@ -8636,6 +8641,26 @@ function toggleSpinner() {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toggleSpinner);
 
+
+/***/ }),
+
+/***/ "./src/modules/UpdateGlobal.js":
+/*!*************************************!*\
+  !*** ./src/modules/UpdateGlobal.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function updateGlobal (globalState) {
+    // update the global variable in index.js
+    __webpack_require__.g = globalState;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (updateGlobal);
 
 /***/ }),
 
@@ -18752,7 +18777,6 @@ let global = {
     }
 }
 
-
 // Create a Router and initialize through a condition to navigate through html pages
 function init() {
     switch (global.currentPage) {
@@ -18777,7 +18801,7 @@ function init() {
             break;
         case '/search.html':
             console.log('Search');
-            global.search = (0,_modules_SearchMedia__WEBPACK_IMPORTED_MODULE_9__["default"])(global);
+            (0,_modules_SearchMedia__WEBPACK_IMPORTED_MODULE_9__["default"])(global);
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
@@ -18786,8 +18810,9 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init)
 ;(0,_modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
+
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundled775e3790629adab8e58.js.map
+//# sourceMappingURL=bundle4b017c02d2eb5c532ced.js.map

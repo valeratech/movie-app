@@ -8610,8 +8610,6 @@ async function searchMedia(searchState) {
     } else {
         alert('Please enter search term');
     }
-
-    // return currentState.search;
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (searchMedia);
@@ -18790,4 +18788,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlee95f038323a92a9693c0.js.map
+//# sourceMappingURL=bundlef8e468e023b86a128c15.js.map

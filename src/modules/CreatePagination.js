@@ -1,5 +1,12 @@
 function createPagination() {
+    const container = document.getElementById('pagination');
+    container.append(
+        createPreviousButton(),
+        createNextButton(),
+        pageCounter()
+    );
 
+    return container;
 }
 
 function createPreviousButton() {
@@ -24,3 +31,5 @@ function pageCounter() {
 
     return div;
 }
+
+export default createPagination;

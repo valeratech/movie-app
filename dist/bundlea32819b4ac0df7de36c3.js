@@ -8313,6 +8313,55 @@ function createMediaTileInformation(title, text) {
 
 /***/ }),
 
+/***/ "./src/modules/CreatePagination.js":
+/*!*****************************************!*\
+  !*** ./src/modules/CreatePagination.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function createPagination() {
+    const container = document.getElementById('pagination');
+    container.append(
+        createPreviousButton(),
+        createNextButton(),
+        pageCounter()
+    );
+
+    return container;
+}
+
+function createPreviousButton() {
+    const prev = document.createElement('button');
+    prev.className = "btn btn-primary";
+    prev.id = "prev";
+
+    return prev;
+}
+
+function createNextButton() {
+    const next = document.createElement('button');
+    next.className = "btn btn-primary";
+    next.id = "next";
+
+    return next;
+}
+
+function pageCounter() {
+    const div = document.createElement('div');
+    div.className = "page-counter"
+
+    return div;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createPagination);
+
+/***/ }),
+
 /***/ "./src/modules/CreateSearchResultsHeading.js":
 /*!***************************************************!*\
   !*** ./src/modules/CreateSearchResultsHeading.js ***!
@@ -8567,7 +8616,7 @@ async function searchAPIData(type, term, page) {
 
     // Gather movie or tv 'type' and the 'term' we are searching on and fetch results
     const response = await fetch(
-        `${API_URL}search/${type}?api_key=${API_KEY}&language=en-US&query=${term}`
+        `${API_URL}search/${type}?api_key=${API_KEY}&language=en-US&query=${term}&page=${page}`
     );
 
     const data = await response.json();
@@ -8597,6 +8646,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FetchAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FetchAPI */ "./src/modules/FetchAPI.js");
 /* harmony import */ var _UpdateGlobal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdateGlobal */ "./src/modules/UpdateGlobal.js");
 /* harmony import */ var _CreateSearchResultsHeading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateSearchResultsHeading */ "./src/modules/CreateSearchResultsHeading.js");
+/* harmony import */ var _CreatePagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreatePagination */ "./src/modules/CreatePagination.js");
+
 
 
 
@@ -8614,15 +8665,14 @@ async function searchMedia(globalObject) {
     globalState.search.type = urlParams.get('type');
     globalState.search.term = urlParams.get('search-term');
 
-    // Create a function-scope variable 'type' to be used throughout the entire function
-    // currentState.search.type gets modified after API call!
-    const type = globalState.search.type;
-
     // Check if search input is empty and send an alert otherwise fetch/search data
-
     if(globalState.search.term !== '' && globalState.search.term !== null) {
         // Deconstruct the required keys from the search API results which will be used for display and pagination
-        const {results, total_pages, page, total_results} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState.search.type, globalState.search.term);
+        const {results, total_pages, page, total_results} = await (0,_SearchAPI__WEBPACK_IMPORTED_MODULE_0__["default"])(
+            globalState.search.type,
+            globalState.search.term,
+            globalState.search.page
+        );
 
         globalState.search.totalPages = total_pages;
         globalState.search.page = page;
@@ -8645,6 +8695,7 @@ async function searchMedia(globalObject) {
 
         // Create a search results heading using the info stored in globalState
         (0,_CreateSearchResultsHeading__WEBPACK_IMPORTED_MODULE_4__["default"])(globalState.search.term, results.length, globalState.search.totalResults);
+        (0,_CreatePagination__WEBPACK_IMPORTED_MODULE_5__["default"])();
 
     } else {
         alert('Please enter search term');
@@ -18848,4 +18899,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle9f6acb95a9b3a5c62429.js.map
+//# sourceMappingURL=bundlea32819b4ac0df7de36c3.js.map

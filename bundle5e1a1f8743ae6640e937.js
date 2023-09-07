@@ -8617,12 +8617,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _SearchMedia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchMedia */ "./src/modules/SearchMedia.js");
 /* harmony import */ var _UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateGlobal */ "./src/modules/UpdateGlobal.js");
+/* harmony import */ var _RemovePagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RemovePagination */ "./src/modules/RemovePagination.js");
+
 
 
 
 function navigatePagination(event, globalState) {
-    console.log(event);
     if (event === 'next') {
+        (0,_RemovePagination__WEBPACK_IMPORTED_MODULE_2__["default"])();
         (0,_UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__["default"])(globalState.search.page++);
         console.log(globalState)
         ;(0,_SearchMedia__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState);
@@ -8632,6 +8634,41 @@ function navigatePagination(event, globalState) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navigatePagination);
+
+/***/ }),
+
+/***/ "./src/modules/RemovePagination.js":
+/*!*****************************************!*\
+  !*** ./src/modules/RemovePagination.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function removePagination() {
+    // Removes and prevents search result containers from stacking when createPagination is called
+
+    removePreviousNextButtons();
+
+}
+
+function removeSearchResults() {
+    // Removes the first 20 search results that were displayed in search.html
+}
+
+function removePreviousNextButtons() {
+    const container = document.getElementById('pagination');
+    let child = container.lastElementChild
+    while (child) {
+        container.removeChild(child);
+        child = container.lastElementChild;
+    };
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (removePagination);
 
 /***/ }),
 
@@ -18945,4 +18982,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle6e5778dccac25de44ba3.js.map
+//# sourceMappingURL=bundle5e1a1f8743ae6640e937.js.map

@@ -1,15 +1,15 @@
-function createPagination(state) {
+function createPagination(searchState) {
     const container = document.getElementById('pagination');
     container.append(
-        createPreviousButton(state),
-        createNextButton(state),
+        createPreviousButton(searchState),
+        createNextButton(searchState),
         pageCounter()
     );
 
     return container;
 }
 
-function createPreviousButton(state) {
+function createPreviousButton(searchState) {
     const prev = document.createElement('button');
     prev.className = "btn btn-primary";
     prev.id = "prev";
@@ -20,7 +20,7 @@ function createPreviousButton(state) {
     return prev;
 }
 
-function createNextButton(state) {
+function createNextButton(searchState) {
     const next = document.createElement('button');
     next.className = "btn btn-primary";
     next.id = "next";
@@ -31,7 +31,7 @@ function createNextButton(state) {
     return next;
 }
 
-function pageCounter() {
+function pageCounter(searchState) {
     const div = document.createElement('div');
     div.className = "page-counter"
 

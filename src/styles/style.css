@@ -87,7 +87,7 @@ ul {
 
 .main-header {
     padding: 20px 0;
-    background: linear-gradient(135deg, #05032b 60%, #2d3aac);
+    background: linear-gradient(135deg, var(--color-primary) 60%, #2d3aac);
 }
 
 .main-header .logo {

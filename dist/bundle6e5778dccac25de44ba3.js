@@ -6961,7 +6961,7 @@ ul {
 
 .main-header {
   padding: 20px 0;
-  background: linear-gradient(135deg, #05032b 60%, #2d3aac);
+  background: linear-gradient(135deg, var(--color-primary) 60%, #2d3aac);
 }
 
 .main-header .logo {
@@ -7219,7 +7219,7 @@ section h3 {
 
 .error {
   background: red;
-}`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"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","sourcesContent":["*,\n*::before,\n*::after {\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n}\n\n:root {\n    --color-primary: #010a14;\n    --color-secondary: #f1c40f;\n}\n\nbody {\n    font-family: 'Poppins', sans-serif;\n    font-size: 16px;\n    background: var(--color-primary);\n    color: #fff;\n    overflow-x: hidden;\n}\n\na {\n    color: #fff;\n    text-decoration: none;\n}\n\nul {\n    list-style: none;\n}\n\n.text-primary {\n    color: var(--color-secondary);\n}\n\n.text-secondary {\n    color: var(--color-secondary);\n}\n\n.active {\n    color: var(--color-secondary);\n    font-weight: 700;\n}\n\n.back {\n    margin-top: 30px;\n}\n\n.btn {\n    display: inline-block;\n    padding: 0.5rem 1rem;\n    border: 1px solid var(--color-secondary);\n    border-radius: 5px;\n    color: #fff;\n    cursor: pointer;\n    background: transparent;\n    transition: all 0.3s ease-in-out;\n}\n\n.btn:hover {\n    background: var(--color-secondary);\n    color: #000;\n}\n\n.btn:disabled {\n    border-color: #ccc;\n    cursor: not-allowed;\n}\n\n.btn:disabled:hover {\n    background: transparent;\n    color: #fff;\n}\n\n.container {\n    max-width: 1200px;\n    width: 100%;\n    margin: 0 auto;\n    padding: 0 20px;\n}\n\n.main-header .container {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 0 20px;\n}\n\n.main-header {\n    padding: 20px 0;\n    background: linear-gradient(135deg, #05032b 60%, #2d3aac);\n}\n\n.main-header .logo {\n    color: #fff;\n    font-size: 35px;\n    font-weight: 700;\n    text-transform: uppercase;\n}\n\n.main-header ul {\n    display: flex;\n}\n\n.main-header ul li {\n    margin-left: 20px;\n}\n\n.main-header ul li a {\n    font-size: 16px;\n}\n\n.main-header ul li a:hover {\n    color: var(--color-secondary);\n}\n\n/* Grid */\n.grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n    grid-gap: 28px;\n    margin-bottom: 30px;\n}\n\n/* Card */\n.card {\n    background: #04376b;\n    /*padding: 5px;*/\n}\n\n.card img {\n    width: 100%;\n    height: 100%;\n}\n\n.card-body {\n    display: none;\n    padding: 10px;\n    font-size: 20px;\n}\n\n.card:hover {\n    transform: scale(1.05);\n    transition: all 0.5s ease-in-out;\n    /*background: #0a4b8f;*/\n    border: solid 4px white;\n}\n\n/* Footer */\n.main-footer {\n    background: #020d18;\n    padding: 20px 0;\n    margin-top: 20px;\n}\n\n.main-footer .container {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.main-footer .container .logo {\n    color: #fff;\n    font-size: 25px;\n    font-weight: 700;\n    text-transform: uppercase;\n}\n\n.main-footer .container .social-links {\n    display: flex;\n    font-size: 20px;\n}\n\n.main-footer .container .social-links a {\n    margin-left: 10px;\n    color: #fff;\n}\n\n.main-footer .container .social-links a:hover {\n    color: var(--color-secondary);\n}\n\n/* Section: Now Playing */\n\nsection.now-playing {\n    padding: 60px;\n    /*background: url(../assets/showcase-bg.jpg) no-repeat center center/cover;*/\n}\n\nsection h3 {\n    margin: 20px 0;\n}\n\n/* Slider */\n.swiper {\n    width: 100%;\n    height: 50%;\n}\n\n.swiper-slide {\n    text-align: center;\n    font-size: 18px;\n    background: var(--color-primary);\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.swiper-slide img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n}\n\n.swiper-rating {\n    padding: 10px;\n}\n\n/* Movie & Show Details */\n.details-top {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 50px 0 30px;\n}\n\n@media (max-width: 700px) {\n    .details-top {\n        display: block;\n        margin-bottom: 40px;\n        padding-bottom: 20px;\n        border-bottom: #ccc solid 1px;\n    }\n}\n\n.details-top img {\n    width: 400px;\n    height: 100%;\n    margin-right: 60px;\n    object-fit: cover;\n}\n\n.details-top p {\n    margin: 20px 0;\n}\n\n.details-top .btn {\n    margin-top: 20px;\n}\n\n.details-bottom {\n}\n\n.details-bottom li {\n    margin: 15px 0;\n    padding-bottom: 8px;\n    /*border-bottom: 1px solid #fff;*/\n    border-color: rgba(255, 255, 255, 0.1);\n}\n\n/* Search */\n.search {\n    padding: 60px;\n    margin-bottom: 40px;\n}\n\n.search .container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n}\n\n.search .container h2 {\n    margin-bottom: 20px;\n}\n\n.search .container form {\n    width: 100%;\n    max-width: 600px;\n}\n\n.search-radio label {\n    margin-right: 15px;\n}\n\n.search-flex {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-top: 10px;\n}\n\n.search .container form input[type='text'] {\n    flex: 6;\n    width: 100%;\n    height: 50px;\n    padding: 10px;\n    margin-right: 10px;\n    border: 1px solid #fff;\n    border-radius: 5px;\n    background: transparent;\n    color: #fff;\n}\n\n.search .container form input[type='text']::placeholder {\n    color: #fff;\n}\n\n.search .container form input[type='text']:focus {\n    outline: none;\n}\n\n.search .container form button {\n    flex: 1;\n    display: block;\n    width: 100%;\n    padding: 10px;\n    border-radius: 5px;\n    height: 50px;\n    cursor: pointer;\n    background: var(--color-secondary);\n    color: #000;\n}\n\n.search .container form button:hover {\n    background: transparent;\n    color: #fff;\n}\n\n.pagination {\n    margin-top: 20px;\n}\n\n.page-counter {\n    margin-top: 10px;\n}\n\n/* Alert */\n.alert {\n    padding: 10px 20px;\n    margin-bottom: 20px;\n    border-radius: 5px;\n}\n\n.success {\n    background: green;\n}\n\n.error {\n    background: red;\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"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","sourcesContent":["*,\n*::before,\n*::after {\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n}\n\n:root {\n    --color-primary: #010a14;\n    --color-secondary: #f1c40f;\n}\n\nbody {\n    font-family: 'Poppins', sans-serif;\n    font-size: 16px;\n    background: var(--color-primary);\n    color: #fff;\n    overflow-x: hidden;\n}\n\na {\n    color: #fff;\n    text-decoration: none;\n}\n\nul {\n    list-style: none;\n}\n\n.text-primary {\n    color: var(--color-secondary);\n}\n\n.text-secondary {\n    color: var(--color-secondary);\n}\n\n.active {\n    color: var(--color-secondary);\n    font-weight: 700;\n}\n\n.back {\n    margin-top: 30px;\n}\n\n.btn {\n    display: inline-block;\n    padding: 0.5rem 1rem;\n    border: 1px solid var(--color-secondary);\n    border-radius: 5px;\n    color: #fff;\n    cursor: pointer;\n    background: transparent;\n    transition: all 0.3s ease-in-out;\n}\n\n.btn:hover {\n    background: var(--color-secondary);\n    color: #000;\n}\n\n.btn:disabled {\n    border-color: #ccc;\n    cursor: not-allowed;\n}\n\n.btn:disabled:hover {\n    background: transparent;\n    color: #fff;\n}\n\n.container {\n    max-width: 1200px;\n    width: 100%;\n    margin: 0 auto;\n    padding: 0 20px;\n}\n\n.main-header .container {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 0 20px;\n}\n\n.main-header {\n    padding: 20px 0;\n    background: linear-gradient(135deg, var(--color-primary) 60%, #2d3aac);\n}\n\n.main-header .logo {\n    color: #fff;\n    font-size: 35px;\n    font-weight: 700;\n    text-transform: uppercase;\n}\n\n.main-header ul {\n    display: flex;\n}\n\n.main-header ul li {\n    margin-left: 20px;\n}\n\n.main-header ul li a {\n    font-size: 16px;\n}\n\n.main-header ul li a:hover {\n    color: var(--color-secondary);\n}\n\n/* Grid */\n.grid {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n    grid-gap: 28px;\n    margin-bottom: 30px;\n}\n\n/* Card */\n.card {\n    background: #04376b;\n    /*padding: 5px;*/\n}\n\n.card img {\n    width: 100%;\n    height: 100%;\n}\n\n.card-body {\n    display: none;\n    padding: 10px;\n    font-size: 20px;\n}\n\n.card:hover {\n    transform: scale(1.05);\n    transition: all 0.5s ease-in-out;\n    /*background: #0a4b8f;*/\n    border: solid 4px white;\n}\n\n/* Footer */\n.main-footer {\n    background: #020d18;\n    padding: 20px 0;\n    margin-top: 20px;\n}\n\n.main-footer .container {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.main-footer .container .logo {\n    color: #fff;\n    font-size: 25px;\n    font-weight: 700;\n    text-transform: uppercase;\n}\n\n.main-footer .container .social-links {\n    display: flex;\n    font-size: 20px;\n}\n\n.main-footer .container .social-links a {\n    margin-left: 10px;\n    color: #fff;\n}\n\n.main-footer .container .social-links a:hover {\n    color: var(--color-secondary);\n}\n\n/* Section: Now Playing */\n\nsection.now-playing {\n    padding: 60px;\n    /*background: url(../assets/showcase-bg.jpg) no-repeat center center/cover;*/\n}\n\nsection h3 {\n    margin: 20px 0;\n}\n\n/* Slider */\n.swiper {\n    width: 100%;\n    height: 50%;\n}\n\n.swiper-slide {\n    text-align: center;\n    font-size: 18px;\n    background: var(--color-primary);\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n.swiper-slide img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n}\n\n.swiper-rating {\n    padding: 10px;\n}\n\n/* Movie & Show Details */\n.details-top {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin: 50px 0 30px;\n}\n\n@media (max-width: 700px) {\n    .details-top {\n        display: block;\n        margin-bottom: 40px;\n        padding-bottom: 20px;\n        border-bottom: #ccc solid 1px;\n    }\n}\n\n.details-top img {\n    width: 400px;\n    height: 100%;\n    margin-right: 60px;\n    object-fit: cover;\n}\n\n.details-top p {\n    margin: 20px 0;\n}\n\n.details-top .btn {\n    margin-top: 20px;\n}\n\n.details-bottom {\n}\n\n.details-bottom li {\n    margin: 15px 0;\n    padding-bottom: 8px;\n    /*border-bottom: 1px solid #fff;*/\n    border-color: rgba(255, 255, 255, 0.1);\n}\n\n/* Search */\n.search {\n    padding: 60px;\n    margin-bottom: 40px;\n}\n\n.search .container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n}\n\n.search .container h2 {\n    margin-bottom: 20px;\n}\n\n.search .container form {\n    width: 100%;\n    max-width: 600px;\n}\n\n.search-radio label {\n    margin-right: 15px;\n}\n\n.search-flex {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-top: 10px;\n}\n\n.search .container form input[type='text'] {\n    flex: 6;\n    width: 100%;\n    height: 50px;\n    padding: 10px;\n    margin-right: 10px;\n    border: 1px solid #fff;\n    border-radius: 5px;\n    background: transparent;\n    color: #fff;\n}\n\n.search .container form input[type='text']::placeholder {\n    color: #fff;\n}\n\n.search .container form input[type='text']:focus {\n    outline: none;\n}\n\n.search .container form button {\n    flex: 1;\n    display: block;\n    width: 100%;\n    padding: 10px;\n    border-radius: 5px;\n    height: 50px;\n    cursor: pointer;\n    background: var(--color-secondary);\n    color: #000;\n}\n\n.search .container form button:hover {\n    background: transparent;\n    color: #fff;\n}\n\n.pagination {\n    margin-top: 20px;\n}\n\n.page-counter {\n    margin-top: 10px;\n}\n\n/* Alert */\n.alert {\n    padding: 10px 20px;\n    margin-bottom: 20px;\n    border-radius: 5px;\n}\n\n.success {\n    background: green;\n}\n\n.error {\n    background: red;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8325,18 +8325,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function createPagination(state) {
+function createPagination(searchState) {
     const container = document.getElementById('pagination');
     container.append(
-        createPreviousButton(state),
-        createNextButton(state),
+        createPreviousButton(searchState),
+        createNextButton(searchState),
         pageCounter()
     );
 
     return container;
 }
 
-function createPreviousButton(state) {
+function createPreviousButton(searchState) {
     const prev = document.createElement('button');
     prev.className = "btn btn-primary";
     prev.id = "prev";
@@ -8347,7 +8347,7 @@ function createPreviousButton(state) {
     return prev;
 }
 
-function createNextButton(state) {
+function createNextButton(searchState) {
     const next = document.createElement('button');
     next.className = "btn btn-primary";
     next.id = "next";
@@ -8358,7 +8358,7 @@ function createNextButton(state) {
     return next;
 }
 
-function pageCounter() {
+function pageCounter(searchState) {
     const div = document.createElement('div');
     div.className = "page-counter"
 
@@ -8604,6 +8604,37 @@ function highlightActiveLink(currentPage) {
 
 /***/ }),
 
+/***/ "./src/modules/NavigatePagination.js":
+/*!*******************************************!*\
+  !*** ./src/modules/NavigatePagination.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SearchMedia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchMedia */ "./src/modules/SearchMedia.js");
+/* harmony import */ var _UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateGlobal */ "./src/modules/UpdateGlobal.js");
+
+
+
+function navigatePagination(event, globalState) {
+    console.log(event);
+    if (event === 'next') {
+        (0,_UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__["default"])(globalState.search.page++);
+        console.log(globalState)
+        ;(0,_SearchMedia__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState);
+    } else {
+
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navigatePagination);
+
+/***/ }),
+
 /***/ "./src/modules/SearchAPI.js":
 /*!**********************************!*\
   !*** ./src/modules/SearchAPI.js ***!
@@ -8706,7 +8737,7 @@ async function searchMedia(globalObject) {
         // Create a search results heading using the info stored in globalState
         (0,_CreateSearchResultsHeading__WEBPACK_IMPORTED_MODULE_4__["default"])(globalState.search.term, results.length, globalState.search.totalResults);
         (0,_CreatePagination__WEBPACK_IMPORTED_MODULE_5__["default"])(globalState.search);
-
+ 
     } else {
         alert('Please enter search term');
     }
@@ -18848,6 +18879,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/HighlightActiveLink */ "./src/modules/HighlightActiveLink.js");
 /* harmony import */ var _modules_DisplaySlider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/DisplaySlider */ "./src/modules/DisplaySlider.js");
 /* harmony import */ var _modules_SearchMedia__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/SearchMedia */ "./src/modules/SearchMedia.js");
+/* harmony import */ var _modules_NavigatePagination__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/NavigatePagination */ "./src/modules/NavigatePagination.js");
+
 
 
 
@@ -18896,6 +18929,9 @@ function init() {
         case '/search.html':
             console.log('Search');
             (0,_modules_SearchMedia__WEBPACK_IMPORTED_MODULE_9__["default"])(global);
+            document.getElementById('pagination').addEventListener('click', (e => {
+                (0,_modules_NavigatePagination__WEBPACK_IMPORTED_MODULE_10__["default"])(e.target.id, global)
+            }));
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
@@ -18903,11 +18939,10 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init)
-document.getElementById('pagination').addEventListener('click', (e) => console.log(e.target));
-(0,_modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
+;(0,_modules_HighlightActiveLink__WEBPACK_IMPORTED_MODULE_7__["default"])(global.currentPage);
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle0dc478dc0ddc1aae3d35.js.map
+//# sourceMappingURL=bundle6e5778dccac25de44ba3.js.map

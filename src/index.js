@@ -8,6 +8,7 @@ import {displayPopularMedia, displayPopularTV, displayMediaPageDetails, displayT
 import highlightActiveLink from "./modules/HighlightActiveLink";
 import displaySlider from "./modules/DisplaySlider";
 import searchMedia from "./modules/SearchMedia";
+import navigatePagination from "./modules/NavigatePagination";
 
 // Create an object to retrieve the current html page-name for routing
 let global = {
@@ -46,6 +47,9 @@ function init() {
         case '/search.html':
             console.log('Search');
             searchMedia(global);
+            document.getElementById('pagination').addEventListener('click', (e => {
+                navigatePagination(e.target.id, global)
+            }));
             break;
     }
     // Each time a html page is called render the page with the link that has the "active" classname
@@ -53,5 +57,4 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init)
-document.getElementById('pagination').addEventListener('click', (e) => console.log(e.target));
 highlightActiveLink(global.currentPage);

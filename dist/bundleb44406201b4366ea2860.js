@@ -7931,6 +7931,46 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/modules/CheckButtonStatus.js":
+/*!******************************************!*\
+  !*** ./src/modules/CheckButtonStatus.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function checkButtonStatus(globalState) {
+    console.log(globalState.search.totalPages)
+    if (globalState.search.totalPages === 1) {
+        disablePrev();
+        disableNext();
+    } else if (globalState.search.page === 1 && __webpack_require__.g.search.totalPages > 1) {
+        disablePrev();
+    } else if (globalState.search.page === __webpack_require__.g.search.totalPages) {
+        disableNext();
+    }
+}
+
+function disablePrev(globalState) {
+    const prev = document.getElementById('prev');
+    prev.disabled = true;
+    console.log('hello')
+
+}
+
+function disableNext(globalState) {
+    const next = document.getElementById('next');
+    next.disabled  = true;
+    console.log('hello')
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkButtonStatus);
+
+/***/ }),
+
 /***/ "./src/modules/CreateMediaPage.js":
 /*!****************************************!*\
   !*** ./src/modules/CreateMediaPage.js ***!
@@ -8618,19 +8658,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchMedia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchMedia */ "./src/modules/SearchMedia.js");
 /* harmony import */ var _UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateGlobal */ "./src/modules/UpdateGlobal.js");
 /* harmony import */ var _RemovePagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RemovePagination */ "./src/modules/RemovePagination.js");
+/* harmony import */ var _CheckButtonStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CheckButtonStatus */ "./src/modules/CheckButtonStatus.js");
+
 
 
 
 
 function navigatePagination(event, globalState) {
+    console.log(globalState.search.totalPages);
     if (event === 'next') {
         (0,_RemovePagination__WEBPACK_IMPORTED_MODULE_2__["default"])();
         (0,_UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__["default"])(globalState.search.page++);
-        console.log(globalState)
-        ;(0,_SearchMedia__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState);
-    } else {
-
+        (0,_SearchMedia__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState);
+    } else if (event === 'prev') {
+        (0,_RemovePagination__WEBPACK_IMPORTED_MODULE_2__["default"])();
+        (0,_UpdateGlobal__WEBPACK_IMPORTED_MODULE_1__["default"])(globalState.search.page--);
+        (0,_SearchMedia__WEBPACK_IMPORTED_MODULE_0__["default"])(globalState);
     }
+    console.log(globalState.search.totalPages);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navigatePagination);
@@ -8737,6 +8782,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpdateGlobal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdateGlobal */ "./src/modules/UpdateGlobal.js");
 /* harmony import */ var _CreateSearchResultsHeading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateSearchResultsHeading */ "./src/modules/CreateSearchResultsHeading.js");
 /* harmony import */ var _CreatePagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreatePagination */ "./src/modules/CreatePagination.js");
+/* harmony import */ var _CheckButtonStatus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CheckButtonStatus */ "./src/modules/CheckButtonStatus.js");
+
 
 
 
@@ -8786,7 +8833,8 @@ async function searchMedia(globalObject) {
         // Create a search results heading using the info stored in globalState
         (0,_CreateSearchResultsHeading__WEBPACK_IMPORTED_MODULE_4__["default"])(globalState.search.term, results.length, globalState.search.totalResults);
         (0,_CreatePagination__WEBPACK_IMPORTED_MODULE_5__["default"])(globalState.search);
- 
+        (0,_CheckButtonStatus__WEBPACK_IMPORTED_MODULE_6__["default"])(globalState);
+
     } else {
         alert('Please enter search term');
     }
@@ -18994,4 +19042,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1539d46b5a17cfed9886.js.map
+//# sourceMappingURL=bundleb44406201b4366ea2860.js.map

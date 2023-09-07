@@ -4,6 +4,7 @@ import fetchAPIData from "./FetchAPI";
 import updateGlobal from "./UpdateGlobal";
 import createSearchResultsHeading from "./CreateSearchResultsHeading";
 import createPagination from "./CreatePagination";
+import checkButtonStatus from "./CheckButtonStatus";
 
 async function searchMedia(globalObject) {
     // Sends a search query using SearchAPI.js after a form a submission from the homepage
@@ -47,7 +48,8 @@ async function searchMedia(globalObject) {
         // Create a search results heading using the info stored in globalState
         createSearchResultsHeading(globalState.search.term, results.length, globalState.search.totalResults);
         createPagination(globalState.search);
- 
+        checkButtonStatus(globalState);
+
     } else {
         alert('Please enter search term');
     }

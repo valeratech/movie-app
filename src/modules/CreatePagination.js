@@ -3,7 +3,7 @@ function createPagination(searchState) {
     container.append(
         createPreviousButton(searchState),
         createNextButton(searchState),
-        pageCounter()
+        pageCounter(searchState)
     );
 
     return container;
@@ -35,7 +35,7 @@ function pageCounter(searchState) {
     const div = document.createElement('div');
     div.className = "page-counter"
 
-    const text = document.createTextNode('Page 1 of 5')
+    const text = document.createTextNode(`Page ${searchState.page} of ${searchState.totalPages}`)
     div.appendChild(text)
 
     return div;

@@ -46,8 +46,8 @@ async function searchMedia(globalObject) {
 
         // Create a search results heading using the info stored in globalState
         createSearchResultsHeading(globalState.search.term, results.length, globalState.search.totalResults);
-        createPagination();
-
+        createPagination(globalState.search);
+ 
     } else {
         alert('Please enter search term');
     }

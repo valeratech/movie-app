@@ -53,4 +53,5 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init)
+document.getElementById('pagination').addEventListener('click', (e) => console.log(e.target));
 highlightActiveLink(global.currentPage);

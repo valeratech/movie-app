@@ -8370,7 +8370,7 @@ function createPagination(searchState) {
     container.append(
         createPreviousButton(searchState),
         createNextButton(searchState),
-        pageCounter()
+        pageCounter(searchState)
     );
 
     return container;
@@ -8402,7 +8402,7 @@ function pageCounter(searchState) {
     const div = document.createElement('div');
     div.className = "page-counter"
 
-    const text = document.createTextNode('Page 1 of 5')
+    const text = document.createTextNode(`Page ${searchState.page} of ${searchState.totalPages}`)
     div.appendChild(text)
 
     return div;
@@ -19042,4 +19042,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleb44406201b4366ea2860.js.map
+//# sourceMappingURL=bundle1aa292c7d87b36b210f5.js.map

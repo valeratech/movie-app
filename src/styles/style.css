@@ -147,7 +147,7 @@ ul {
 
 /* Footer */
 .main-footer {
-    background: #020d18;
+    background: linear-gradient(65deg, #15207d, 1%, var(--color-primary));
     padding: 20px 0;
     margin-top: 20px;
 }

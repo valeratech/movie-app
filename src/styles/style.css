@@ -87,7 +87,7 @@ ul {
 
 .main-header {
     padding: 20px 0;
-    background: linear-gradient(135deg, var(--color-primary) 60%, #2d3aac);
+    background: linear-gradient(135deg, var(--color-primary) 60%, #15207d);
 }
 
 .main-header .logo {
@@ -123,17 +123,17 @@ ul {
 
 /* Card */
 .card {
-    background: #04376b;
+    background: #15207d;
     /*padding: 5px;*/
 }
 
 .card img {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .card-body {
-    display: none;
+    /*display: none;*/
     padding: 10px;
     font-size: 20px;
 }

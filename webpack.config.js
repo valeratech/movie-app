@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {  // common JS syntax - config(object)
     mode: 'development',
@@ -28,7 +30,7 @@ module.exports = {  // common JS syntax - config(object)
         rules: [  // rules array for each file type (ex. css)
             { // add a test value as a regular expression (any files that end with this extension .css)
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'], // apply loaders
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'], // apply loaders
             },
             {
                 // https://stackoverflow.com/questions/52376720/how-to-make-font-awesome-5-work-with-webpack
@@ -38,6 +40,7 @@ module.exports = {  // common JS syntax - config(object)
         ],
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             title: 'Flixulu+ | Watch Movies and TV Shows', // <title><%= htmlWebpackPlugin.options.title %></title>
             filename: "index.html",

@@ -1,9 +1,9 @@
+import './styles/style.css';
+import './styles/spinner.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-import './styles/style.css';
-import './styles/spinner.css';
 import {displayPopularMedia, displayPopularTV, displayMediaPageDetails, displayTvDetails} from "./modules/DisplayMedia";
 import highlightActiveLink from "./modules/HighlightActiveLink";
 import displaySlider from "./modules/DisplaySlider";

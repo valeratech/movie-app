@@ -8791,6 +8791,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CreateSearchResultsHeading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateSearchResultsHeading */ "./src/modules/CreateSearchResultsHeading.js");
 /* harmony import */ var _CreatePagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreatePagination */ "./src/modules/CreatePagination.js");
 /* harmony import */ var _CheckButtonStatus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CheckButtonStatus */ "./src/modules/CheckButtonStatus.js");
+/* harmony import */ var _promptAlert__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./promptAlert */ "./src/modules/promptAlert.js");
+
 
 
 
@@ -8844,7 +8846,7 @@ async function searchMedia(globalObject) {
         (0,_CheckButtonStatus__WEBPACK_IMPORTED_MODULE_6__["default"])(globalState);
 
     } else {
-        alert('Please enter search term');
+        (0,_promptAlert__WEBPACK_IMPORTED_MODULE_7__["default"])('Search term required. Please enter a search term');
     }
 }
 
@@ -8890,6 +8892,30 @@ function updateGlobal (globalState) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (updateGlobal);
+
+/***/ }),
+
+/***/ "./src/modules/promptAlert.js":
+/*!************************************!*\
+  !*** ./src/modules/promptAlert.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function showAlert(message, className = 'error') {
+    const alertEl = document.createElement('div');
+    alertEl.classList.add('alert', className);
+    alertEl.appendChild(document.createTextNode(message));
+    document.querySelector('#alert').appendChild(alertEl);
+
+    setTimeout(() => alertEl.remove(), 3000);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showAlert);
 
 /***/ }),
 
@@ -19050,4 +19076,4 @@ document.addEventListener('DOMContentLoaded', init)
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle4db5ac36845e6f8c4480.js.map
+//# sourceMappingURL=bundle68e7b7f2197aef37d1d8.js.map

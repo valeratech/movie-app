@@ -5,6 +5,7 @@ import updateGlobal from "./UpdateGlobal";
 import createSearchResultsHeading from "./CreateSearchResultsHeading";
 import createPagination from "./CreatePagination";
 import checkButtonStatus from "./CheckButtonStatus";
+import promptAlert from "./promptAlert";
 
 async function searchMedia(globalObject) {
     // Sends a search query using SearchAPI.js after a form a submission from the homepage
@@ -51,7 +52,7 @@ async function searchMedia(globalObject) {
         checkButtonStatus(globalState);
 
     } else {
-        alert('Please enter search term');
+        promptAlert('Search term required. Please enter a search term');
     }
 }
 

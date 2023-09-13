@@ -15,6 +15,7 @@ async function searchMedia(globalObject) {
     const searchString = window.location.search;
     const urlParams = new URLSearchParams(searchString);
 
+    // The type (movie/tv) that is selected with the select button???
     globalState.search.type = urlParams.get('type');
     globalState.search.term = urlParams.get('search-term');
 
@@ -22,9 +23,9 @@ async function searchMedia(globalObject) {
     if(globalState.search.term !== '' && globalState.search.term !== null) {
         // Deconstruct the required keys from the search API results which will be used for display and pagination
         const {results, total_pages, page, total_results} = await searchAPIData(
-            globalState.search.type,
-            globalState.search.term,
-            globalState.search.page
+            globalState.search.type,   // Query the type of media (movie/tv)
+            globalState.search.term,  // Search media based on the specific term
+            globalState.search.page  // Retrieve the first page by default
         );
 
         globalState.search.totalPages = total_pages;
@@ -36,7 +37,7 @@ async function searchMedia(globalObject) {
         const mediaContainer = document.getElementById(
             globalState.search.type === 'movie' && globalState.currentPage !== '/search.html'  ? 'popular-movies'
                 : globalState.search.type === 'tv' && globalState.currentPage !== '/search.html'? 'popular-shows'
-                : 'search-results'
+                    : 'search-results'
         );
 
         // Create the tiles by looping through the API data and calling the createMediaTileContainer
